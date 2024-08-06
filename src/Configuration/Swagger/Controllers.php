@@ -35,6 +35,19 @@ class Controllers extends SwaggerConfiguration
         // 'pathId' => null,
     ];
 
+    public function reset(): self
+    {
+        $this->pathCreate = null;
+        $this->pathEdit = null;
+        $this->pathId = null;
+        $this->pathIndex = null;
+        $this->pathIndexForm = null;
+        $this->pathLock = null;
+        $this->pathRestore = null;
+        $this->pathRevision = null;
+        $this->pathRevisions = null;
+    }
+
     /**
      * @param array<string, mixed> $options
      */

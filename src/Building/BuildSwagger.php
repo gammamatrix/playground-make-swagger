@@ -24,9 +24,11 @@ trait BuildSwagger
 
     protected function init_swagger_api(): void
     {
-        $this->api = new Api;
-        if ($this->option('skeleton')) {
-            $this->api->withSkeleton();
+        if (empty($this->api)) {
+            $this->api = new Api;
+            if ($this->option('skeleton')) {
+                $this->api->withSkeleton();
+            }
         }
     }
 

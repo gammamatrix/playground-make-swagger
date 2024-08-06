@@ -46,6 +46,9 @@ trait BuildController
             $this->doc_controller_index_form($name, $controller_type);
             $this->doc_controller_lock($name, $controller_type);
             $this->doc_controller_restore($name, $controller_type);
+            $this->doc_controller_create($name, $controller_type);
+            $this->doc_controller_edit($name, $controller_type);
+
         }
     }
 
@@ -871,5 +874,174 @@ trait BuildController
         ]);
 
         $putMethod?->apply();
+    }
+
+    protected function doc_controller_create(
+        string $name,
+        string $controller_type = ''
+    ): void {
+        $pathCreate = $this->api->controllers()->pathCreate();
+
+        $this->doc_controller_create_config($name, $pathCreate);
+
+        $path = sprintf(
+            '/api/%1$s/create',
+            Str::of($name)->plural()->kebab()->toString()
+        );
+        $file = sprintf(
+            'paths/%1$s/create.yml',
+            Str::of($name)->plural()->kebab()->toString()
+        );
+
+        $this->api->addPath($path, $file);
+
+        $this->yaml_write($file, $pathCreate->toArray());
+    }
+
+    protected function doc_controller_create_config(
+        string $name,
+        Controller\PathCreate $pathCreate
+    ): void {
+
+        $getMethod = $pathCreate->getMethod([
+            'tags' => [
+                Str::of($name)->title()->toString(),
+            ],
+            'summary' => sprintf(
+                'Create a %1$s form.',
+                Str::of($name)->lower()->toString()
+            ),
+            'operationId' => sprintf(
+                'create_%1$s',
+                Str::of($name)->lower()->toString()
+            ),
+            'responses' => [
+                [
+                    'code' => 200,
+                    'description' => sprintf(
+                        'The create %1$s information.',
+                        Str::of($name)->lower()->toString()
+                    ),
+                    'content' => [
+                        'type' => 'application/json',
+                        'schema' => [
+                            'type' => 'object',
+                            'properties' => [
+                                'data' => [
+                                    '$ref' => sprintf(
+                                        '../../models/%s.yml',
+                                        Str::of($name)->lower()->kebab()->toString()
+                                    ),
+                                ],
+                                'meta' => [
+                                    'type' => 'object',
+
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+                [
+                    'code' => 401,
+                    'description' => 'Unauthorized',
+                ],
+                [
+                    'code' => 403,
+                    'description' => 'Forbidden',
+                ],
+            ],
+        ]);
+
+        $getMethod?->apply();
+    }
+
+    protected function doc_controller_edit(
+        string $name,
+        string $controller_type = ''
+    ): void {
+        $pathEdit = $this->api->controllers()->pathEdit();
+
+        $this->doc_controller_edit_config($name, $pathEdit);
+
+        $path = sprintf(
+            '/api/%1$s/edit/{id}',
+            Str::of($name)->plural()->kebab()->toString()
+        );
+        $file = sprintf(
+            'paths/%1$s/edit.yml',
+            Str::of($name)->plural()->kebab()->toString()
+        );
+
+        $this->api->addPath($path, $file);
+
+        $this->yaml_write($file, $pathEdit->toArray());
+    }
+
+    protected function doc_controller_edit_config(
+        string $name,
+        Controller\PathEdit $pathEdit
+    ): void {
+
+        $pathEdit->addParameter($name, [
+            'in' => 'path',
+            'name' => 'id',
+            'required' => true,
+            'description' => sprintf('The %1$s id.', Str::of($name)->lower()->toString()),
+            'schema' => [
+                'type' => 'string',
+                'format' => 'uuid',
+            ],
+        ]);
+
+        $getMethod = $pathEdit->getMethod([
+            'tags' => [
+                Str::of($name)->title()->toString(),
+            ],
+            'summary' => sprintf(
+                'Edit a %1$s form.',
+                Str::of($name)->lower()->toString()
+            ),
+            'operationId' => sprintf(
+                'edit_%1$s',
+                Str::of($name)->lower()->toString()
+            ),
+            'responses' => [
+                [
+                    'code' => 200,
+                    'description' => sprintf(
+                        'The edit %1$s information.',
+                        Str::of($name)->lower()->toString()
+                    ),
+                    'content' => [
+                        'type' => 'application/json',
+                        'schema' => [
+                            'type' => 'object',
+                            'properties' => [
+                                'data' => [
+                                    '$ref' => sprintf(
+                                        '../../models/%s.yml',
+                                        Str::of($name)->lower()->kebab()->toString()
+                                    ),
+                                ],
+                                'meta' => [
+                                    'type' => 'object',
+
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+                [
+                    'code' => 401,
+                    'description' => 'Unauthorized',
+                ],
+                [
+                    'code' => 403,
+                    'description' => 'Forbidden',
+                ],
+            ],
+        ]);
+
+        $getMethod?->apply();
     }
 }
