@@ -8,6 +8,7 @@ parameters:
 
     paths:
         - config
+        - lang
         - src
         - tests
 
@@ -15,8 +16,6 @@ parameters:
         - 'output/*'
 
     treatPhpDocTypesAsCertain: false
-
-    checkGenericClassInNonGenericObjectType: false
 
     # editorUrl: 'vscode://file/%%file%%:%%line%%'
     # editorUrl: 'phpstorm://open?file=%%file%%&line=%%line%%'
