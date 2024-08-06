@@ -6,7 +6,7 @@ declare(strict_types=1);
 namespace Playground\Make\Swagger\Configuration\Swagger;
 
 /**
- * \ Playground\Make\Swagger\Configuration\Swagger\Schema
+ * \Playground\Make\Swagger\Configuration\Swagger\Schema
  */
 class Schema extends SwaggerConfiguration
 {

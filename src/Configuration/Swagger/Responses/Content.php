@@ -8,7 +8,7 @@ namespace Playground\Make\Swagger\Configuration\Swagger\Responses;
 use Playground\Make\Configuration;
 
 /**
- * \ Playground\Make\Swagger\Configuration\Swagger\Responses\Content
+ * \Playground\Make\Swagger\Configuration\Swagger\Responses\Content
  */
 class Content extends Configuration\Configuration
 {

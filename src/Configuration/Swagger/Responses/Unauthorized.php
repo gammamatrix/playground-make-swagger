@@ -6,7 +6,7 @@ declare(strict_types=1);
 namespace Playground\Make\Swagger\Configuration\Swagger\Responses;
 
 /**
- * \ Playground\Make\Swagger\Configuration\Swagger\Responses\Unauthorized
+ * \Playground\Make\Swagger\Configuration\Swagger\Responses\Unauthorized
  */
 class Unauthorized extends Response
 {

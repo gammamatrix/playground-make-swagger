@@ -10,7 +10,7 @@ use Playground\Make\Swagger\Configuration\Swagger\Methods;
 use Playground\Make\Swagger\Configuration\Swagger\SwaggerConfiguration;
 
 /**
- * \ Playground\Make\Swagger\Configuration\Swagger\Controller\PathId
+ * \Playground\Make\Swagger\Configuration\Swagger\Controller\PathId
  */
 class Path extends SwaggerConfiguration
 {

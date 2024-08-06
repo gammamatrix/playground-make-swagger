@@ -9,7 +9,7 @@ use Playground\Make\Configuration;
 use Playground\Make\Swagger\Configuration\Swagger\Responses\Response;
 
 /**
- * \ Playground\Make\Swagger\Configuration\Swagger\Methods\Method
+ * \Playground\Make\Swagger\Configuration\Swagger\Methods\Method
  */
 class Method extends Configuration\Configuration
 {

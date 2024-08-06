@@ -8,7 +8,7 @@ namespace Playground\Make\Swagger\Configuration\Swagger\Methods;
 use Playground\Make\Configuration;
 
 /**
- * \ Playground\Make\Swagger\Configuration\Swagger\Methods\Content
+ * \Playground\Make\Swagger\Configuration\Swagger\Methods\Content
  */
 class Content extends Configuration\Configuration
 {

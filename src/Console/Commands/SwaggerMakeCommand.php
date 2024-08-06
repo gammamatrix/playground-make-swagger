@@ -115,14 +115,14 @@ class SwaggerMakeCommand extends GeneratorCommand
 
         // $this->saveConfiguration();
 
-        dump([
-            '__METHOD__' => __METHOD__,
-            '$this->options()' => $this->options(),
-            '$this->c' => $this->c,
-            '$this->model' => $this->model?->toArray(),
-            // '$this->c' => $this->c->toArray(),
-            '$this->searches' => $this->searches,
-        ]);
+        // dump([
+        //     '__METHOD__' => __METHOD__,
+        //     '$this->options()' => $this->options(),
+        //     '$this->c' => $this->c,
+        //     '$this->model' => $this->model->toArray(),
+        //     // '$this->c' => $this->c->toArray(),
+        //     '$this->searches' => $this->searches,
+        // ]);
     }
 
     /**

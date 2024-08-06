@@ -6,7 +6,7 @@ declare(strict_types=1);
 namespace Playground\Make\Swagger\Configuration\Swagger;
 
 /**
- * \ Playground\Make\Swagger\Configuration\Swagger\ExternalDocs
+ * \Playground\Make\Swagger\Configuration\Swagger\ExternalDocs
  */
 class ExternalDocs extends SwaggerConfiguration
 {

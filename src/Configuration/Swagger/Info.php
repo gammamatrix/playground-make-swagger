@@ -6,7 +6,7 @@ declare(strict_types=1);
 namespace Playground\Make\Swagger\Configuration\Swagger;
 
 /**
- * \ Playground\Make\Swagger\Configuration\Swagger\Info
+ * \Playground\Make\Swagger\Configuration\Swagger\Info
  */
 class Info extends SwaggerConfiguration
 {

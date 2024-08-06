@@ -6,7 +6,7 @@ declare(strict_types=1);
 namespace Playground\Make\Swagger\Configuration\Swagger\Methods;
 
 /**
- * \ Playground\Make\Swagger\Configuration\Swagger\Methods\PutMethod
+ * \Playground\Make\Swagger\Configuration\Swagger\Methods\PutMethod
  */
 class PutMethod extends Method
 {

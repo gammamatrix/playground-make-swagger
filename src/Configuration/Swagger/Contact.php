@@ -6,7 +6,7 @@ declare(strict_types=1);
 namespace Playground\Make\Swagger\Configuration\Swagger;
 
 /**
- * \ Playground\Make\Swagger\Configuration\Swagger\Contact
+ * \Playground\Make\Swagger\Configuration\Swagger\Contact
  */
 class Contact extends SwaggerConfiguration
 {

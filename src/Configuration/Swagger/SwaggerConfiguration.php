@@ -8,7 +8,7 @@ namespace Playground\Make\Swagger\Configuration\Swagger;
 use Playground\Make\Configuration;
 
 /**
- * \ Playground\Make\Swagger\Configuration\Swagger\SwaggerConfiguration
+ * \Playground\Make\Swagger\Configuration\Swagger\SwaggerConfiguration
  */
 class SwaggerConfiguration extends Configuration\Configuration implements Configuration\Contracts\WithSkeleton
 {

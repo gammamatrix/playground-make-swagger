@@ -8,7 +8,7 @@ namespace Playground\Make\Swagger\Configuration\Swagger\Methods;
 use Playground\Make\Configuration;
 
 /**
- * \ Playground\Make\Swagger\Configuration\Swagger\Methods\RequestBody
+ * \Playground\Make\Swagger\Configuration\Swagger\Methods\RequestBody
  */
 class RequestBody extends Configuration\Configuration
 {

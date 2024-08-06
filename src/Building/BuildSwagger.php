@@ -24,11 +24,9 @@ trait BuildSwagger
 
     protected function init_swagger_api(): void
     {
-        if (empty($this->api)) {
-            $this->api = new Api;
-            if ($this->option('skeleton')) {
-                $this->api->withSkeleton();
-            }
+        $this->api = new Api;
+        if ($this->option('skeleton')) {
+            $this->api->withSkeleton();
         }
     }
 
@@ -54,6 +52,8 @@ trait BuildSwagger
     {
         $file = $this->getStub();
 
+        $reload = true;
+
         $path_docs_api = $this->laravel->storagePath().$file;
         $api = null;
         if (file_exists($path_docs_api)) {
@@ -64,10 +64,13 @@ trait BuildSwagger
                     $this->api->withSkeleton();
                 }
                 $this->api->setOptions($api);
+                $reload = false;
             }
         }
 
-        $this->init_swagger_api();
+        if ($reload) {
+            $this->init_swagger_api();
+        }
         // dump([
         //     '__METHOD__' => __METHOD__,
         //     '$file' => $file,

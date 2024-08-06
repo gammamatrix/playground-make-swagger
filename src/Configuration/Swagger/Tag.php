@@ -8,7 +8,7 @@ namespace Playground\Make\Swagger\Configuration\Swagger;
 use Illuminate\Support\Str;
 
 /**
- * \ Playground\Make\Swagger\Configuration\Swagger\Tag
+ * \Playground\Make\Swagger\Configuration\Swagger\Tag
  */
 class Tag extends SwaggerConfiguration
 {

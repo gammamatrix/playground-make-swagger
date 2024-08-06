@@ -8,7 +8,7 @@ namespace Playground\Make\Swagger\Configuration\Swagger\Controller;
 use Playground\Make\Configuration;
 
 /**
- * \ Playground\Make\Swagger\Configuration\Swagger\Controller\PathId
+ * \Playground\Make\Swagger\Configuration\Swagger\Controller\PathId
  */
 class Parameter extends Configuration\Configuration
 {

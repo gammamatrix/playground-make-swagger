@@ -7,9 +7,7 @@ declare(strict_types=1);
 namespace Playground\Make\Swagger\Building;
 
 use Illuminate\Support\Str;
-use Playground\Make\Swagger\Configuration\Swagger\Controller\PathId;
-use Playground\Make\Swagger\Configuration\Swagger\Controller\PathIndex;
-use Playground\Make\Swagger\Configuration\Swagger\Controller\PathIndexForm;
+use Playground\Make\Swagger\Configuration\Swagger\Controller;
 
 /**
  * \Playground\Make\Swagger\Building\BuildController
@@ -23,18 +21,9 @@ trait BuildController
      */
     protected array $build_controller_properties = [];
 
-    protected ?PathId $pathId = null;
-
-    protected ?PathIndex $pathIndex = null;
-
-    protected ?PathIndexForm $pathIndexForm = null;
-
     protected function doc_controller(): void
     {
         $this->build_controller_properties = [];
-        $this->pathId = null;
-        $this->pathIndex = null;
-        $this->pathIndexForm = null;
 
         $name = $this->c->name();
         if (empty($name)) {
@@ -55,54 +44,9 @@ trait BuildController
             $this->doc_controller_id($name, $controller_type);
             $this->doc_controller_index($name, $controller_type);
             $this->doc_controller_index_form($name, $controller_type);
+            $this->doc_controller_lock($name, $controller_type);
+            $this->doc_controller_restore($name, $controller_type);
         }
-
-        // if (in_array($controller_type, [
-        //     'playground-resource',
-        //     'resource',
-        // ])) {
-        //     $this->doc_controller_lock($name, $controller_type);
-        //     $this->doc_controller_restore($name, $controller_type);
-        // }
-    }
-
-    /**
-     * @param array<string, mixed> $options
-     */
-    protected function pathId(array $options = []): PathId
-    {
-        if (empty($this->pathId)) {
-            // Initialize the ID path
-            $this->pathId = $this->api->controllers()->pathId($options);
-        }
-
-        return $this->pathId;
-    }
-
-    /**
-     * @param array<string, mixed> $options
-     */
-    protected function pathIndex(array $options = []): PathIndex
-    {
-        if (empty($this->pathIndex)) {
-            // Initialize the ID path
-            $this->pathIndex = $this->api->controllers()->pathIndex($options);
-        }
-
-        return $this->pathIndex;
-    }
-
-    /**
-     * @param array<string, mixed> $options
-     */
-    protected function pathIndexForm(array $options = []): PathIndexForm
-    {
-        if (empty($this->pathIndexForm)) {
-            // Initialize the ID path
-            $this->pathIndexForm = $this->api->controllers()->pathIndexForm($options);
-        }
-
-        return $this->pathIndexForm;
     }
 
     protected function doc_controller_id(
@@ -110,12 +54,11 @@ trait BuildController
         string $controller_type = ''
     ): void {
 
-        // No options provided to pathId for now.
-        $this->pathId();
+        $pathId = $this->api->controllers()->pathId();
 
-        $this->doc_controller_id_config($name, $controller_type);
+        $this->doc_controller_id_config($name, $pathId);
 
-        $this->doc_request_id($name, $controller_type);
+        // $this->doc_request_id($name, $controller_type);
 
         $path = sprintf(
             '/api/%1$s/{id}',
@@ -129,29 +72,17 @@ trait BuildController
         $this->api->addPath($path, $file);
         $this->api->apply();
 
-        $this->pathId()->apply();
+        $pathId->apply();
 
-        // dd([
-        //     '__METHOD__' => __METHOD__,
-        //     '$controller_type' => $controller_type,
-        //     '$this->api->apply()->properties()' => $this->api->apply()->properties(),
-        //     'json - $this->api->apply()->properties()' => json_decode(json_encode($this->api->apply()->jsonSerialize()), true),
-        //     // '$this->model' => $this->model,
-        //     // '$this->configuration' => $this->configuration,
-        //     // '$this->searches' => $this->searches,
-        //     // '$this->arguments()' => $this->arguments(),
-        //     // '$this->options()' => $this->options(),
-        // ]);
-
-        $this->yaml_write($file, $this->pathId()->toArray());
+        $this->yaml_write($file, $pathId->toArray());
     }
 
     protected function doc_controller_id_config(
         string $name,
-        string $controller_type = ''
+        Controller\PathId $pathId
     ): void {
 
-        $this->pathId()->addParameter($name, [
+        $pathId->addParameter($name, [
             'in' => 'path',
             'name' => 'id',
             'required' => true,
@@ -162,7 +93,7 @@ trait BuildController
             ],
         ]);
 
-        $getMethod = $this->pathId()->getMethod([
+        $getMethod = $pathId->getMethod([
             'tags' => [
                 Str::of($name)->title()->toString(),
             ],
@@ -213,7 +144,7 @@ trait BuildController
 
         $getMethod?->apply();
 
-        $deleteMethod = $this->pathId()->deleteMethod([
+        $deleteMethod = $pathId->deleteMethod([
             'tags' => [
                 Str::of($name)->title()->toString(),
             ],
@@ -253,7 +184,7 @@ trait BuildController
 
         $deleteMethod?->apply();
 
-        $patchMethod = $this->pathId()->patchMethod([
+        $patchMethod = $pathId->patchMethod([
             'tags' => [
                 Str::of($name)->title()->toString(),
             ],
@@ -446,10 +377,9 @@ trait BuildController
         string $controller_type = ''
     ): void {
 
-        // No options provided to pathIndex for now.
-        $this->pathIndex();
+        $pathIndex = $this->api->controllers()->pathIndex();
 
-        $this->doc_controller_index_config($name, $controller_type);
+        $this->doc_controller_index_config($name, $pathIndex);
 
         // $this->doc_request_index($name, $controller_type);
 
@@ -475,30 +405,18 @@ trait BuildController
 
         $this->api->addPath($path, $file);
 
-        // dd([
-        //     '__METHOD__' => __METHOD__,
-        //     '$controller_type' => $controller_type,
-        //     '$this->api->apply()->properties()' => $this->api->apply()->properties(),
-        //     'json - $this->api->apply()->properties()' => json_decode(json_encode($this->api->apply()->jsonSerialize()), true),
-        //     // '$this->model' => $this->model,
-        //     // '$this->configuration' => $this->configuration,
-        //     // '$this->searches' => $this->searches,
-        //     // '$this->arguments()' => $this->arguments(),
-        //     // '$this->options()' => $this->options(),
-        // ]);
-
-        $this->yaml_write($file, $this->pathIndex()->toArray());
+        $this->yaml_write($file, $pathIndex->toArray());
     }
 
     protected function doc_controller_index_config(
         string $name,
-        string $controller_type = ''
+        Controller\PathIndex $pathIndex
     ): void {
 
         $model_lower_plural = Str::of($name)->plural()->snake()->replace('_', ' ')->toString();
         $model_snake = Str::of($name)->plural()->snake()->toString();
 
-        $getMethod = $this->pathIndex()->getMethod([
+        $getMethod = $pathIndex->getMethod([
             'tags' => [
                 Str::of($name)->title()->toString(),
             ],
@@ -552,7 +470,7 @@ trait BuildController
 
         $getMethod?->apply();
 
-        $postMethod = $this->pathIndex()->postMethod([
+        $postMethod = $pathIndex->postMethod([
             'tags' => [
                 Str::of($name)->title()->toString(),
             ],
@@ -646,54 +564,16 @@ trait BuildController
         ]);
 
         $postMethod?->apply();
-
-        // if (! empty($config['post']) && ! empty($name)) {
-
-        //     if (empty($config['post']['tags']) || ! is_array($config['post']['tags'])) {
-        //         $config['post']['tags'] = [];
-        //     }
-
-        //     $tag = Str::of($name)->title()->toString();
-
-        //     if (! in_array($tag, $config['post']['tags'])) {
-        //         $config['post']['tags'][] = $tag;
-        //     }
-
-        //     if (! empty($config['post']['summary'])) {
-        //         $config['post']['summary'] = sprintf(
-        //             $config['post']['summary'],
-        //             Str::of($name)->lower()->toString()
-        //         );
-        //     }
-
-        //     if (! empty($config['post']['operationId'])) {
-        //         $config['post']['operationId'] = sprintf(
-        //             $config['post']['operationId'],
-        //             Str::of($name)->snake()->toString()
-        //         );
-        //     }
-
-        //     if (! empty($config['post']['responses']) && ! empty($config['post']['responses'][200])) {
-        //         $config['post']['responses'][200]['description'] = sprintf(
-        //             $config['post']['responses'][200]['description'],
-        //             Str::of($name)->plural()->snake()->toString()
-        //         );
-        //         $config['post']['responses'][200]['content']['application/json']['schema']['properties']['data']['$ref'] = sprintf(
-        //             $config['post']['responses'][200]['content']['application/json']['schema']['properties']['data']['$ref'],
-        //             Str::of($name)->kebab()->toString()
-        //         );
-        //     }
-        // }
     }
 
     protected function doc_controller_index_form(
         string $name,
         string $controller_type = ''
     ): void {
-        // No options provided to pathIndex for now.
-        $this->pathIndexForm();
 
-        $this->doc_controller_index_form_config($name, $controller_type);
+        $pathIndexForm = $this->api->controllers()->pathIndexForm();
+
+        $this->doc_controller_index_form_config($name, $pathIndexForm);
 
         $path = sprintf(
             '/api/%1$s',
@@ -706,18 +586,18 @@ trait BuildController
 
         $this->api->addPath($path, $file);
 
-        $this->yaml_write($file, $this->pathIndexForm()->toArray());
+        $this->yaml_write($file, $pathIndexForm->toArray());
     }
 
     protected function doc_controller_index_form_config(
         string $name,
-        string $controller_type = ''
+        Controller\PathIndexForm $pathIndexForm
     ): void {
 
         $model_lower_plural = Str::of($name)->plural()->snake()->replace('_', ' ')->toString();
         $model_snake = Str::of($name)->plural()->snake()->toString();
 
-        $postMethod = $this->pathIndexForm()->postMethod([
+        $postMethod = $pathIndexForm->postMethod([
             'tags' => [
                 Str::of($name)->title()->toString(),
             ],
@@ -778,200 +658,218 @@ trait BuildController
         ]);
 
         $postMethod?->apply();
-
     }
 
-    // protected function doc_controller_lock(
-    //     string $name,
-    //     string $controller_type = ''
-    // ): void {
-    //     $config = config('playground-stub.controller.lock');
+    protected function doc_controller_lock(
+        string $name,
+        string $controller_type = ''
+    ): void {
 
-    //     $this->doc_controller_lock_config($config, $name, $controller_type);
+        $pathLock = $this->api->controllers()->pathLock();
 
-    //     $path = sprintf(
-    //         '/api/%1$s/lock/{id}',
-    //         Str::of($name)->plural()->kebab()->toString()
-    //     );
-    //     $file = sprintf(
-    //         'paths/%1$s/lock.yml',
-    //         Str::of($name)->plural()->kebab()->toString()
-    //     );
+        $this->doc_controller_lock_config($name, $pathLock);
 
-    //     $this->api->addPath($path, $file);
-    //     $this->yaml_write($file, $config);
-    // }
+        $path = sprintf(
+            '/api/%1$s/lock/{id}',
+            Str::of($name)->plural()->kebab()->toString()
+        );
+        $file = sprintf(
+            'paths/%1$s/lock.yml',
+            Str::of($name)->plural()->kebab()->toString()
+        );
 
-    // protected function doc_controller_lock_config(
-    //     string $name,
-    //     string $controller_type = ''
-    // ): void {
+        $this->api->addPath($path, $file);
+        $this->yaml_write($file, $pathLock->toArray());
+    }
 
-    //     if (! empty($config['parameters']) && ! empty($name)) {
+    protected function doc_controller_lock_config(
+        string $name,
+        Controller\PathLock $pathLock
+    ): void {
 
-    //         if (! empty($config['parameters'][0])
-    //             && ! empty($config['parameters'][0]['description'])
-    //             && ! empty($config['parameters'][0]['name'])
-    //             && $config['parameters'][0]['name'] === 'id'
-    //         ) {
-    //             $config['parameters'][0]['description'] = sprintf(
-    //                 $config['parameters'][0]['description'],
-    //                 Str::of($name)->lower()
-    //             );
-    //         }
-    //     }
+        $pathLock->addParameter($name, [
+            'in' => 'path',
+            'name' => 'id',
+            'required' => true,
+            'description' => sprintf('The %1$s id.', Str::of($name)->lower()->toString()),
+            'schema' => [
+                'type' => 'string',
+                'format' => 'uuid',
+            ],
+        ]);
 
-    //     if (! empty($config['delete']) && ! empty($name)) {
+        $deleteMethod = $pathLock->deleteMethod([
+            'tags' => [
+                Str::of($name)->title()->toString(),
+            ],
+            'summary' => sprintf(
+                'Delete a %1$s by id.',
+                Str::of($name)->lower()->toString()
+            ),
+            'operationId' => sprintf(
+                'unlock_%1$s',
+                Str::of($name)->lower()->toString()
+            ),
+            'responses' => [
+                [
+                    'code' => 204,
+                    'description' => sprintf(
+                        'The %1$s has been unlocked.',
+                        Str::of($name)->lower()->toString()
+                    ),
+                ],
+                [
+                    'code' => 401,
+                    'description' => 'Unauthorized',
+                ],
+                [
+                    'code' => 403,
+                    'description' => 'Forbidden',
+                ],
+            ],
+        ]);
 
-    //         if (empty($config['delete']['tags']) || ! is_array($config['delete']['tags'])) {
-    //             $config['delete']['tags'] = [];
-    //         }
+        $deleteMethod?->apply();
 
-    //         $tag = Str::of($name)->title()->toString();
+        $putMethod = $pathLock->putMethod([
+            'tags' => [
+                Str::of($name)->title()->toString(),
+            ],
+            'summary' => sprintf(
+                'Lock a %1$s by ID.',
+                Str::of($name)->lower()->toString()
+            ),
+            'operationId' => sprintf(
+                'lock_%1$s',
+                Str::of($name)->lower()->toString()
+            ),
+            'responses' => [
+                [
+                    'code' => 200,
+                    'description' => sprintf(
+                        'The unlocked %1$s.',
+                        Str::of($name)->lower()->toString()
+                    ),
+                    'content' => [
+                        'type' => 'application/json',
+                        'schema' => [
+                            'type' => 'object',
+                            'properties' => [
+                                'data' => [
+                                    '$ref' => sprintf(
+                                        '../../models/%s.yml',
+                                        Str::of($name)->lower()->kebab()->toString()
+                                    ),
+                                ],
+                                'meta' => [
+                                    'type' => 'object',
 
-    //         if (! in_array($tag, $config['delete']['tags'])) {
-    //             $config['delete']['tags'][] = $tag;
-    //         }
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+                [
+                    'code' => 401,
+                    'description' => 'Unauthorized',
+                ],
+                [
+                    'code' => 403,
+                    'description' => 'Forbidden',
+                ],
+            ],
+        ]);
 
-    //         if (! empty($config['delete']['summary'])) {
-    //             $config['delete']['summary'] = sprintf(
-    //                 $config['delete']['summary'],
-    //                 Str::of($name)->lower()->toString()
-    //             );
-    //         }
+        $putMethod?->apply();
+    }
 
-    //         if (! empty($config['delete']['operationId'])) {
-    //             $config['delete']['operationId'] = sprintf(
-    //                 $config['delete']['operationId'],
-    //                 Str::of($name)->snake()->toString()
-    //             );
-    //         }
+    protected function doc_controller_restore(
+        string $name,
+        string $controller_type = ''
+    ): void {
+        $pathRestore = $this->api->controllers()->pathRestore();
 
-    //         if (! empty($config['delete']['responses']) && ! empty($config['delete']['responses'][204])) {
-    //             $config['delete']['responses'][204]['description'] = sprintf(
-    //                 $config['delete']['responses'][204]['description'],
-    //                 Str::of($name)->lower()->toString()
-    //             );
-    //         }
-    //     }
+        $this->doc_controller_restore_config($name, $pathRestore);
 
-    //     if (! empty($config['put']) && ! empty($name)) {
+        $path = sprintf(
+            '/api/%1$s/restore/{id}',
+            Str::of($name)->plural()->kebab()->toString()
+        );
+        $file = sprintf(
+            'paths/%1$s/restore.yml',
+            Str::of($name)->plural()->kebab()->toString()
+        );
 
-    //         if (empty($config['put']['tags']) || ! is_array($config['put']['tags'])) {
-    //             $config['put']['tags'] = [];
-    //         }
+        $this->api->addPath($path, $file);
 
-    //         $tag = Str::of($name)->title()->toString();
+        $this->yaml_write($file, $pathRestore->toArray());
+    }
 
-    //         if (! in_array($tag, $config['put']['tags'])) {
-    //             $config['put']['tags'][] = $tag;
-    //         }
+    protected function doc_controller_restore_config(
+        string $name,
+        Controller\PathRestore $pathRestore
+    ): void {
 
-    //         if (! empty($config['put']['summary'])) {
-    //             $config['put']['summary'] = sprintf(
-    //                 $config['put']['summary'],
-    //                 Str::of($name)->lower()->toString()
-    //             );
-    //         }
+        $pathRestore->addParameter($name, [
+            'in' => 'path',
+            'name' => 'id',
+            'required' => true,
+            'description' => sprintf('The %1$s id.', Str::of($name)->lower()->toString()),
+            'schema' => [
+                'type' => 'string',
+                'format' => 'uuid',
+            ],
+        ]);
 
-    //         if (! empty($config['put']['operationId'])) {
-    //             $config['put']['operationId'] = sprintf(
-    //                 $config['put']['operationId'],
-    //                 Str::of($name)->snake()->toString()
-    //             );
-    //         }
+        $putMethod = $pathRestore->putMethod([
+            'tags' => [
+                Str::of($name)->title()->toString(),
+            ],
+            'summary' => sprintf(
+                'Restore a %1$s from the trash by ID.',
+                Str::of($name)->lower()->toString()
+            ),
+            'operationId' => sprintf(
+                'restore_%1$s',
+                Str::of($name)->lower()->toString()
+            ),
+            'responses' => [
+                [
+                    'code' => 200,
+                    'description' => sprintf(
+                        'The restored %1$s.',
+                        Str::of($name)->lower()->toString()
+                    ),
+                    'content' => [
+                        'type' => 'application/json',
+                        'schema' => [
+                            'type' => 'object',
+                            'properties' => [
+                                'data' => [
+                                    '$ref' => sprintf(
+                                        '../../models/%s.yml',
+                                        Str::of($name)->lower()->kebab()->toString()
+                                    ),
+                                ],
+                                'meta' => [
+                                    'type' => 'object',
 
-    //         if (! empty($config['put']['responses']) && ! empty($config['put']['responses'][200])) {
-    //             $config['put']['responses'][200]['description'] = sprintf(
-    //                 $config['put']['responses'][200]['description'],
-    //                 Str::of($name)->lower()->toString()
-    //             );
-    //             $config['put']['responses'][200]['content']['application/json']['schema']['properties']['data']['$ref'] = sprintf(
-    //                 $config['put']['responses'][200]['content']['application/json']['schema']['properties']['data']['$ref'],
-    //                 Str::of($name)->kebab()->toString()
-    //             );
-    //         }
-    //     }
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+                [
+                    'code' => 401,
+                    'description' => 'Unauthorized',
+                ],
+                [
+                    'code' => 403,
+                    'description' => 'Forbidden',
+                ],
+            ],
+        ]);
 
-    // }
-
-    // protected function doc_controller_restore(
-    //     string $name,
-    //     string $controller_type = ''
-    // ): void {
-    //     $config = config('playground-stub.controller.restore');
-
-    //     $this->doc_controller_restore_config($config, $name, $controller_type);
-
-    //     $path = sprintf(
-    //         '/api/%1$s/restore/{id}',
-    //         Str::of($name)->plural()->kebab()->toString()
-    //     );
-    //     $file = sprintf(
-    //         'paths/%1$s/restore.yml',
-    //         Str::of($name)->plural()->kebab()->toString()
-    //     );
-
-    //     $this->api->addPath($path, $file);
-    //     $this->yaml_write($file, $config);
-    // }
-
-    // protected function doc_controller_restore_config(
-    //     string $name,
-    //     string $controller_type = ''
-    // ): void {
-
-    //     if (! empty($config['parameters']) && ! empty($name)) {
-
-    //         if (! empty($config['parameters'][0])
-    //             && ! empty($config['parameters'][0]['description'])
-    //             && ! empty($config['parameters'][0]['name'])
-    //             && $config['parameters'][0]['name'] === 'id'
-    //         ) {
-    //             $config['parameters'][0]['description'] = sprintf(
-    //                 $config['parameters'][0]['description'],
-    //                 Str::of($name)->lower()
-    //             );
-    //         }
-    //     }
-
-    //     if (! empty($config['put']) && ! empty($name)) {
-
-    //         if (empty($config['put']['tags']) || ! is_array($config['put']['tags'])) {
-    //             $config['put']['tags'] = [];
-    //         }
-
-    //         $tag = Str::of($name)->title()->toString();
-
-    //         if (! in_array($tag, $config['put']['tags'])) {
-    //             $config['put']['tags'][] = $tag;
-    //         }
-
-    //         if (! empty($config['put']['summary'])) {
-    //             $config['put']['summary'] = sprintf(
-    //                 $config['put']['summary'],
-    //                 Str::of($name)->lower()->toString()
-    //             );
-    //         }
-
-    //         if (! empty($config['put']['operationId'])) {
-    //             $config['put']['operationId'] = sprintf(
-    //                 $config['put']['operationId'],
-    //                 Str::of($name)->snake()->toString()
-    //             );
-    //         }
-
-    //         if (! empty($config['put']['responses']) && ! empty($config['put']['responses'][200])) {
-    //             $config['put']['responses'][200]['description'] = sprintf(
-    //                 $config['put']['responses'][200]['description'],
-    //                 Str::of($name)->lower()->toString()
-    //             );
-    //             $config['put']['responses'][200]['content']['application/json']['schema']['properties']['data']['$ref'] = sprintf(
-    //                 $config['put']['responses'][200]['content']['application/json']['schema']['properties']['data']['$ref'],
-    //                 Str::of($name)->kebab()->toString()
-    //             );
-    //         }
-    //     }
-
-    // }
+        $putMethod?->apply();
+    }
 }
