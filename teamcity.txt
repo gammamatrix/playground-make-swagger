@@ -9,7 +9,7 @@
 
 ##teamcity[testStarted name='test_command_about_displays_package_information_and_succeed_with_code_0' locationHint='php_qn:///app/tests/Feature/Console/Commands/About/CommandTest.php::\Tests\Feature\Playground\Make\Swagger\Console\Commands\About\CommandTest::test_command_about_displays_package_information_and_succeed_with_code_0' flowId='1']
 
-##teamcity[testFinished name='test_command_about_displays_package_information_and_succeed_with_code_0' duration='466' flowId='1']
+##teamcity[testFinished name='test_command_about_displays_package_information_and_succeed_with_code_0' duration='490' flowId='1']
 
 ##teamcity[testSuiteFinished name='Tests\Feature\Playground\Make\Swagger\Console\Commands\About\CommandTest' flowId='1']
 

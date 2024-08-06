@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <crap_result>
   <project/>
-  <timestamp>2024-08-06 07:37:05</timestamp>
+  <timestamp>2024-08-06 08:00:10</timestamp>
   <stats>
     <name>Method Crap Stats</name>
-    <methodCount>133</methodCount>
+    <methodCount>138</methodCount>
     <crapMethodCount>19</crapMethodCount>
     <crapLoad>233</crapLoad>
-    <totalCrap>4252</totalCrap>
-    <crapMethodPercent>14.29</crapMethodPercent>
+    <totalCrap>4268</totalCrap>
+    <crapMethodPercent>13.77</crapMethodPercent>
   </stats>
   <methods>
     <method>
@@ -134,6 +134,50 @@
     </method>
     <method>
       <package>Playground\Make\Swagger\Building</package>
+      <className>Playground\Make\Swagger\Building\BuildController</className>
+      <methodName>doc_controller_create</methodName>
+      <methodSignature>doc_controller_create(string $name, string $controller_type): void</methodSignature>
+      <fullMethod>doc_controller_create(string $name, string $controller_type): void</fullMethod>
+      <crap>2</crap>
+      <complexity>1</complexity>
+      <coverage>0</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Swagger\Building</package>
+      <className>Playground\Make\Swagger\Building\BuildController</className>
+      <methodName>doc_controller_create_config</methodName>
+      <methodSignature>doc_controller_create_config(string $name, Playground\Make\Swagger\Configuration\Swagger\Controller\PathCreate $pathCreate): void</methodSignature>
+      <fullMethod>doc_controller_create_config(string $name, Playground\Make\Swagger\Configuration\Swagger\Controller\PathCreate $pathCreate): void</fullMethod>
+      <crap>2</crap>
+      <complexity>1</complexity>
+      <coverage>0</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Swagger\Building</package>
+      <className>Playground\Make\Swagger\Building\BuildController</className>
+      <methodName>doc_controller_edit</methodName>
+      <methodSignature>doc_controller_edit(string $name, string $controller_type): void</methodSignature>
+      <fullMethod>doc_controller_edit(string $name, string $controller_type): void</fullMethod>
+      <crap>2</crap>
+      <complexity>1</complexity>
+      <coverage>0</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Swagger\Building</package>
+      <className>Playground\Make\Swagger\Building\BuildController</className>
+      <methodName>doc_controller_edit_config</methodName>
+      <methodSignature>doc_controller_edit_config(string $name, Playground\Make\Swagger\Configuration\Swagger\Controller\PathEdit $pathEdit): void</methodSignature>
+      <fullMethod>doc_controller_edit_config(string $name, Playground\Make\Swagger\Configuration\Swagger\Controller\PathEdit $pathEdit): void</fullMethod>
+      <crap>2</crap>
+      <complexity>1</complexity>
+      <coverage>0</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Swagger\Building</package>
       <className>Playground\Make\Swagger\Building\BuildModel</className>
       <methodName>doc_model</methodName>
       <methodSignature>doc_model(): ?array</methodSignature>
@@ -237,8 +281,8 @@
       <methodName>init_swagger_api</methodName>
       <methodSignature>init_swagger_api(): void</methodSignature>
       <fullMethod>init_swagger_api(): void</fullMethod>
-      <crap>6</crap>
-      <complexity>2</complexity>
+      <crap>12</crap>
+      <complexity>3</complexity>
       <coverage>0</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -734,6 +778,17 @@
       <fullMethod>putMethod(array $options): ?Playground\Make\Swagger\Configuration\Swagger\Methods\PutMethod</fullMethod>
       <crap>12</crap>
       <complexity>3</complexity>
+      <coverage>0</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Swagger\Configuration\Swagger</package>
+      <className>Playground\Make\Swagger\Configuration\Swagger\Controllers</className>
+      <methodName>reset</methodName>
+      <methodSignature>reset(): self</methodSignature>
+      <fullMethod>reset(): self</fullMethod>
+      <crap>2</crap>
+      <complexity>1</complexity>
       <coverage>0</coverage>
       <crapLoad>0</crapLoad>
     </method>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="/app/phpunit-ci.xml" tests="1" assertions="2" errors="0" failures="0" skipped="0" time="0.546375">
-    <testsuite name="Feature" tests="1" assertions="2" errors="0" failures="0" skipped="0" time="0.546375">
-      <testsuite name="Tests\Feature\Playground\Make\Swagger\Console\Commands\About\CommandTest" file="/app/tests/Feature/Console/Commands/About/CommandTest.php" tests="1" assertions="2" errors="0" failures="0" skipped="0" time="0.546375">
-        <testcase name="test_command_about_displays_package_information_and_succeed_with_code_0" file="/app/tests/Feature/Console/Commands/About/CommandTest.php" line="27" class="Tests\Feature\Playground\Make\Swagger\Console\Commands\About\CommandTest" classname="Tests.Feature.Playground.Make.Swagger.Console.Commands.About.CommandTest" assertions="2" time="0.546375"/>
+  <testsuite name="/app/phpunit-ci.xml" tests="1" assertions="2" errors="0" failures="0" skipped="0" time="0.573615">
+    <testsuite name="Feature" tests="1" assertions="2" errors="0" failures="0" skipped="0" time="0.573615">
+      <testsuite name="Tests\Feature\Playground\Make\Swagger\Console\Commands\About\CommandTest" file="/app/tests/Feature/Console/Commands/About/CommandTest.php" tests="1" assertions="2" errors="0" failures="0" skipped="0" time="0.573615">
+        <testcase name="test_command_about_displays_package_information_and_succeed_with_code_0" file="/app/tests/Feature/Console/Commands/About/CommandTest.php" line="27" class="Tests\Feature\Playground\Make\Swagger\Console\Commands\About\CommandTest" classname="Tests.Feature.Playground.Make.Swagger.Console.Commands.About.CommandTest" assertions="2" time="0.573615"/>
       </testsuite>
     </testsuite>
   </testsuite>
