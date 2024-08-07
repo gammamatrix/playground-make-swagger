@@ -10,11 +10,11 @@ use Illuminate\Support\Str;
 use Playground\Make\Swagger\Configuration\Swagger\Controller;
 
 /**
- * \Playground\Make\Swagger\Building\BuildControllerRestore
+ * \Playground\Make\Swagger\Building\BuildControllerRevision
  */
-trait BuildControllerRestore
+trait BuildControllerRevision
 {
-    protected function doc_controller_restore(
+    protected function doc_controller_revision(
         string $name,
         string $controller_type = ''
     ): void {
@@ -22,30 +22,30 @@ trait BuildControllerRestore
         $module_route = Str::of($this->c->module())->lower()->toString();
         $model_route_plural = Str::of($name)->plural()->kebab()->toString();
 
-        $pathRestore = $this->api->controller($name)->pathRestore([
+        $pathRevision = $this->api->controller($name)->pathRevision([
             'path' => sprintf(
-                '/api/%1$s/%2$s/restore/{id}',
+                '/api/%1$s/%2$s/revision/{id}',
                 $module_route,
                 $model_route_plural
             ),
             'ref' => sprintf(
-                'paths/%1$s/restore.yml',
+                'paths/%1$s/revision.yml',
                 $model_route_plural
             ),
         ]);
 
-        $this->doc_controller_restore_config($name, $pathRestore);
+        $this->doc_controller_revision_config($name, $pathRevision);
 
-        $pathRestore->apply();
+        $pathRevision->apply();
 
-        $this->api->addPath($pathRestore->path(), $pathRestore->ref())->apply();
+        $this->api->addPath($pathRevision->path(), $pathRevision->ref())->apply();
 
-        $this->yaml_write($pathRestore->ref(), $pathRestore->toArray());
+        $this->yaml_write($pathRevision->ref(), $pathRevision->toArray());
     }
 
-    protected function doc_controller_restore_config(
+    protected function doc_controller_revision_config(
         string $name,
-        Controller\PathRestore $pathRestore
+        Controller\PathRevision $pathRevision
     ): void {
 
         $model_label_lower = Str::of($name)->kebab()->replace('-', ' ')->lower()->toString();
@@ -55,27 +55,78 @@ trait BuildControllerRestore
         $model_snake_plural = Str::of($name)->plural()->snake()->toString();
         $model_title = Str::of($name)->title()->toString();
 
-        $pathRestore->addParameter([
+        $pathRevision->addParameter([
             'in' => 'path',
             'name' => 'id',
             'required' => true,
-            'description' => sprintf('The %1$s id.', $model_label_lower),
+            'description' => sprintf('The %1$s revision id.', $model_label_lower),
             'schema' => [
                 'type' => 'string',
                 'format' => 'uuid',
             ],
         ]);
 
-        $putMethod = $pathRestore->putMethod([
+        $getMethod = $pathRevision->getMethod([
             'tags' => [
                 $model_title,
             ],
             'summary' => sprintf(
-                'Restore a %1$s from the trash by ID.',
+                'Show a %1$s revision by ID.',
                 $model_label_lower
             ),
             'operationId' => sprintf(
-                'restore_%1$s',
+                'revision_%1$s',
+                $model_snake
+            ),
+            'responses' => [
+                [
+                    'code' => 200,
+                    'description' => sprintf(
+                        'The %1$s revision.',
+                        $model_label_lower
+                    ),
+                    'content' => [
+                        'type' => 'application/json',
+                        'schema' => [
+                            'type' => 'object',
+                            'properties' => [
+                                'data' => [
+                                    '$ref' => sprintf(
+                                        '../../models/%s-revision.yml',
+                                        $model_route
+                                    ),
+                                ],
+                                'meta' => [
+                                    'type' => 'object',
+
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+                [
+                    'code' => 401,
+                    'description' => 'Unauthorized',
+                ],
+                [
+                    'code' => 403,
+                    'description' => 'Forbidden',
+                ],
+            ],
+        ]);
+
+        $getMethod?->apply();
+
+        $putMethod = $pathRevision->putMethod([
+            'tags' => [
+                $model_title,
+            ],
+            'summary' => sprintf(
+                'Restore a %1$s Revision by ID.',
+                $model_label_lower
+            ),
+            'operationId' => sprintf(
+                'restore_revision_%1$s',
                 $model_snake
             ),
             'responses' => [

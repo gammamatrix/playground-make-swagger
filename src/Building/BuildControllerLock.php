@@ -19,11 +19,13 @@ trait BuildControllerLock
         string $controller_type = ''
     ): void {
 
+        $module_route = Str::of($this->c->module())->lower()->toString();
         $model_route_plural = Str::of($name)->plural()->kebab()->toString();
 
         $pathLock = $this->api->controller($name)->pathLock([
             'path' => sprintf(
-                '/api/%1$s/lock/{id}',
+                '/api/%1$s/%2$s/lock/{id}',
+                $module_route,
                 $model_route_plural
             ),
             'ref' => sprintf(

@@ -16,11 +16,13 @@ trait BuildControllerForm
 {
     protected function doc_controller_create(string $name): void
     {
+        $module_route = Str::of($this->c->module())->lower()->toString();
         $model_route_plural = Str::of($name)->plural()->kebab()->toString();
 
         $pathCreate = $this->api->controller($name)->pathCreate([
             'path' => sprintf(
-                '/api/%1$s/create',
+                '/api/%1$s/%2$s/create',
+                $module_route,
                 $model_route_plural
             ),
             'ref' => sprintf(
@@ -104,12 +106,13 @@ trait BuildControllerForm
 
     protected function doc_controller_edit(string $name): void
     {
-
+        $module_route = Str::of($this->c->module())->lower()->toString();
         $model_route_plural = Str::of($name)->plural()->kebab()->toString();
 
         $pathEdit = $this->api->controller($name)->pathEdit([
             'path' => sprintf(
-                '/api/%1$s/edit/{id}',
+                '/api/%1$s/%2$s/edit/{id}',
+                $module_route,
                 $model_route_plural
             ),
             'ref' => sprintf(

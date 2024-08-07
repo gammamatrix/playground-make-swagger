@@ -33,6 +33,8 @@ class SwaggerMakeCommand extends GeneratorCommand
     use Building\BuildControllerIndex;
     use Building\BuildControllerLock;
     use Building\BuildControllerRestore;
+    use Building\BuildControllerRevision;
+    use Building\BuildControllerRevisions;
     use Building\BuildModel;
     use Building\BuildModelColumns;
     use Building\BuildRequest;

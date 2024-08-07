@@ -18,11 +18,13 @@ trait BuildControllerIndex
         string $name,
     ): void {
 
+        $module_route = Str::of($this->c->module())->lower()->toString();
         $model_route_plural = Str::of($name)->plural()->kebab()->toString();
 
         $pathIndex = $this->api->controller($name)->pathIndex([
             'path' => sprintf(
-                '/api/%1$s',
+                '/api/%1$s/%2$s',
+                $module_route,
                 $model_route_plural
             ),
             'ref' => sprintf(
@@ -33,7 +35,7 @@ trait BuildControllerIndex
 
         $this->doc_controller_index_config($name, $pathIndex);
 
-        // $this->doc_request_index($name, $pathIndex);
+        $this->doc_request_index($name);
 
         $pathIndex->apply();
 
@@ -207,12 +209,13 @@ trait BuildControllerIndex
 
     protected function doc_controller_index_form(string $name): void
     {
-
+        $module_route = Str::of($this->c->module())->lower()->toString();
         $model_route_plural = Str::of($name)->plural()->kebab()->toString();
 
         $pathIndexForm = $this->api->controller($name)->pathIndexForm([
             'path' => sprintf(
-                '/api/%1$s',
+                '/api/%1$s/%2$s/index',
+                $module_route,
                 $model_route_plural
             ),
             'ref' => sprintf(
@@ -222,6 +225,8 @@ trait BuildControllerIndex
         ]);
 
         $this->doc_controller_index_form_config($name, $pathIndexForm);
+
+        $this->doc_request_index_form($name);
 
         $pathIndexForm->apply();
 

@@ -10,42 +10,39 @@ use Illuminate\Support\Str;
 use Playground\Make\Swagger\Configuration\Swagger\Controller;
 
 /**
- * \Playground\Make\Swagger\Building\BuildControllerRestore
+ * \Playground\Make\Swagger\Building\BuildControllerRevisions
  */
-trait BuildControllerRestore
+trait BuildControllerRevisions
 {
-    protected function doc_controller_restore(
-        string $name,
-        string $controller_type = ''
-    ): void {
-
+    protected function doc_controller_revisions(string $name): void
+    {
         $module_route = Str::of($this->c->module())->lower()->toString();
         $model_route_plural = Str::of($name)->plural()->kebab()->toString();
 
-        $pathRestore = $this->api->controller($name)->pathRestore([
+        $pathRevisions = $this->api->controller($name)->pathRevisions([
             'path' => sprintf(
-                '/api/%1$s/%2$s/restore/{id}',
+                '/api/%1$s/%2$s/{id}/revisions',
                 $module_route,
                 $model_route_plural
             ),
             'ref' => sprintf(
-                'paths/%1$s/restore.yml',
+                'paths/%1$s/revisions.yml',
                 $model_route_plural
             ),
         ]);
 
-        $this->doc_controller_restore_config($name, $pathRestore);
+        $this->doc_controller_revisions_config($name, $pathRevisions);
 
-        $pathRestore->apply();
+        $pathRevisions->apply();
 
-        $this->api->addPath($pathRestore->path(), $pathRestore->ref())->apply();
+        $this->api->addPath($pathRevisions->path(), $pathRevisions->ref())->apply();
 
-        $this->yaml_write($pathRestore->ref(), $pathRestore->toArray());
+        $this->yaml_write($pathRevisions->ref(), $pathRevisions->toArray());
     }
 
-    protected function doc_controller_restore_config(
+    protected function doc_controller_revisions_config(
         string $name,
-        Controller\PathRestore $pathRestore
+        Controller\PathRevisions $pathRevisions
     ): void {
 
         $model_label_lower = Str::of($name)->kebab()->replace('-', ' ')->lower()->toString();
@@ -55,7 +52,7 @@ trait BuildControllerRestore
         $model_snake_plural = Str::of($name)->plural()->snake()->toString();
         $model_title = Str::of($name)->title()->toString();
 
-        $pathRestore->addParameter([
+        $pathRevisions->addParameter([
             'in' => 'path',
             'name' => 'id',
             'required' => true,
@@ -66,23 +63,23 @@ trait BuildControllerRestore
             ],
         ]);
 
-        $putMethod = $pathRestore->putMethod([
+        $getMethod = $pathRevisions->getMethod([
             'tags' => [
                 $model_title,
             ],
             'summary' => sprintf(
-                'Restore a %1$s from the trash by ID.',
+                'Get the revisions of a %1$s.',
                 $model_label_lower
             ),
             'operationId' => sprintf(
-                'restore_%1$s',
+                'revision_index_%1$s',
                 $model_snake
             ),
             'responses' => [
                 [
                     'code' => 200,
                     'description' => sprintf(
-                        'The restored %1$s.',
+                        'The %1$s revisions.',
                         $model_label_lower
                     ),
                     'content' => [
@@ -91,10 +88,13 @@ trait BuildControllerRestore
                             'type' => 'object',
                             'properties' => [
                                 'data' => [
-                                    '$ref' => sprintf(
-                                        '../../models/%s.yml',
-                                        $model_route
-                                    ),
+                                    'type' => 'array',
+                                    'items' => [
+                                        '$ref' => sprintf(
+                                            '../../models/%s-revision.yml',
+                                            $model_route
+                                        ),
+                                    ],
                                 ],
                                 'meta' => [
                                     'type' => 'object',
@@ -115,6 +115,6 @@ trait BuildControllerRestore
             ],
         ]);
 
-        $putMethod?->apply();
+        $getMethod?->apply();
     }
 }

@@ -16,11 +16,13 @@ trait BuildControllerId
 {
     protected function doc_controller_id(string $name): void
     {
+        $module_route = Str::of($this->c->module())->lower()->toString();
         $model_route_plural = Str::of($name)->plural()->kebab()->toString();
 
         $pathId = $this->api->controller($name)->pathId([
             'path' => sprintf(
-                '/api/%1$s/{id}',
+                '/api/%1$s/%2$s/{id}',
+                $module_route,
                 $model_route_plural
             ),
             'ref' => sprintf(
@@ -31,7 +33,7 @@ trait BuildControllerId
 
         $this->doc_controller_id_config($name, $pathId);
 
-        // $this->doc_request_id($name, $pathId);
+        $this->doc_request_id($name);
 
         $pathId->apply();
 
