@@ -5,7 +5,6 @@
 declare(strict_types=1);
 namespace Playground\Make\Swagger\Configuration\Swagger\Controller;
 
-use Illuminate\Support\Str;
 use Playground\Make\Configuration;
 use Playground\Make\Swagger\Configuration\Swagger\Methods;
 
@@ -52,10 +51,7 @@ abstract class Path extends Configuration\Configuration
         ) {
             foreach ($options['parameters'] as $i => $parameter) {
                 if (is_array($parameter)) {
-                    $this->addParameter(
-                        ! empty($options['name']) && is_string($options['name']) ? $options['name'] : '',
-                        $parameter
-                    );
+                    $this->addParameter($parameter);
                 }
             }
         }
@@ -77,17 +73,10 @@ abstract class Path extends Configuration\Configuration
     /**
      * @param array<string, mixed> $meta
      */
-    public function addParameter(string $name, array $meta = []): self
+    public function addParameter(array $meta = []): self
     {
+        // At least a name is required.
         if (! empty($meta['name']) && is_string($meta['name'])) {
-            if (! empty($name)) {
-                if (empty($meta['description']) || ! is_string($meta['description'])) {
-                    $meta['description'] = __('playground-make-swagger::controller.PathId.Parameter.description', [
-                        'name' => Str::of($name)->lower()->singular()->toString(),
-                    ]);
-                }
-            }
-
             $parameter = new Parameter($meta);
             $parameter->apply();
             $this->parameters[] = $parameter;

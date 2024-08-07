@@ -9,12 +9,11 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Controller Language Lines
+    | Swagger Docs: Parameter Language Lines
     |--------------------------------------------------------------------------
     |
     |
     */
 
-    // @deprecated PathId here
-    'PathId.Parameter.description' => 'The :name id.',
+    'id.description' => 'The :name id.',
 ];

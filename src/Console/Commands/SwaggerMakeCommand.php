@@ -10,6 +10,7 @@ use Illuminate\Console\Concerns\CreatesMatchingTest;
 use Illuminate\Support\Str;
 use Playground\Make\Building\Concerns;
 use Playground\Make\Configuration\Contracts\PrimaryConfiguration as PrimaryConfigurationContract;
+use Playground\Make\Configuration\Model;
 use Playground\Make\Console\Commands\GeneratorCommand;
 use Playground\Make\Swagger\Building;
 use Playground\Make\Swagger\Configuration\Swagger as Configuration;
@@ -27,7 +28,13 @@ use function Laravel\Prompts\multiselect;
 class SwaggerMakeCommand extends GeneratorCommand
 {
     use Building\BuildController;
+    use Building\BuildControllerForm;
+    use Building\BuildControllerId;
+    use Building\BuildControllerIndex;
+    use Building\BuildControllerLock;
+    use Building\BuildControllerRestore;
     use Building\BuildModel;
+    use Building\BuildModelColumns;
     use Building\BuildRequest;
     use Building\BuildSwagger;
     use Concerns\BuildImplements;
@@ -99,8 +106,12 @@ class SwaggerMakeCommand extends GeneratorCommand
 
     protected bool $replace = false;
 
+    protected ?Model $modelRevision = null;
+
     public function prepareOptions(): void
     {
+        $this->modelRevision = null;
+
         $options = $this->options();
 
         // if ($this->hasOption('playground') && $this->option('playground')) {
@@ -113,13 +124,34 @@ class SwaggerMakeCommand extends GeneratorCommand
 
         $this->initModel($this->c->skeleton());
 
+        if ($this->hasOption('model-revision-file')
+            && is_string($this->option('model-revision-file'))
+        ) {
+            $this->modelRevision = new Model(
+                $this->readJsonFileAsArray($this->option('model-revision-file'), false, 'Model Revision File'),
+            );
+            $this->modelRevision->apply();
+            // dd([
+            //     '__METHOD__' => __METHOD__,
+            //     // '$this->options()' => $this->options(),
+            //     '$this->option(model-revision-file)' => $this->option('model-revision-file'),
+            //     // '$this->c' => $this->c,
+            //     // '$this->model' => $this->model?->toArray(),
+            //     // '$this->c' => $this->c->toArray(),
+            //     // '$this->searches' => $this->searches,
+            //     // 'readJsonFileAsArray' => $this->readJsonFileAsArray($this->option('model-revision-file'), false, 'Model Revision File'),
+            //     '$this->modelRevision' => $this->modelRevision?->toArray(),
+            // ]);
+        }
+
         // $this->saveConfiguration();
 
-        // dump([
+        // dd([
         //     '__METHOD__' => __METHOD__,
         //     '$this->options()' => $this->options(),
-        //     '$this->c' => $this->c,
-        //     '$this->model' => $this->model->toArray(),
+        //     // '$this->c' => $this->c,
+        //     '$this->model' => $this->model?->toArray(),
+        //     '$this->modelRevision' => $this->modelRevision?->toArray(),
         //     // '$this->c' => $this->c->toArray(),
         //     '$this->searches' => $this->searches,
         // ]);
@@ -150,10 +182,10 @@ class SwaggerMakeCommand extends GeneratorCommand
         $type = $this->getConfigurationType();
 
         $this->load_base_file();
-        dump([
-            '__METHOD__' => __METHOD__,
-            '$type' => $type,
-        ]);
+        // dump([
+        //     '__METHOD__' => __METHOD__,
+        //     '$type' => $type,
+        // ]);
 
         if ($type === 'api') {
             $this->save_base_file();
@@ -169,9 +201,8 @@ class SwaggerMakeCommand extends GeneratorCommand
                 ]);
             }
 
-            if (! empty($this->model?->create())) {
-                $this->doc_model();
-            }
+            $this->doc_model();
+            $this->doc_model_revision();
 
             $this->doc_controller();
 
@@ -187,6 +218,7 @@ class SwaggerMakeCommand extends GeneratorCommand
             }
 
             $this->doc_model();
+            $this->doc_model_revision();
 
             $this->save_base_file();
         }
@@ -342,6 +374,7 @@ class SwaggerMakeCommand extends GeneratorCommand
         $options[] = ['prefix', null, InputOption::VALUE_OPTIONAL, 'The prefix slug for the docs.'];
         $options[] = ['controller-type', null, InputOption::VALUE_OPTIONAL, 'The controller type for the docs.'];
         $options[] = ['revision', null, InputOption::VALUE_NONE, 'The docs should document revision end points.'];
+        $options[] = ['model-revision-file', null, InputOption::VALUE_OPTIONAL, 'The file for the revision model.'];
 
         return $options;
     }
