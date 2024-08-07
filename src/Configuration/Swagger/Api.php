@@ -7,6 +7,8 @@ namespace Playground\Make\Swagger\Configuration\Swagger;
 
 use Playground\Make\Configuration;
 
+// use Playground\Make\Swagger\Configuration\Swagger\Controller\Path;
+
 /**
  * \Playground\Make\Swagger\Configuration\Swagger\Api
  */
@@ -22,7 +24,10 @@ class Api extends Configuration\Configuration implements Configuration\Contracts
 
     protected Components $components;
 
-    protected Controllers $controllers;
+    /**
+     * @var array<string, Controller>
+     */
+    protected array $controllers = [];
 
     /**
      * @var array<int, Server>
@@ -30,7 +35,7 @@ class Api extends Configuration\Configuration implements Configuration\Contracts
     protected array $servers = [];
 
     /**
-     * @var array<string, Path>
+     * @var array<string, string>
      */
     protected array $paths = [];
 
@@ -50,7 +55,7 @@ class Api extends Configuration\Configuration implements Configuration\Contracts
         'tags' => [],
         'paths' => [],
         'components' => null,
-        'controllers' => null,
+        'controllers' => [],
     ];
 
     /**
@@ -79,16 +84,12 @@ class Api extends Configuration\Configuration implements Configuration\Contracts
 
         if (! empty($options['components'])
             && is_array($options['components'])
-            && ! empty($options['components']['schemas'])
-            && is_array($options['components']['schemas'])
         ) {
-            $this->components = new Components($options['components']);
-            $this->components->apply();
+            $this->addComponents($options['components']);
         }
 
         if (! empty($options['controllers']) && is_array($options['controllers'])) {
-            $this->controllers = new Controllers($options['controllers']);
-            $this->controllers->apply();
+            $this->addControllers($options['controllers']);
         }
 
         if (! empty($options['paths'])
@@ -111,7 +112,75 @@ class Api extends Configuration\Configuration implements Configuration\Contracts
             }
         }
 
-        $this->addTags($options);
+        if (! empty($options['tags'])
+            && is_array($options['tags'])
+        ) {
+            $this->addTags($options['tags']);
+        }
+
+        // dd([
+        //     '__METHOD__' => __METHOD__,
+        //     '$options' => $options,
+        //     '$this' => $this,
+        // ]);
+
+        return $this;
+    }
+
+    /**
+     * @param array<string, string> $meta
+     */
+    public function addComponents(array $meta): self
+    {
+        // dump([
+        //     '__METHOD__' => __METHOD__,
+        //     '$meta' => $meta,
+        //     '$this' => $this,
+        // ]);
+
+        if (empty($this->components)) {
+            $this->components = new Components($meta);
+        } else {
+            if (! empty($meta['schemas'])
+                && is_array($meta['schemas'])
+            ) {
+                $this->components->addSchemas($meta['schemas']);
+            }
+        }
+
+        $this->components->apply();
+
+        return $this;
+    }
+
+    /**
+     * @param array<string, string> $meta
+     */
+    public function addControllers(array $meta): self
+    {
+        foreach ($meta as $key => $value) {
+            if ($key && is_string($key)) {
+                $this->addController(
+                    $key,
+                    is_array($value) ? $value : []
+                );
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param array<string, string> $meta
+     */
+    public function addController(string $controller, array $meta): self
+    {
+        if (empty($this->controllers[$controller])) {
+            $this->controllers[$controller] = new Controller;
+            if ($this->skeleton()) {
+                $this->controllers[$controller]->withSkeleton();
+            }
+        }
 
         return $this;
     }
@@ -132,21 +201,23 @@ class Api extends Configuration\Configuration implements Configuration\Contracts
 
     public function addPath(string $path, string $ref): self
     {
-        $this->paths[strtolower($path)] = new Path([
-            'path' => strtolower($path),
-            'ref' => $ref,
-        ]);
-        $this->paths[strtolower($path)]->apply();
+        $this->paths[$path] = $ref;
 
+        // dump([
+        //     '__METHOD__' => __METHOD__,
+        //     '$path' => $path,
+        //     // '$this' => $this,
+        // ]);
         return $this;
     }
 
-    public function addTag(string $name): self
+    public function addTag(string $name, string $description = ''): self
     {
-        $this->tags[strtolower($name)] = new Tag([
+        $this->tags[$name] = new Tag([
             'name' => $name,
+            'description' => $description,
         ]);
-        $this->tags[strtolower($name)]->apply();
+        $this->tags[$name]->apply();
 
         return $this;
     }
@@ -156,18 +227,15 @@ class Api extends Configuration\Configuration implements Configuration\Contracts
      */
     public function addTags(array $options): self
     {
-        if (! empty($options['tags'])
-            && is_array($options['tags'])
-        ) {
-            foreach ($options['tags'] as $name => $meta) {
-                if ($name && is_string($name)) {
-                    $meta = is_array($meta) ? $meta : [];
-                    if (empty($meta['name'])) {
-                        $meta['name'] = $name;
-                    }
-                    $this->tags[strtolower($name)] = new Tag($meta);
-                    $this->tags[strtolower($name)]->apply();
-                }
+        foreach ($options as $tag) {
+            if (is_array($tag)
+                && ! empty($tag['name'])
+                && is_string($tag['name'])
+            ) {
+                $this->addTag(
+                    $tag['name'],
+                    ! empty($tag['description']) && is_string($tag['description']) ? $tag['description'] : ''
+                );
             }
         }
 
@@ -196,16 +264,24 @@ class Api extends Configuration\Configuration implements Configuration\Contracts
         return $this->components;
     }
 
-    public function controllers(): Controllers
+    /**
+     * @return array<string, Controller>
+     */
+    public function controllers(): array
     {
-        if (empty($this->controllers)) {
-            $this->controllers = new Controllers;
+        return $this->controllers;
+    }
+
+    public function controller(string $controller): Controller
+    {
+        if (empty($this->controllers[$controller])) {
+            $this->controllers[$controller] = new Controller;
             if ($this->skeleton()) {
-                $this->controllers->withSkeleton();
+                $this->controllers[$controller]->withSkeleton();
             }
         }
 
-        return $this->controllers;
+        return $this->controllers[$controller];
     }
 
     public function externalDocs(): ?ExternalDocs
@@ -214,7 +290,7 @@ class Api extends Configuration\Configuration implements Configuration\Contracts
     }
 
     /**
-     * @return array<string, Path>
+     * @return array<string, string>
      */
     public function paths(): array
     {
@@ -257,14 +333,27 @@ class Api extends Configuration\Configuration implements Configuration\Contracts
         $paths = $this->paths();
         if ($paths) {
             $properties['paths'] = [];
-            foreach ($paths as $name => $path) {
-                $properties['paths'][$path->path()] = [
-                    '$ref' => $path->ref(),
+            foreach ($paths as $path => $ref) {
+                $properties['paths'][$path] = [
+                    '$ref' => $ref,
                 ];
             }
         }
 
         $properties['components'] = $this->components()->toArray();
+
+        // $controllers = $this->controllers();
+
+        // if ($controllers) {
+        //     $properties['paths'] = [];
+        //     foreach ($controllers as $name => $controller) {
+        //         foreach ($controller->keys() as $method) {
+        //             $properties['paths'][${$method}->path()] = [
+        //                 '$ref' => ${$method}->ref(),
+        //             ];
+        //         }
+        //     }
+        // }
 
         // dd([
         //     '$properties' => $properties,

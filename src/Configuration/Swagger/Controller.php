@@ -6,9 +6,9 @@ declare(strict_types=1);
 namespace Playground\Make\Swagger\Configuration\Swagger;
 
 /**
- * \Playground\Make\Swagger\Configuration\Swagger\Controllers
+ * \Playground\Make\Swagger\Configuration\Swagger\Controller
  */
-class Controllers extends SwaggerConfiguration
+class Controller extends SwaggerConfiguration
 {
     protected ?Controller\PathCreate $pathCreate = null;
 
@@ -32,20 +32,21 @@ class Controllers extends SwaggerConfiguration
      * @var array<string, mixed>
      */
     protected $properties = [
-        // 'pathId' => null,
+        // 'pathCreate' => null,
+        // 'pathEdit' => null,
+        // 'pathIndex' => null,
+        // 'pathIndexForm' => null,
+        // 'pathRestore' => null,
+        // 'pathRevision' => null,
+        // 'pathRevisions' => null,
     ];
 
-    public function reset(): self
+    /**
+     * @return array<int, string>
+     */
+    public function keys(): array
     {
-        $this->pathCreate = null;
-        $this->pathEdit = null;
-        $this->pathId = null;
-        $this->pathIndex = null;
-        $this->pathIndexForm = null;
-        $this->pathLock = null;
-        $this->pathRestore = null;
-        $this->pathRevision = null;
-        $this->pathRevisions = null;
+        return array_keys($this->properties);
     }
 
     /**
@@ -56,55 +57,55 @@ class Controllers extends SwaggerConfiguration
         if (! empty($options['pathCreate'])
             && is_array($options['pathCreate'])
         ) {
-            $this->pathCreate = new Controller\PathCreate($options['pathCreate']);
+            $this->pathCreate($options['pathCreate']);
         }
 
         if (! empty($options['pathEdit'])
             && is_array($options['pathEdit'])
         ) {
-            $this->pathEdit = new Controller\PathEdit($options['pathEdit']);
+            $this->pathEdit($options['pathEdit']);
         }
 
         if (! empty($options['pathId'])
             && is_array($options['pathId'])
         ) {
-            $this->pathId = new Controller\PathId($options['pathId']);
+            $this->pathId($options['pathId']);
         }
 
         if (! empty($options['pathIndex'])
             && is_array($options['pathIndex'])
         ) {
-            $this->pathIndex = new Controller\PathIndex($options['pathIndex']);
+            $this->pathIndex($options['pathIndex']);
         }
 
         if (! empty($options['pathIndexForm'])
             && is_array($options['pathIndexForm'])
         ) {
-            $this->pathIndexForm = new Controller\PathIndexForm($options['pathIndexForm']);
+            $this->pathIndexForm($options['pathIndexForm']);
         }
 
         if (! empty($options['pathLock'])
             && is_array($options['pathLock'])
         ) {
-            $this->pathLock = new Controller\PathLock($options['pathLock']);
+            $this->pathLock($options['pathLock']);
         }
 
         if (! empty($options['pathRestore'])
             && is_array($options['pathRestore'])
         ) {
-            $this->pathRestore = new Controller\PathRestore($options['pathRestore']);
+            $this->pathRestore($options['pathRestore']);
         }
 
         if (! empty($options['pathRevision'])
             && is_array($options['pathRevision'])
         ) {
-            $this->pathRevision = new Controller\PathRevision($options['pathRevision']);
+            $this->pathRevision($options['pathRevision']);
         }
 
         if (! empty($options['pathRevisions'])
             && is_array($options['pathRevisions'])
         ) {
-            $this->pathRevisions = new Controller\PathRevisions($options['pathRevisions']);
+            $this->pathRevisions($options['pathRevisions']);
         }
 
         return $this;
@@ -225,5 +226,18 @@ class Controllers extends SwaggerConfiguration
         }
 
         return $this->pathRevisions;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        $properties = [];
+
+        foreach ($this->properties as $name => $path) {
+            if (method_exists($this, $name)) {
+                $properties[$name] = $this->$name()->toArray();
+            }
+        }
+
+        return $properties;
     }
 }

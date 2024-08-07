@@ -61,14 +61,30 @@ trait BuildSwagger
         if (file_exists($path_docs_api)) {
             $api = $this->yaml_read($path_docs_api);
             if (is_array($api) && ! empty($api)) {
-                $this->api = new Api;
+                if (empty($this->api)) {
+                    $this->api = new Api($api);
+                }
                 if ($this->option('skeleton')) {
                     $this->api->withSkeleton();
                 }
-                $this->api->setOptions($api);
+                // $this->api->setOptions($api);
                 $reload = false;
             }
         }
+        // dump([
+        //     '__METHOD__' => __METHOD__,
+        //     '$reload' => $reload,
+        //     '$file' => $file,
+        //     '$path_docs_api' => $path_docs_api,
+        //     '$api' => $api,
+        //     '$this->api' => $this->api ?? null,
+        //     'file_exists($path_docs_api)' => file_exists($path_docs_api),
+        //     // '$this->model' => $this->model,
+        //     // '$this->configuration' => $this->configuration,
+        //     // '$this->searches' => $this->searches,
+        //     // '$this->arguments()' => $this->arguments(),
+        //     // '$this->options()' => $this->options(),
+        // ]);
 
         if ($reload) {
             $this->init_swagger_api();
@@ -113,10 +129,11 @@ trait BuildSwagger
 
         try {
             $content = Yaml::parseFile($file);
-            // dd([
+            // dump([
             //     '__METHOD__' => __METHOD__,
             //     '$file' => $file,
             //     '$content' => $content,
+            //     '$this->api' => $this->api ?? null,
             // ]);
         } catch (ParseException $exception) {
             \Log::error(__METHOD__, [

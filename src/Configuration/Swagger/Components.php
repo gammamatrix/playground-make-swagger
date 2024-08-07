@@ -27,7 +27,17 @@ class Components extends SwaggerConfiguration
      */
     public function setOptions(array $options = []): self
     {
-        $this->addSchemas($options);
+        if (! empty($options['schemas'])
+            && is_array($options['schemas'])
+        ) {
+            $this->addSchemas($options['schemas']);
+        }
+
+        // dd([
+        //     '__METHOD__' => __METHOD__,
+        //     '$options' => $options,
+        //     '$this' => $this,
+        // ]);
 
         return $this;
     }
@@ -48,13 +58,20 @@ class Components extends SwaggerConfiguration
      */
     public function addSchemas(array $options): self
     {
-        if (! empty($options['schemas'])
-            && is_array($options['schemas'])
-        ) {
-            foreach ($options['schemas'] as $name => $ref) {
-                if ($name && is_string($name) && $ref && is_string($ref)) {
-                    $this->addSchema($name, $ref);
-                }
+        foreach ($options as $name => $meta) {
+            // dd([
+            //     '__METHOD__' => __METHOD__,
+            //     '$options' => $options,
+            //     '$name' => $name,
+            //     '$meta' => $meta,
+            // ]);
+            if ($name
+                && is_string($name)
+                && is_array($meta)
+                && ! empty($meta['$ref'])
+                && is_string($meta['$ref'])
+            ) {
+                $this->addSchema($name, $meta['$ref']);
             }
         }
 

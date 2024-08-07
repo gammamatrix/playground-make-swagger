@@ -150,6 +150,10 @@ class SwaggerMakeCommand extends GeneratorCommand
         $type = $this->getConfigurationType();
 
         $this->load_base_file();
+        dump([
+            '__METHOD__' => __METHOD__,
+            '$type' => $type,
+        ]);
 
         if ($type === 'api') {
             $this->save_base_file();

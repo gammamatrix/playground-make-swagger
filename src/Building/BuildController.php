@@ -57,27 +57,28 @@ trait BuildController
         string $controller_type = ''
     ): void {
 
-        $pathId = $this->api->controllers()->pathId();
+        $model_route_plural = Str::of($name)->plural()->kebab()->toString();
+
+        $pathId = $this->api->controller($name)->pathId([
+            'path' => sprintf(
+                '/api/%1$s/{id}',
+                $model_route_plural
+            ),
+            'ref' => sprintf(
+                'paths/%1$s/id.yml',
+                $model_route_plural
+            ),
+        ]);
 
         $this->doc_controller_id_config($name, $pathId);
 
-        // $this->doc_request_id($name, $controller_type);
-
-        $path = sprintf(
-            '/api/%1$s/{id}',
-            Str::of($name)->plural()->kebab()->toString()
-        );
-        $file = sprintf(
-            'paths/%1$s/id.yml',
-            Str::of($name)->plural()->kebab()->toString()
-        );
-
-        $this->api->addPath($path, $file);
-        $this->api->apply();
+        // $this->doc_request_id($name, $pathId);
 
         $pathId->apply();
 
-        $this->yaml_write($file, $pathId->toArray());
+        $this->api->addPath($pathId->path(), $pathId->ref())->apply();
+
+        $this->yaml_write($pathId->ref(), $pathId->toArray());
     }
 
     protected function doc_controller_id_config(
@@ -85,11 +86,19 @@ trait BuildController
         Controller\PathId $pathId
     ): void {
 
+        $model_label_lower = Str::of($name)->lower()->toString();
+        $model_label_plural = Str::of($name)->plural()->snake()->replace('_', ' ')->toString();
+        $model_route = Str::of($name)->kebab()->toString();
+        $model_route_plural = Str::of($name)->plural()->kebab()->toString();
+        $model_snake = Str::of($name)->snake()->toString();
+        $model_snake_plural = Str::of($name)->plural()->snake()->toString();
+        $model_title = Str::of($name)->title()->toString();
+
         $pathId->addParameter($name, [
             'in' => 'path',
             'name' => 'id',
             'required' => true,
-            'description' => sprintf('The %1$s id.', Str::of($name)->lower()->toString()),
+            'description' => sprintf('The %1$s id.', $model_label_lower),
             'schema' => [
                 'type' => 'string',
                 'format' => 'uuid',
@@ -98,22 +107,22 @@ trait BuildController
 
         $getMethod = $pathId->getMethod([
             'tags' => [
-                Str::of($name)->title()->toString(),
+                $model_title,
             ],
             'summary' => sprintf(
                 'Get a %1$s by id.',
-                Str::of($name)->lower()->toString()
+                $model_label_lower
             ),
             'operationId' => sprintf(
                 'get_%1$s',
-                Str::of($name)->lower()->toString()
+                $model_snake
             ),
             'responses' => [
                 [
                     'code' => 200,
                     'description' => sprintf(
                         'The %1$s data.',
-                        Str::of($name)->lower()->toString()
+                        $model_label_lower
                     ),
                     'content' => [
                         'type' => 'application/json',
@@ -123,7 +132,7 @@ trait BuildController
                                 'data' => [
                                     '$ref' => sprintf(
                                         '../../models/%s.yml',
-                                        Str::of($name)->lower()->kebab()->toString()
+                                        $model_route
                                     ),
                                 ],
                                 'meta' => [
@@ -149,22 +158,22 @@ trait BuildController
 
         $deleteMethod = $pathId->deleteMethod([
             'tags' => [
-                Str::of($name)->title()->toString(),
+                $model_title,
             ],
             'summary' => sprintf(
                 'Delete a %1$s by id.',
-                Str::of($name)->lower()->toString()
+                $model_label_lower
             ),
             'operationId' => sprintf(
                 'delete_%1$s',
-                Str::of($name)->lower()->toString()
+                $model_snake
             ),
             'responses' => [
                 [
                     'code' => 204,
                     'description' => sprintf(
                         'The %1$s has been deleted.',
-                        Str::of($name)->lower()->toString()
+                        $model_label_lower
                     ),
                 ],
                 [
@@ -179,7 +188,7 @@ trait BuildController
                     'code' => 423,
                     'description' => sprintf(
                         'The %1$s is locked. Unlock to delete.',
-                        Str::of($name)->lower()->toString()
+                        $model_label_lower
                     ),
                 ],
             ],
@@ -189,15 +198,15 @@ trait BuildController
 
         $patchMethod = $pathId->patchMethod([
             'tags' => [
-                Str::of($name)->title()->toString(),
+                $model_title,
             ],
             'summary' => sprintf(
                 'Patch a %1$s by id.',
-                Str::of($name)->lower()->toString()
+                $model_label_lower
             ),
             'operationId' => sprintf(
                 'patch_%1$s',
-                Str::of($name)->lower()->toString()
+                $model_snake
             ),
 
             // requestBody:
@@ -211,7 +220,7 @@ trait BuildController
                     'schema' => [
                         '$ref' => sprintf(
                             '../../requests/%s/patch.yml',
-                            Str::of($name)->lower()->kebab()->toString()
+                            $model_route
                         ),
                     ],
                 ],
@@ -222,7 +231,7 @@ trait BuildController
                     'code' => 200,
                     'description' => sprintf(
                         'The %1$s has been patched.',
-                        Str::of($name)->lower()->toString()
+                        $model_label_lower
                     ),
                     'content' => [
                         'type' => 'application/json',
@@ -232,7 +241,7 @@ trait BuildController
                                 'data' => [
                                     '$ref' => sprintf(
                                         '../../models/%s.yml',
-                                        Str::of($name)->lower()->kebab()->toString()
+                                        $model_route
                                     ),
                                 ],
                                 'meta' => [
@@ -279,100 +288,13 @@ trait BuildController
                     'code' => 423,
                     'description' => sprintf(
                         'The %1$s is locked. Unlock to patch.',
-                        Str::of($name)->lower()->toString()
+                        $model_label_lower
                     ),
                 ],
             ],
         ]);
 
         $patchMethod?->apply();
-
-        //     if (! empty($config['get']['responses']) && ! empty($config['get']['responses'][200])) {
-        //         $config['get']['responses'][200]['description'] = sprintf(
-        //             $config['get']['responses'][200]['description'],
-        //             Str::of($name)->lower()
-        //         );
-        //         $config['get']['responses'][200]['content']['application/json']['schema']['properties']['data']['$ref'] = sprintf(
-        //             $config['get']['responses'][200]['content']['application/json']['schema']['properties']['data']['$ref'],
-        //             Str::of($name)->kebab()
-        //         );
-        //     }
-
-        // if (! empty($config['delete']) && ! empty($name)) {
-
-        //     if (empty($config['delete']['tags']) || ! is_array($config['delete']['tags'])) {
-        //         $config['delete']['tags'] = [];
-        //     }
-
-        //     $tag = Str::of($name)->title()->toString();
-
-        //     if (! in_array($tag, $config['delete']['tags'])) {
-        //         $config['delete']['tags'][] = $tag;
-        //     }
-
-        //     if (! empty($config['delete']['summary'])) {
-        //         $config['delete']['summary'] = sprintf(
-        //             $config['delete']['summary'],
-        //             Str::of($name)->lower()->toString()
-        //         );
-        //     }
-
-        //     if (! empty($config['delete']['operationId'])) {
-        //         $config['delete']['operationId'] = sprintf(
-        //             $config['delete']['operationId'],
-        //             Str::of($name)->snake()->toString()
-        //         );
-        //     }
-
-        //     if (! empty($config['delete']['responses']) && ! empty($config['delete']['responses'][204])) {
-        //         $config['delete']['responses'][204]['description'] = sprintf(
-        //             $config['delete']['responses'][204]['description'],
-        //             Str::of($name)->lower()->toString()
-        //         );
-        //         $config['delete']['responses'][423]['description'] = sprintf(
-        //             $config['delete']['responses'][423]['description'],
-        //             Str::of($name)->lower()->toString()
-        //         );
-        //     }
-        // }
-
-        // if (! empty($config['patch']) && ! empty($name)) {
-
-        //     if (empty($config['patch']['tags']) || ! is_array($config['patch']['tags'])) {
-        //         $config['patch']['tags'] = [];
-        //     }
-
-        //     $tag = Str::of($name)->title()->toString();
-
-        //     if (! in_array($tag, $config['patch']['tags'])) {
-        //         $config['patch']['tags'][] = $tag;
-        //     }
-
-        //     if (! empty($config['patch']['summary'])) {
-        //         $config['patch']['summary'] = sprintf(
-        //             $config['patch']['summary'],
-        //             Str::of($name)->lower()->toString()
-        //         );
-        //     }
-
-        //     if (! empty($config['patch']['operationId'])) {
-        //         $config['patch']['operationId'] = sprintf(
-        //             $config['patch']['operationId'],
-        //             Str::of($name)->snake()->toString()
-        //         );
-        //     }
-
-        //     if (! empty($config['patch']['responses']) && ! empty($config['patch']['responses'][200])) {
-        //         $config['patch']['responses'][200]['description'] = sprintf(
-        //             $config['patch']['responses'][200]['description'],
-        //             Str::of($name)->lower()->toString()
-        //         );
-        //         $config['patch']['responses'][200]['content']['application/json']['schema']['properties']['data']['$ref'] = sprintf(
-        //             $config['patch']['responses'][200]['content']['application/json']['schema']['properties']['data']['$ref'],
-        //             Str::of($name)->kebab()->toString()
-        //         );
-        //     }
-        // }
     }
 
     protected function doc_controller_index(
@@ -380,35 +302,28 @@ trait BuildController
         string $controller_type = ''
     ): void {
 
-        $pathIndex = $this->api->controllers()->pathIndex();
+        $model_route_plural = Str::of($name)->plural()->kebab()->toString();
+
+        $pathIndex = $this->api->controller($name)->pathIndex([
+            'path' => sprintf(
+                '/api/%1$s',
+                $model_route_plural
+            ),
+            'ref' => sprintf(
+                'paths/%1$s/index.yml',
+                $model_route_plural
+            ),
+        ]);
 
         $this->doc_controller_index_config($name, $pathIndex);
 
-        // $this->doc_request_index($name, $controller_type);
+        // $this->doc_request_index($name, $pathIndex);
 
-        // dump([
-        //     '__METHOD__' => __METHOD__,
-        //     '$controller_type' => $controller_type,
-        //     '$config' => $config,
-        //     // '$this->model' => $this->model,
-        //     // '$this->configuration' => $this->configuration,
-        //     // '$this->searches' => $this->searches,
-        //     // '$this->arguments()' => $this->arguments(),
-        //     // '$this->options()' => $this->options(),
-        // ]);
+        $pathIndex->apply();
 
-        $path = sprintf(
-            '/api/%1$s',
-            Str::of($name)->plural()->kebab()->toString()
-        );
-        $file = sprintf(
-            'paths/%1$s/index.yml',
-            Str::of($name)->plural()->kebab()->toString()
-        );
+        $this->api->addPath($pathIndex->path(), $pathIndex->ref())->apply();
 
-        $this->api->addPath($path, $file);
-
-        $this->yaml_write($file, $pathIndex->toArray());
+        $this->yaml_write($pathIndex->ref(), $pathIndex->toArray());
     }
 
     protected function doc_controller_index_config(
@@ -416,27 +331,32 @@ trait BuildController
         Controller\PathIndex $pathIndex
     ): void {
 
-        $model_lower_plural = Str::of($name)->plural()->snake()->replace('_', ' ')->toString();
-        $model_snake = Str::of($name)->plural()->snake()->toString();
+        $model_label_lower = Str::of($name)->lower()->toString();
+        $model_label_plural = Str::of($name)->plural()->snake()->replace('_', ' ')->toString();
+        $model_route = Str::of($name)->kebab()->toString();
+        $model_route_plural = Str::of($name)->plural()->kebab()->toString();
+        $model_snake = Str::of($name)->snake()->toString();
+        $model_snake_plural = Str::of($name)->plural()->snake()->toString();
+        $model_title = Str::of($name)->title()->toString();
 
         $getMethod = $pathIndex->getMethod([
             'tags' => [
-                Str::of($name)->title()->toString(),
+                $model_title,
             ],
             'summary' => sprintf(
                 'Get %1$s from the index.',
-                $model_lower_plural
+                $model_label_plural
             ),
             'operationId' => sprintf(
                 'get_%1$s_index',
-                $model_snake
+                $model_snake_plural
             ),
             'responses' => [
                 [
                     'code' => 200,
                     'description' => sprintf(
                         'Get the %1$s from the index.',
-                        $model_lower_plural
+                        $model_label_plural
                     ),
                     'content' => [
                         'type' => 'application/json',
@@ -448,7 +368,7 @@ trait BuildController
                                     'items' => [
                                         '$ref' => sprintf(
                                             '../../models/%s.yml',
-                                            Str::of($name)->lower()->kebab()->toString()
+                                            $model_route
                                         ),
                                     ],
                                 ],
@@ -475,15 +395,15 @@ trait BuildController
 
         $postMethod = $pathIndex->postMethod([
             'tags' => [
-                Str::of($name)->title()->toString(),
+                $model_title,
             ],
             'summary' => sprintf(
                 'Create a %1$s.',
-                Str::of($name)->lower()->toString()
+                $model_label_lower
             ),
             'operationId' => sprintf(
                 'post_%1$s',
-                Str::of($name)->lower()->toString()
+                $model_snake
             ),
 
             'requestBody' => [
@@ -492,7 +412,7 @@ trait BuildController
                     'schema' => [
                         '$ref' => sprintf(
                             '../../requests/%s/post.yml',
-                            Str::of($name)->lower()->kebab()->toString()
+                            $model_route
                         ),
                     ],
                 ],
@@ -503,7 +423,7 @@ trait BuildController
                     'code' => 200,
                     'description' => sprintf(
                         'The created %1$s.',
-                        Str::of($name)->lower()->toString()
+                        $model_label_lower
                     ),
                     'content' => [
                         'type' => 'application/json',
@@ -513,7 +433,7 @@ trait BuildController
                                 'data' => [
                                     '$ref' => sprintf(
                                         '../../models/%s.yml',
-                                        Str::of($name)->lower()->kebab()->toString()
+                                        $model_route
                                     ),
                                 ],
                                 'meta' => [
@@ -560,7 +480,7 @@ trait BuildController
                     'code' => 423,
                     'description' => sprintf(
                         'The %1$s is locked. Unlock to patch.',
-                        Str::of($name)->lower()->toString()
+                        $model_label_lower
                     ),
                 ],
             ],
@@ -574,22 +494,26 @@ trait BuildController
         string $controller_type = ''
     ): void {
 
-        $pathIndexForm = $this->api->controllers()->pathIndexForm();
+        $model_route_plural = Str::of($name)->plural()->kebab()->toString();
+
+        $pathIndexForm = $this->api->controller($name)->pathIndexForm([
+            'path' => sprintf(
+                '/api/%1$s',
+                $model_route_plural
+            ),
+            'ref' => sprintf(
+                'paths/%1$s/index-form.yml',
+                $model_route_plural
+            ),
+        ]);
 
         $this->doc_controller_index_form_config($name, $pathIndexForm);
 
-        $path = sprintf(
-            '/api/%1$s',
-            Str::of($name)->plural()->kebab()->toString()
-        );
-        $file = sprintf(
-            'paths/%1$s/index-form.yml',
-            Str::of($name)->plural()->kebab()->toString()
-        );
+        $pathIndexForm->apply();
 
-        $this->api->addPath($path, $file);
+        $this->api->addPath($pathIndexForm->path(), $pathIndexForm->ref())->apply();
 
-        $this->yaml_write($file, $pathIndexForm->toArray());
+        $this->yaml_write($pathIndexForm->ref(), $pathIndexForm->toArray());
     }
 
     protected function doc_controller_index_form_config(
@@ -597,26 +521,33 @@ trait BuildController
         Controller\PathIndexForm $pathIndexForm
     ): void {
 
-        $model_lower_plural = Str::of($name)->plural()->snake()->replace('_', ' ')->toString();
-        $model_snake = Str::of($name)->plural()->snake()->toString();
+        $model_label_plural = Str::of($name)->plural()->snake()->replace('_', ' ')->toString();
+        $model_route = Str::of($name)->kebab()->toString();
+        $model_route_plural = Str::of($name)->plural()->kebab()->toString();
+        $model_snake = Str::of($name)->snake()->toString();
+        $model_snake_plural = Str::of($name)->plural()->snake()->toString();
+        $model_title = Str::of($name)->title()->toString();
 
         $postMethod = $pathIndexForm->postMethod([
             'tags' => [
-                Str::of($name)->title()->toString(),
+                $model_title,
             ],
             'summary' => sprintf(
                 'Get %1$s from the index using POST.',
-                $model_lower_plural
+                $model_label_plural
             ),
             'operationId' => sprintf(
                 'post_%1$s_index',
-                $model_snake
+                $model_snake_plural
             ),
             'requestBody' => [
                 'content' => [
                     'type' => 'application/json',
                     'schema' => [
-                        '$ref' => '../../requests/page/form.yml',
+                        '$ref' => sprintf(
+                            '../../requests/%s/form.yml',
+                            $model_snake
+                        ),
                     ],
                 ],
             ],
@@ -625,7 +556,7 @@ trait BuildController
                     'code' => 200,
                     'description' => sprintf(
                         'Get the %1$s from the index.',
-                        $model_lower_plural
+                        $model_label_plural
                     ),
                     'content' => [
                         'type' => 'application/json',
@@ -637,7 +568,7 @@ trait BuildController
                                     'items' => [
                                         '$ref' => sprintf(
                                             '../../models/%s.yml',
-                                            Str::of($name)->lower()->kebab()->toString()
+                                            $model_route
                                         ),
                                     ],
                                 ],
@@ -668,21 +599,26 @@ trait BuildController
         string $controller_type = ''
     ): void {
 
-        $pathLock = $this->api->controllers()->pathLock();
+        $model_route_plural = Str::of($name)->plural()->kebab()->toString();
+
+        $pathLock = $this->api->controller($name)->pathLock([
+            'path' => sprintf(
+                '/api/%1$s/lock/{id}',
+                $model_route_plural
+            ),
+            'ref' => sprintf(
+                'paths/%1$s/lock.yml',
+                $model_route_plural
+            ),
+        ]);
 
         $this->doc_controller_lock_config($name, $pathLock);
 
-        $path = sprintf(
-            '/api/%1$s/lock/{id}',
-            Str::of($name)->plural()->kebab()->toString()
-        );
-        $file = sprintf(
-            'paths/%1$s/lock.yml',
-            Str::of($name)->plural()->kebab()->toString()
-        );
+        $pathLock->apply();
 
-        $this->api->addPath($path, $file);
-        $this->yaml_write($file, $pathLock->toArray());
+        $this->api->addPath($pathLock->path(), $pathLock->ref())->apply();
+
+        $this->yaml_write($pathLock->ref(), $pathLock->toArray());
     }
 
     protected function doc_controller_lock_config(
@@ -690,11 +626,18 @@ trait BuildController
         Controller\PathLock $pathLock
     ): void {
 
+        $model_label_lower = Str::of($name)->lower()->toString();
+        $model_route = Str::of($name)->kebab()->toString();
+        $model_route_plural = Str::of($name)->plural()->kebab()->toString();
+        $model_snake = Str::of($name)->snake()->toString();
+        $model_snake_plural = Str::of($name)->plural()->snake()->toString();
+        $model_title = Str::of($name)->title()->toString();
+
         $pathLock->addParameter($name, [
             'in' => 'path',
             'name' => 'id',
             'required' => true,
-            'description' => sprintf('The %1$s id.', Str::of($name)->lower()->toString()),
+            'description' => sprintf('The %1$s id.', $model_label_lower),
             'schema' => [
                 'type' => 'string',
                 'format' => 'uuid',
@@ -703,22 +646,22 @@ trait BuildController
 
         $deleteMethod = $pathLock->deleteMethod([
             'tags' => [
-                Str::of($name)->title()->toString(),
+                $model_title,
             ],
             'summary' => sprintf(
                 'Delete a %1$s by id.',
-                Str::of($name)->lower()->toString()
+                $model_label_lower
             ),
             'operationId' => sprintf(
                 'unlock_%1$s',
-                Str::of($name)->lower()->toString()
+                $model_snake
             ),
             'responses' => [
                 [
                     'code' => 204,
                     'description' => sprintf(
                         'The %1$s has been unlocked.',
-                        Str::of($name)->lower()->toString()
+                        $model_label_lower
                     ),
                 ],
                 [
@@ -736,22 +679,22 @@ trait BuildController
 
         $putMethod = $pathLock->putMethod([
             'tags' => [
-                Str::of($name)->title()->toString(),
+                $model_title,
             ],
             'summary' => sprintf(
                 'Lock a %1$s by ID.',
-                Str::of($name)->lower()->toString()
+                $model_label_lower
             ),
             'operationId' => sprintf(
                 'lock_%1$s',
-                Str::of($name)->lower()->toString()
+                $model_snake
             ),
             'responses' => [
                 [
                     'code' => 200,
                     'description' => sprintf(
                         'The unlocked %1$s.',
-                        Str::of($name)->lower()->toString()
+                        $model_label_lower
                     ),
                     'content' => [
                         'type' => 'application/json',
@@ -761,7 +704,7 @@ trait BuildController
                                 'data' => [
                                     '$ref' => sprintf(
                                         '../../models/%s.yml',
-                                        Str::of($name)->lower()->kebab()->toString()
+                                        $model_route
                                     ),
                                 ],
                                 'meta' => [
@@ -790,22 +733,27 @@ trait BuildController
         string $name,
         string $controller_type = ''
     ): void {
-        $pathRestore = $this->api->controllers()->pathRestore();
+
+        $model_route_plural = Str::of($name)->plural()->kebab()->toString();
+
+        $pathRestore = $this->api->controller($name)->pathRestore([
+            'path' => sprintf(
+                '/api/%1$s/restore/{id}',
+                $model_route_plural
+            ),
+            'ref' => sprintf(
+                'paths/%1$s/restore.yml',
+                $model_route_plural
+            ),
+        ]);
 
         $this->doc_controller_restore_config($name, $pathRestore);
 
-        $path = sprintf(
-            '/api/%1$s/restore/{id}',
-            Str::of($name)->plural()->kebab()->toString()
-        );
-        $file = sprintf(
-            'paths/%1$s/restore.yml',
-            Str::of($name)->plural()->kebab()->toString()
-        );
+        $pathRestore->apply();
 
-        $this->api->addPath($path, $file);
+        $this->api->addPath($pathRestore->path(), $pathRestore->ref())->apply();
 
-        $this->yaml_write($file, $pathRestore->toArray());
+        $this->yaml_write($pathRestore->ref(), $pathRestore->toArray());
     }
 
     protected function doc_controller_restore_config(
@@ -813,11 +761,18 @@ trait BuildController
         Controller\PathRestore $pathRestore
     ): void {
 
+        $model_label_lower = Str::of($name)->lower()->toString();
+        $model_route = Str::of($name)->kebab()->toString();
+        $model_route_plural = Str::of($name)->plural()->kebab()->toString();
+        $model_snake = Str::of($name)->snake()->toString();
+        $model_snake_plural = Str::of($name)->plural()->snake()->toString();
+        $model_title = Str::of($name)->title()->toString();
+
         $pathRestore->addParameter($name, [
             'in' => 'path',
             'name' => 'id',
             'required' => true,
-            'description' => sprintf('The %1$s id.', Str::of($name)->lower()->toString()),
+            'description' => sprintf('The %1$s id.', $model_label_lower),
             'schema' => [
                 'type' => 'string',
                 'format' => 'uuid',
@@ -826,22 +781,22 @@ trait BuildController
 
         $putMethod = $pathRestore->putMethod([
             'tags' => [
-                Str::of($name)->title()->toString(),
+                $model_title,
             ],
             'summary' => sprintf(
                 'Restore a %1$s from the trash by ID.',
-                Str::of($name)->lower()->toString()
+                $model_label_lower
             ),
             'operationId' => sprintf(
                 'restore_%1$s',
-                Str::of($name)->lower()->toString()
+                $model_snake
             ),
             'responses' => [
                 [
                     'code' => 200,
                     'description' => sprintf(
                         'The restored %1$s.',
-                        Str::of($name)->lower()->toString()
+                        $model_label_lower
                     ),
                     'content' => [
                         'type' => 'application/json',
@@ -851,7 +806,7 @@ trait BuildController
                                 'data' => [
                                     '$ref' => sprintf(
                                         '../../models/%s.yml',
-                                        Str::of($name)->lower()->kebab()->toString()
+                                        $model_route
                                     ),
                                 ],
                                 'meta' => [
@@ -880,22 +835,27 @@ trait BuildController
         string $name,
         string $controller_type = ''
     ): void {
-        $pathCreate = $this->api->controllers()->pathCreate();
+
+        $model_route_plural = Str::of($name)->plural()->kebab()->toString();
+
+        $pathCreate = $this->api->controller($name)->pathCreate([
+            'path' => sprintf(
+                '/api/%1$s/create',
+                $model_route_plural
+            ),
+            'ref' => sprintf(
+                'paths/%1$s/create.yml',
+                $model_route_plural
+            ),
+        ]);
 
         $this->doc_controller_create_config($name, $pathCreate);
 
-        $path = sprintf(
-            '/api/%1$s/create',
-            Str::of($name)->plural()->kebab()->toString()
-        );
-        $file = sprintf(
-            'paths/%1$s/create.yml',
-            Str::of($name)->plural()->kebab()->toString()
-        );
+        $pathCreate->apply();
 
-        $this->api->addPath($path, $file);
+        $this->api->addPath($pathCreate->path(), $pathCreate->ref())->apply();
 
-        $this->yaml_write($file, $pathCreate->toArray());
+        $this->yaml_write($pathCreate->ref(), $pathCreate->toArray());
     }
 
     protected function doc_controller_create_config(
@@ -903,24 +863,31 @@ trait BuildController
         Controller\PathCreate $pathCreate
     ): void {
 
+        $model_label_lower = Str::of($name)->lower()->toString();
+        $model_route = Str::of($name)->kebab()->toString();
+        $model_route_plural = Str::of($name)->plural()->kebab()->toString();
+        $model_snake = Str::of($name)->snake()->toString();
+        $model_snake_plural = Str::of($name)->plural()->snake()->toString();
+        $model_title = Str::of($name)->title()->toString();
+
         $getMethod = $pathCreate->getMethod([
             'tags' => [
-                Str::of($name)->title()->toString(),
+                $model_title,
             ],
             'summary' => sprintf(
                 'Create a %1$s form.',
-                Str::of($name)->lower()->toString()
+                $model_label_lower
             ),
             'operationId' => sprintf(
                 'create_%1$s',
-                Str::of($name)->lower()->toString()
+                $model_snake
             ),
             'responses' => [
                 [
                     'code' => 200,
                     'description' => sprintf(
                         'The create %1$s information.',
-                        Str::of($name)->lower()->toString()
+                        $model_label_lower
                     ),
                     'content' => [
                         'type' => 'application/json',
@@ -930,7 +897,7 @@ trait BuildController
                                 'data' => [
                                     '$ref' => sprintf(
                                         '../../models/%s.yml',
-                                        Str::of($name)->lower()->kebab()->toString()
+                                        $model_route
                                     ),
                                 ],
                                 'meta' => [
@@ -959,22 +926,27 @@ trait BuildController
         string $name,
         string $controller_type = ''
     ): void {
-        $pathEdit = $this->api->controllers()->pathEdit();
+
+        $model_route_plural = Str::of($name)->plural()->kebab()->toString();
+
+        $pathEdit = $this->api->controller($name)->pathEdit([
+            'path' => sprintf(
+                '/api/%1$s/edit/{id}',
+                $model_route_plural
+            ),
+            'ref' => sprintf(
+                'paths/%1$s/edit.yml',
+                $model_route_plural
+            ),
+        ]);
 
         $this->doc_controller_edit_config($name, $pathEdit);
 
-        $path = sprintf(
-            '/api/%1$s/edit/{id}',
-            Str::of($name)->plural()->kebab()->toString()
-        );
-        $file = sprintf(
-            'paths/%1$s/edit.yml',
-            Str::of($name)->plural()->kebab()->toString()
-        );
+        $pathEdit->apply();
 
-        $this->api->addPath($path, $file);
+        $this->api->addPath($pathEdit->path(), $pathEdit->ref())->apply();
 
-        $this->yaml_write($file, $pathEdit->toArray());
+        $this->yaml_write($pathEdit->ref(), $pathEdit->toArray());
     }
 
     protected function doc_controller_edit_config(
@@ -982,11 +954,18 @@ trait BuildController
         Controller\PathEdit $pathEdit
     ): void {
 
+        $model_label_lower = Str::of($name)->lower()->toString();
+        $model_route = Str::of($name)->kebab()->toString();
+        $model_route_plural = Str::of($name)->plural()->kebab()->toString();
+        $model_snake = Str::of($name)->snake()->toString();
+        $model_snake_plural = Str::of($name)->plural()->snake()->toString();
+        $model_title = Str::of($name)->title()->toString();
+
         $pathEdit->addParameter($name, [
             'in' => 'path',
             'name' => 'id',
             'required' => true,
-            'description' => sprintf('The %1$s id.', Str::of($name)->lower()->toString()),
+            'description' => sprintf('The %1$s id.', $model_label_lower),
             'schema' => [
                 'type' => 'string',
                 'format' => 'uuid',
@@ -995,22 +974,22 @@ trait BuildController
 
         $getMethod = $pathEdit->getMethod([
             'tags' => [
-                Str::of($name)->title()->toString(),
+                $model_title,
             ],
             'summary' => sprintf(
                 'Edit a %1$s form.',
-                Str::of($name)->lower()->toString()
+                $model_label_lower
             ),
             'operationId' => sprintf(
                 'edit_%1$s',
-                Str::of($name)->lower()->toString()
+                $model_snake
             ),
             'responses' => [
                 [
                     'code' => 200,
                     'description' => sprintf(
                         'The edit %1$s information.',
-                        Str::of($name)->lower()->toString()
+                        $model_label_lower
                     ),
                     'content' => [
                         'type' => 'application/json',
@@ -1020,7 +999,7 @@ trait BuildController
                                 'data' => [
                                     '$ref' => sprintf(
                                         '../../models/%s.yml',
-                                        Str::of($name)->lower()->kebab()->toString()
+                                        $model_route
                                     ),
                                 ],
                                 'meta' => [
