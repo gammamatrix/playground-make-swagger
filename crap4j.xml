@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <crap_result>
   <project/>
-  <timestamp>2024-08-07 01:22:03</timestamp>
+  <timestamp>2024-08-07 05:56:37</timestamp>
   <stats>
     <name>Method Crap Stats</name>
-    <methodCount>142</methodCount>
+    <methodCount>143</methodCount>
     <crapMethodCount>19</crapMethodCount>
-    <crapLoad>235</crapLoad>
-    <totalCrap>4368</totalCrap>
-    <crapMethodPercent>13.38</crapMethodPercent>
+    <crapLoad>232</crapLoad>
+    <totalCrap>4300</totalCrap>
+    <crapMethodPercent>13.29</crapMethodPercent>
   </stats>
   <methods>
     <method>
@@ -24,120 +24,10 @@
     </method>
     <method>
       <package>Playground\Make\Swagger\Building</package>
-      <className>Playground\Make\Swagger\Building\BuildController</className>
-      <methodName>doc_controller_id</methodName>
-      <methodSignature>doc_controller_id(string $name, string $controller_type): void</methodSignature>
-      <fullMethod>doc_controller_id(string $name, string $controller_type): void</fullMethod>
-      <crap>2</crap>
-      <complexity>1</complexity>
-      <coverage>0</coverage>
-      <crapLoad>0</crapLoad>
-    </method>
-    <method>
-      <package>Playground\Make\Swagger\Building</package>
-      <className>Playground\Make\Swagger\Building\BuildController</className>
-      <methodName>doc_controller_id_config</methodName>
-      <methodSignature>doc_controller_id_config(string $name, Playground\Make\Swagger\Configuration\Swagger\Controller\PathId $pathId): void</methodSignature>
-      <fullMethod>doc_controller_id_config(string $name, Playground\Make\Swagger\Configuration\Swagger\Controller\PathId $pathId): void</fullMethod>
-      <crap>2</crap>
-      <complexity>1</complexity>
-      <coverage>0</coverage>
-      <crapLoad>0</crapLoad>
-    </method>
-    <method>
-      <package>Playground\Make\Swagger\Building</package>
-      <className>Playground\Make\Swagger\Building\BuildController</className>
-      <methodName>doc_controller_index</methodName>
-      <methodSignature>doc_controller_index(string $name, string $controller_type): void</methodSignature>
-      <fullMethod>doc_controller_index(string $name, string $controller_type): void</fullMethod>
-      <crap>2</crap>
-      <complexity>1</complexity>
-      <coverage>0</coverage>
-      <crapLoad>0</crapLoad>
-    </method>
-    <method>
-      <package>Playground\Make\Swagger\Building</package>
-      <className>Playground\Make\Swagger\Building\BuildController</className>
-      <methodName>doc_controller_index_config</methodName>
-      <methodSignature>doc_controller_index_config(string $name, Playground\Make\Swagger\Configuration\Swagger\Controller\PathIndex $pathIndex): void</methodSignature>
-      <fullMethod>doc_controller_index_config(string $name, Playground\Make\Swagger\Configuration\Swagger\Controller\PathIndex $pathIndex): void</fullMethod>
-      <crap>2</crap>
-      <complexity>1</complexity>
-      <coverage>0</coverage>
-      <crapLoad>0</crapLoad>
-    </method>
-    <method>
-      <package>Playground\Make\Swagger\Building</package>
-      <className>Playground\Make\Swagger\Building\BuildController</className>
-      <methodName>doc_controller_index_form</methodName>
-      <methodSignature>doc_controller_index_form(string $name, string $controller_type): void</methodSignature>
-      <fullMethod>doc_controller_index_form(string $name, string $controller_type): void</fullMethod>
-      <crap>2</crap>
-      <complexity>1</complexity>
-      <coverage>0</coverage>
-      <crapLoad>0</crapLoad>
-    </method>
-    <method>
-      <package>Playground\Make\Swagger\Building</package>
-      <className>Playground\Make\Swagger\Building\BuildController</className>
-      <methodName>doc_controller_index_form_config</methodName>
-      <methodSignature>doc_controller_index_form_config(string $name, Playground\Make\Swagger\Configuration\Swagger\Controller\PathIndexForm $pathIndexForm): void</methodSignature>
-      <fullMethod>doc_controller_index_form_config(string $name, Playground\Make\Swagger\Configuration\Swagger\Controller\PathIndexForm $pathIndexForm): void</fullMethod>
-      <crap>2</crap>
-      <complexity>1</complexity>
-      <coverage>0</coverage>
-      <crapLoad>0</crapLoad>
-    </method>
-    <method>
-      <package>Playground\Make\Swagger\Building</package>
-      <className>Playground\Make\Swagger\Building\BuildController</className>
-      <methodName>doc_controller_lock</methodName>
-      <methodSignature>doc_controller_lock(string $name, string $controller_type): void</methodSignature>
-      <fullMethod>doc_controller_lock(string $name, string $controller_type): void</fullMethod>
-      <crap>2</crap>
-      <complexity>1</complexity>
-      <coverage>0</coverage>
-      <crapLoad>0</crapLoad>
-    </method>
-    <method>
-      <package>Playground\Make\Swagger\Building</package>
-      <className>Playground\Make\Swagger\Building\BuildController</className>
-      <methodName>doc_controller_lock_config</methodName>
-      <methodSignature>doc_controller_lock_config(string $name, Playground\Make\Swagger\Configuration\Swagger\Controller\PathLock $pathLock): void</methodSignature>
-      <fullMethod>doc_controller_lock_config(string $name, Playground\Make\Swagger\Configuration\Swagger\Controller\PathLock $pathLock): void</fullMethod>
-      <crap>2</crap>
-      <complexity>1</complexity>
-      <coverage>0</coverage>
-      <crapLoad>0</crapLoad>
-    </method>
-    <method>
-      <package>Playground\Make\Swagger\Building</package>
-      <className>Playground\Make\Swagger\Building\BuildController</className>
-      <methodName>doc_controller_restore</methodName>
-      <methodSignature>doc_controller_restore(string $name, string $controller_type): void</methodSignature>
-      <fullMethod>doc_controller_restore(string $name, string $controller_type): void</fullMethod>
-      <crap>2</crap>
-      <complexity>1</complexity>
-      <coverage>0</coverage>
-      <crapLoad>0</crapLoad>
-    </method>
-    <method>
-      <package>Playground\Make\Swagger\Building</package>
-      <className>Playground\Make\Swagger\Building\BuildController</className>
-      <methodName>doc_controller_restore_config</methodName>
-      <methodSignature>doc_controller_restore_config(string $name, Playground\Make\Swagger\Configuration\Swagger\Controller\PathRestore $pathRestore): void</methodSignature>
-      <fullMethod>doc_controller_restore_config(string $name, Playground\Make\Swagger\Configuration\Swagger\Controller\PathRestore $pathRestore): void</fullMethod>
-      <crap>2</crap>
-      <complexity>1</complexity>
-      <coverage>0</coverage>
-      <crapLoad>0</crapLoad>
-    </method>
-    <method>
-      <package>Playground\Make\Swagger\Building</package>
-      <className>Playground\Make\Swagger\Building\BuildController</className>
+      <className>Playground\Make\Swagger\Building\BuildControllerForm</className>
       <methodName>doc_controller_create</methodName>
-      <methodSignature>doc_controller_create(string $name, string $controller_type): void</methodSignature>
-      <fullMethod>doc_controller_create(string $name, string $controller_type): void</fullMethod>
+      <methodSignature>doc_controller_create(string $name): void</methodSignature>
+      <fullMethod>doc_controller_create(string $name): void</fullMethod>
       <crap>2</crap>
       <complexity>1</complexity>
       <coverage>0</coverage>
@@ -145,7 +35,7 @@
     </method>
     <method>
       <package>Playground\Make\Swagger\Building</package>
-      <className>Playground\Make\Swagger\Building\BuildController</className>
+      <className>Playground\Make\Swagger\Building\BuildControllerForm</className>
       <methodName>doc_controller_create_config</methodName>
       <methodSignature>doc_controller_create_config(string $name, Playground\Make\Swagger\Configuration\Swagger\Controller\PathCreate $pathCreate): void</methodSignature>
       <fullMethod>doc_controller_create_config(string $name, Playground\Make\Swagger\Configuration\Swagger\Controller\PathCreate $pathCreate): void</fullMethod>
@@ -156,10 +46,10 @@
     </method>
     <method>
       <package>Playground\Make\Swagger\Building</package>
-      <className>Playground\Make\Swagger\Building\BuildController</className>
+      <className>Playground\Make\Swagger\Building\BuildControllerForm</className>
       <methodName>doc_controller_edit</methodName>
-      <methodSignature>doc_controller_edit(string $name, string $controller_type): void</methodSignature>
-      <fullMethod>doc_controller_edit(string $name, string $controller_type): void</fullMethod>
+      <methodSignature>doc_controller_edit(string $name): void</methodSignature>
+      <fullMethod>doc_controller_edit(string $name): void</fullMethod>
       <crap>2</crap>
       <complexity>1</complexity>
       <coverage>0</coverage>
@@ -167,7 +57,7 @@
     </method>
     <method>
       <package>Playground\Make\Swagger\Building</package>
-      <className>Playground\Make\Swagger\Building\BuildController</className>
+      <className>Playground\Make\Swagger\Building\BuildControllerForm</className>
       <methodName>doc_controller_edit_config</methodName>
       <methodSignature>doc_controller_edit_config(string $name, Playground\Make\Swagger\Configuration\Swagger\Controller\PathEdit $pathEdit): void</methodSignature>
       <fullMethod>doc_controller_edit_config(string $name, Playground\Make\Swagger\Configuration\Swagger\Controller\PathEdit $pathEdit): void</fullMethod>
@@ -178,18 +68,139 @@
     </method>
     <method>
       <package>Playground\Make\Swagger\Building</package>
-      <className>Playground\Make\Swagger\Building\BuildModel</className>
-      <methodName>doc_model</methodName>
-      <methodSignature>doc_model(): ?array</methodSignature>
-      <fullMethod>doc_model(): ?array</fullMethod>
-      <crap>30</crap>
-      <complexity>5</complexity>
+      <className>Playground\Make\Swagger\Building\BuildControllerId</className>
+      <methodName>doc_controller_id</methodName>
+      <methodSignature>doc_controller_id(string $name): void</methodSignature>
+      <fullMethod>doc_controller_id(string $name): void</fullMethod>
+      <crap>2</crap>
+      <complexity>1</complexity>
+      <coverage>0</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Swagger\Building</package>
+      <className>Playground\Make\Swagger\Building\BuildControllerId</className>
+      <methodName>doc_controller_id_config</methodName>
+      <methodSignature>doc_controller_id_config(string $name, Playground\Make\Swagger\Configuration\Swagger\Controller\PathId $pathId): void</methodSignature>
+      <fullMethod>doc_controller_id_config(string $name, Playground\Make\Swagger\Configuration\Swagger\Controller\PathId $pathId): void</fullMethod>
+      <crap>2</crap>
+      <complexity>1</complexity>
+      <coverage>0</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Swagger\Building</package>
+      <className>Playground\Make\Swagger\Building\BuildControllerIndex</className>
+      <methodName>doc_controller_index</methodName>
+      <methodSignature>doc_controller_index(string $name): void</methodSignature>
+      <fullMethod>doc_controller_index(string $name): void</fullMethod>
+      <crap>2</crap>
+      <complexity>1</complexity>
+      <coverage>0</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Swagger\Building</package>
+      <className>Playground\Make\Swagger\Building\BuildControllerIndex</className>
+      <methodName>doc_controller_index_config</methodName>
+      <methodSignature>doc_controller_index_config(string $name, Playground\Make\Swagger\Configuration\Swagger\Controller\PathIndex $pathIndex): void</methodSignature>
+      <fullMethod>doc_controller_index_config(string $name, Playground\Make\Swagger\Configuration\Swagger\Controller\PathIndex $pathIndex): void</fullMethod>
+      <crap>2</crap>
+      <complexity>1</complexity>
+      <coverage>0</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Swagger\Building</package>
+      <className>Playground\Make\Swagger\Building\BuildControllerIndex</className>
+      <methodName>doc_controller_index_form</methodName>
+      <methodSignature>doc_controller_index_form(string $name): void</methodSignature>
+      <fullMethod>doc_controller_index_form(string $name): void</fullMethod>
+      <crap>2</crap>
+      <complexity>1</complexity>
+      <coverage>0</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Swagger\Building</package>
+      <className>Playground\Make\Swagger\Building\BuildControllerIndex</className>
+      <methodName>doc_controller_index_form_config</methodName>
+      <methodSignature>doc_controller_index_form_config(string $name, Playground\Make\Swagger\Configuration\Swagger\Controller\PathIndexForm $pathIndexForm): void</methodSignature>
+      <fullMethod>doc_controller_index_form_config(string $name, Playground\Make\Swagger\Configuration\Swagger\Controller\PathIndexForm $pathIndexForm): void</fullMethod>
+      <crap>2</crap>
+      <complexity>1</complexity>
+      <coverage>0</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Swagger\Building</package>
+      <className>Playground\Make\Swagger\Building\BuildControllerLock</className>
+      <methodName>doc_controller_lock</methodName>
+      <methodSignature>doc_controller_lock(string $name, string $controller_type): void</methodSignature>
+      <fullMethod>doc_controller_lock(string $name, string $controller_type): void</fullMethod>
+      <crap>2</crap>
+      <complexity>1</complexity>
+      <coverage>0</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Swagger\Building</package>
+      <className>Playground\Make\Swagger\Building\BuildControllerLock</className>
+      <methodName>doc_controller_lock_config</methodName>
+      <methodSignature>doc_controller_lock_config(string $name, Playground\Make\Swagger\Configuration\Swagger\Controller\PathLock $pathLock): void</methodSignature>
+      <fullMethod>doc_controller_lock_config(string $name, Playground\Make\Swagger\Configuration\Swagger\Controller\PathLock $pathLock): void</fullMethod>
+      <crap>2</crap>
+      <complexity>1</complexity>
+      <coverage>0</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Swagger\Building</package>
+      <className>Playground\Make\Swagger\Building\BuildControllerRestore</className>
+      <methodName>doc_controller_restore</methodName>
+      <methodSignature>doc_controller_restore(string $name, string $controller_type): void</methodSignature>
+      <fullMethod>doc_controller_restore(string $name, string $controller_type): void</fullMethod>
+      <crap>2</crap>
+      <complexity>1</complexity>
+      <coverage>0</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Swagger\Building</package>
+      <className>Playground\Make\Swagger\Building\BuildControllerRestore</className>
+      <methodName>doc_controller_restore_config</methodName>
+      <methodSignature>doc_controller_restore_config(string $name, Playground\Make\Swagger\Configuration\Swagger\Controller\PathRestore $pathRestore): void</methodSignature>
+      <fullMethod>doc_controller_restore_config(string $name, Playground\Make\Swagger\Configuration\Swagger\Controller\PathRestore $pathRestore): void</fullMethod>
+      <crap>2</crap>
+      <complexity>1</complexity>
       <coverage>0</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
       <package>Playground\Make\Swagger\Building</package>
       <className>Playground\Make\Swagger\Building\BuildModel</className>
+      <methodName>doc_model</methodName>
+      <methodSignature>doc_model(): void</methodSignature>
+      <fullMethod>doc_model(): void</fullMethod>
+      <crap>20</crap>
+      <complexity>4</complexity>
+      <coverage>0</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Swagger\Building</package>
+      <className>Playground\Make\Swagger\Building\BuildModel</className>
+      <methodName>doc_model_revision</methodName>
+      <methodSignature>doc_model_revision(): void</methodSignature>
+      <fullMethod>doc_model_revision(): void</fullMethod>
+      <crap>20</crap>
+      <complexity>4</complexity>
+      <coverage>0</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Swagger\Building</package>
+      <className>Playground\Make\Swagger\Building\BuildModelColumns</className>
       <methodName>doc_model_columns</methodName>
       <methodSignature>doc_model_columns(string $name, Playground\Make\Configuration\Model\Create $create): array</methodSignature>
       <fullMethod>doc_model_columns(string $name, Playground\Make\Configuration\Model\Create $create): array</fullMethod>
@@ -200,7 +211,7 @@
     </method>
     <method>
       <package>Playground\Make\Swagger\Building</package>
-      <className>Playground\Make\Swagger\Building\BuildModel</className>
+      <className>Playground\Make\Swagger\Building\BuildModelColumns</className>
       <methodName>doc_model_column</methodName>
       <methodSignature>doc_model_column(string $name, string $column, array $meta, string $section): void</methodSignature>
       <fullMethod>doc_model_column(string $name, string $column, array $meta, string $section): void</fullMethod>
@@ -211,7 +222,7 @@
     </method>
     <method>
       <package>Playground\Make\Swagger\Building</package>
-      <className>Playground\Make\Swagger\Building\BuildModel</className>
+      <className>Playground\Make\Swagger\Building\BuildModelColumns</className>
       <methodName>doc_model_primary</methodName>
       <methodSignature>doc_model_primary(string $name, mixed $primary): void</methodSignature>
       <fullMethod>doc_model_primary(string $name, mixed $primary): void</fullMethod>
@@ -222,7 +233,7 @@
     </method>
     <method>
       <package>Playground\Make\Swagger\Building</package>
-      <className>Playground\Make\Swagger\Building\BuildModel</className>
+      <className>Playground\Make\Swagger\Building\BuildModelColumns</className>
       <methodName>doc_model_ids</methodName>
       <methodSignature>doc_model_ids(string $name, array $ids): void</methodSignature>
       <fullMethod>doc_model_ids(string $name, array $ids): void</fullMethod>
@@ -233,7 +244,7 @@
     </method>
     <method>
       <package>Playground\Make\Swagger\Building</package>
-      <className>Playground\Make\Swagger\Building\BuildModel</className>
+      <className>Playground\Make\Swagger\Building\BuildModelColumns</className>
       <methodName>doc_model_softDeletes</methodName>
       <methodSignature>doc_model_softDeletes(string $name): void</methodSignature>
       <fullMethod>doc_model_softDeletes(string $name): void</fullMethod>
@@ -244,7 +255,7 @@
     </method>
     <method>
       <package>Playground\Make\Swagger\Building</package>
-      <className>Playground\Make\Swagger\Building\BuildModel</className>
+      <className>Playground\Make\Swagger\Building\BuildModelColumns</className>
       <methodName>doc_model_timestamps</methodName>
       <methodSignature>doc_model_timestamps(string $name): void</methodSignature>
       <fullMethod>doc_model_timestamps(string $name): void</fullMethod>
@@ -255,7 +266,7 @@
     </method>
     <method>
       <package>Playground\Make\Swagger\Building</package>
-      <className>Playground\Make\Swagger\Building\BuildModel</className>
+      <className>Playground\Make\Swagger\Building\BuildModelColumns</className>
       <methodName>doc_model_dates</methodName>
       <methodSignature>doc_model_dates(string $name, array $dates): void</methodSignature>
       <fullMethod>doc_model_dates(string $name, array $dates): void</fullMethod>
@@ -864,19 +875,19 @@
       <methodName>setOptions</methodName>
       <methodSignature>setOptions(array $options): self</methodSignature>
       <fullMethod>setOptions(array $options): self</fullMethod>
-      <crap>132</crap>
-      <complexity>11</complexity>
+      <crap>90</crap>
+      <complexity>9</complexity>
       <coverage>0</coverage>
-      <crapLoad>11</crapLoad>
+      <crapLoad>9</crapLoad>
     </method>
     <method>
       <package>Playground\Make\Swagger\Configuration\Swagger\Controller</package>
       <className>Playground\Make\Swagger\Configuration\Swagger\Controller\Path</className>
       <methodName>addParameter</methodName>
-      <methodSignature>addParameter(string $name, array $meta): self</methodSignature>
-      <fullMethod>addParameter(string $name, array $meta): self</fullMethod>
-      <crap>42</crap>
-      <complexity>6</complexity>
+      <methodSignature>addParameter(array $meta): self</methodSignature>
+      <fullMethod>addParameter(array $meta): self</fullMethod>
+      <crap>12</crap>
+      <complexity>3</complexity>
       <coverage>0</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -1447,8 +1458,8 @@
       <methodName>prepareOptions</methodName>
       <methodSignature>prepareOptions(): void</methodSignature>
       <fullMethod>prepareOptions(): void</fullMethod>
-      <crap>2</crap>
-      <complexity>1</complexity>
+      <crap>12</crap>
+      <complexity>3</complexity>
       <coverage>0</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -1458,10 +1469,10 @@
       <methodName>handle</methodName>
       <methodSignature>handle()</methodSignature>
       <fullMethod>handle()</fullMethod>
-      <crap>72</crap>
-      <complexity>8</complexity>
+      <crap>56</crap>
+      <complexity>7</complexity>
       <coverage>0</coverage>
-      <crapLoad>8</crapLoad>
+      <crapLoad>7</crapLoad>
     </method>
     <method>
       <package>Playground\Make\Swagger\Console\Commands</package>
