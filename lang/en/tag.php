@@ -15,6 +15,6 @@ return [
     |
     */
 
-    'description' => 'Manage :name in storage.',
+    'description' => 'Manage :names in storage.',
 
 ];

@@ -33,4 +33,8 @@ return [
     'addMappedClassTo.property.missing' => 'Adding a mapped class [:class] requires the property to exist: [MISSING: :property], a key: [:key] and a value [:value].',
 
     'addToUse.class.required' => 'Adding a use class [:class] requires a valid class: [INVALID: :use_class] and an optional key [:key].',
+
+    'info.title' => ':organization :module',
+    'externalDocs.description' => 'Read the Docs: :organization :module Packages',
+
 ];

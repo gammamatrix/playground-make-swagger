@@ -16,6 +16,8 @@ class Info extends SwaggerConfiguration
 
     protected string $termsOfService = '';
 
+    protected string $version = '';
+
     protected ?Contact $contact = null;
 
     /**
@@ -26,6 +28,7 @@ class Info extends SwaggerConfiguration
         'description' => '',
         'termsOfService' => '',
         'contact' => null,
+        'version' => '',
     ];
 
     /**
@@ -49,6 +52,12 @@ class Info extends SwaggerConfiguration
             && is_string($options['termsOfService'])
         ) {
             $this->termsOfService = $options['termsOfService'];
+        }
+
+        if (! empty($options['version'])
+            && is_string($options['version'])
+        ) {
+            $this->version = $options['version'];
         }
 
         if (! empty($options['contact'])
@@ -78,5 +87,10 @@ class Info extends SwaggerConfiguration
     public function title(): string
     {
         return $this->title;
+    }
+
+    public function version(): string
+    {
+        return $this->version;
     }
 }

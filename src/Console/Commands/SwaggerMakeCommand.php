@@ -35,9 +35,12 @@ class SwaggerMakeCommand extends GeneratorCommand
     use Building\BuildControllerRestore;
     use Building\BuildControllerRevision;
     use Building\BuildControllerRevisions;
+    use Building\BuildExternalDocs;
+    use Building\BuildInfo;
     use Building\BuildModel;
     use Building\BuildModelColumns;
     use Building\BuildRequest;
+    use Building\BuildServers;
     use Building\BuildSwagger;
     use Concerns\BuildImplements;
     use Concerns\BuildUses;
@@ -151,9 +154,9 @@ class SwaggerMakeCommand extends GeneratorCommand
         // dd([
         //     '__METHOD__' => __METHOD__,
         //     '$this->options()' => $this->options(),
-        //     // '$this->c' => $this->c,
-        //     '$this->model' => $this->model?->toArray(),
-        //     '$this->modelRevision' => $this->modelRevision?->toArray(),
+        //     '$this->c' => $this->c,
+        //     // '$this->model' => $this->model?->toArray(),
+        //     // '$this->modelRevision' => $this->modelRevision?->toArray(),
         //     // '$this->c' => $this->c->toArray(),
         //     '$this->searches' => $this->searches,
         // ]);
@@ -203,6 +206,9 @@ class SwaggerMakeCommand extends GeneratorCommand
                 ]);
             }
 
+            $this->doc_info();
+            $this->doc_external_docs();
+            $this->doc_servers();
             $this->doc_model();
             $this->doc_model_revision();
 

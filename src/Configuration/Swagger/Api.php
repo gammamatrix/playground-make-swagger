@@ -318,9 +318,16 @@ class Api extends Configuration\Configuration implements Configuration\Contracts
         $properties = [];
 
         $properties['openapi'] = $this->openapi();
-        $properties['servers'] = $this->servers();
-        $properties['info'] = $this->info();
-        $properties['externalDocs'] = $this->externalDocs();
+        $properties['info'] = $this->info()?->toArray();
+        $properties['externalDocs'] = $this->externalDocs()?->toArray();
+
+        $servers = $this->servers();
+        if ($servers) {
+            $properties['servers'] = [];
+            foreach ($servers as $server) {
+                $properties['servers'][] = $server->toArray();
+            }
+        }
 
         $tags = $this->tags();
         if ($tags) {
@@ -355,8 +362,9 @@ class Api extends Configuration\Configuration implements Configuration\Contracts
         //     }
         // }
 
-        // dd([
+        // dump([
         //     '$properties' => $properties,
+        //     '$this' => $this,
         // ]);
 
         return $properties;

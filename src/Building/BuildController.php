@@ -6,13 +6,13 @@
 declare(strict_types=1);
 namespace Playground\Make\Swagger\Building;
 
+use Illuminate\Support\Str;
+
 /**
  * \Playground\Make\Swagger\Building\BuildController
  */
 trait BuildController
 {
-    protected string $build_controller_description = '';
-
     /**
      * @var array<string, mixed>
      */
@@ -23,6 +23,9 @@ trait BuildController
         $this->build_controller_properties = [];
 
         $name = $this->c->name();
+
+        $model_label_lower_plural = Str::of($name)->kebab()->replace('-', ' ')->lower()->plural()->toString();
+
         if (empty($name)) {
             $this->components->error('Docs: The name must be set in the [controller] configuration');
 
@@ -36,7 +39,9 @@ trait BuildController
             'api',
         ])) {
             // Add the tag for the model.
-            $this->api->addTag($name);
+            $this->api->addTag($name, __('playground-make-swagger::tag.description', [
+                'names' => $model_label_lower_plural,
+            ]));
 
             $this->doc_controller_id($name);
             $this->doc_controller_index($name);
