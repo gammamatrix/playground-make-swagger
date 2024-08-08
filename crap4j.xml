@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <crap_result>
   <project/>
-  <timestamp>2024-08-07 08:24:17</timestamp>
+  <timestamp>2024-08-08 20:03:17</timestamp>
   <stats>
     <name>Method Crap Stats</name>
-    <methodCount>149</methodCount>
-    <crapMethodCount>20</crapMethodCount>
-    <crapLoad>238</crapLoad>
-    <totalCrap>4360</totalCrap>
-    <crapMethodPercent>13.42</crapMethodPercent>
+    <methodCount>153</methodCount>
+    <crapMethodCount>23</crapMethodCount>
+    <crapLoad>265</crapLoad>
+    <totalCrap>4638</totalCrap>
+    <crapMethodPercent>15.03</crapMethodPercent>
   </stats>
   <methods>
     <method>
@@ -222,6 +222,28 @@
     </method>
     <method>
       <package>Playground\Make\Swagger\Building</package>
+      <className>Playground\Make\Swagger\Building\BuildExternalDocs</className>
+      <methodName>doc_external_docs</methodName>
+      <methodSignature>doc_external_docs(): void</methodSignature>
+      <fullMethod>doc_external_docs(): void</fullMethod>
+      <crap>56</crap>
+      <complexity>7</complexity>
+      <coverage>0</coverage>
+      <crapLoad>7</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Swagger\Building</package>
+      <className>Playground\Make\Swagger\Building\BuildInfo</className>
+      <methodName>doc_info</methodName>
+      <methodSignature>doc_info(): void</methodSignature>
+      <fullMethod>doc_info(): void</fullMethod>
+      <crap>20</crap>
+      <complexity>4</complexity>
+      <coverage>0</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Swagger\Building</package>
       <className>Playground\Make\Swagger\Building\BuildModel</className>
       <methodName>doc_model</methodName>
       <methodSignature>doc_model(): void</methodSignature>
@@ -351,6 +373,17 @@
       <complexity>3</complexity>
       <coverage>0</coverage>
       <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Swagger\Building</package>
+      <className>Playground\Make\Swagger\Building\BuildServers</className>
+      <methodName>doc_servers</methodName>
+      <methodSignature>doc_servers(): void</methodSignature>
+      <fullMethod>doc_servers(): void</fullMethod>
+      <crap>132</crap>
+      <complexity>11</complexity>
+      <coverage>0</coverage>
+      <crapLoad>11</crapLoad>
     </method>
     <method>
       <package>Playground\Make\Swagger\Building</package>
@@ -655,10 +688,10 @@
       <methodName>jsonSerialize</methodName>
       <methodSignature>jsonSerialize(): mixed</methodSignature>
       <fullMethod>jsonSerialize(): mixed</fullMethod>
-      <crap>30</crap>
-      <complexity>5</complexity>
+      <crap>56</crap>
+      <complexity>7</complexity>
       <coverage>0</coverage>
-      <crapLoad>0</crapLoad>
+      <crapLoad>7</crapLoad>
     </method>
     <method>
       <package>Playground\Make\Swagger\Configuration\Swagger</package>
@@ -1095,10 +1128,10 @@
       <methodName>setOptions</methodName>
       <methodSignature>setOptions(array $options): self</methodSignature>
       <fullMethod>setOptions(array $options): self</fullMethod>
-      <crap>90</crap>
-      <complexity>9</complexity>
+      <crap>132</crap>
+      <complexity>11</complexity>
       <coverage>0</coverage>
-      <crapLoad>9</crapLoad>
+      <crapLoad>11</crapLoad>
     </method>
     <method>
       <package>Playground\Make\Swagger\Configuration\Swagger</package>
@@ -1139,6 +1172,17 @@
       <methodName>title</methodName>
       <methodSignature>title(): string</methodSignature>
       <fullMethod>title(): string</fullMethod>
+      <crap>2</crap>
+      <complexity>1</complexity>
+      <coverage>0</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Swagger\Configuration\Swagger</package>
+      <className>Playground\Make\Swagger\Configuration\Swagger\Info</className>
+      <methodName>version</methodName>
+      <methodSignature>version(): string</methodSignature>
+      <fullMethod>version(): string</fullMethod>
       <crap>2</crap>
       <complexity>1</complexity>
       <coverage>0</coverage>
