@@ -17,8 +17,12 @@ return [
 
     'data.description' => 'The :name data.',
 
-    'api.get.description' => 'The create :name information.',
-    'resource.get.description' => 'The create :name information (JSON) or (HTML).',
+    'create.description' => 'The create :name information.',
+    'create.resource.description' => 'The create :name information (JSON) or (HTML).',
+    'create.resource.content.example' => '<html><body><form method="POST" action="/resource/:route-module/:route-names">Create a :name</form></body></html>',
 
-    'resource.get.content.example' => '<html><body><form method="POST" action="/resource/:route-module/:route-names">Create a :name</form></body></html>',
+    'edit.description' => 'The edit :name information.',
+    'edit.resource.description' => 'The edit :name information (JSON) or (HTML).',
+    'edit.resource.content.example' => '<html><body><form method="POST" action="/resource/:route-module/:route-names/{id}">Edit a :name</form></body></html>',
+
 ];

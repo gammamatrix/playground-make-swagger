@@ -56,8 +56,8 @@ trait BuildControllerForm
         $model_title = Str::of($name)->title()->toString();
 
         $description_get = __(
-            $this->isResource ? 'playground-make-swagger::response.resource.get.description'
-            : 'playground-make-swagger::response.api.get.description', [
+            $this->isResource ? 'playground-make-swagger::response.create.resource.description'
+            : 'playground-make-swagger::response.create.description', [
                 'name' => $model_label_lower,
             ]);
 
@@ -97,7 +97,7 @@ trait BuildControllerForm
                     'type' => 'text/html',
                     'schema' => [
                         'type' => 'string',
-                        'example' => __('playground-make-swagger::response.resource.get.content.example', [
+                        'example' => __('playground-make-swagger::response.create.resource.content.example', [
                             'name' => $model_label_lower,
                             'route-module' => $module_route,
                             'route-names' => $model_route_plural,
@@ -120,10 +120,9 @@ trait BuildControllerForm
             'tags' => [
                 $model_title,
             ],
-            'summary' => sprintf(
-                'Create a %1$s form.',
-                $model_label_lower
-            ),
+            'summary' => __('playground-make-swagger::request.create.description', [
+                'name' => $model_label_lower,
+            ]),
             'operationId' => sprintf(
                 'create_%1$s',
                 $model_snake
@@ -165,6 +164,8 @@ trait BuildControllerForm
         Controller\PathEdit $pathEdit
     ): void {
 
+        $module_route = Str::of($this->c->module())->lower()->toString();
+
         $model_label_lower = Str::of($name)->kebab()->replace('-', ' ')->lower()->toString();
         $model_route = Str::of($name)->kebab()->toString();
         $model_route_plural = Str::of($name)->plural()->kebab()->toString();
@@ -176,60 +177,88 @@ trait BuildControllerForm
             'in' => 'path',
             'name' => 'id',
             'required' => true,
-            'description' => sprintf('The %1$s id.', $model_label_lower),
+            'description' => __('playground-make-swagger::params.id.description', [
+                'name' => $model_label_lower,
+            ]),
             'schema' => [
                 'type' => 'string',
                 'format' => 'uuid',
             ],
         ]);
 
-        $getMethod = $pathEdit->getMethod([
-            'tags' => [
-                $model_title,
-            ],
-            'summary' => sprintf(
-                'Edit a %1$s form.',
-                $model_label_lower
-            ),
-            'operationId' => sprintf(
-                'edit_%1$s',
-                $model_snake
-            ),
-            'responses' => [
-                [
-                    'code' => 200,
-                    'description' => sprintf(
-                        'The edit %1$s information.',
-                        $model_label_lower
-                    ),
-                    'content' => [
-                        'type' => 'application/json',
-                        'schema' => [
-                            'type' => 'object',
-                            'properties' => [
-                                'data' => [
-                                    '$ref' => sprintf(
-                                        '../../models/%s.yml',
-                                        $model_route
-                                    ),
-                                ],
-                                'meta' => [
-                                    'type' => 'object',
+        $description_get = __(
+            $this->isResource ? 'playground-make-swagger::response.edit.resource.description'
+            : 'playground-make-swagger::response.t.description', [
+                'name' => $model_label_lower,
+            ]);
 
-                                ],
+        $responses_get = [];
+
+        if ($this->isApi || $this->isResource) {
+            $responses_get[] = [
+                'code' => 200,
+                'description' => $description_get,
+                'content' => [
+                    'type' => 'application/json',
+                    'schema' => [
+                        'type' => 'object',
+                        'properties' => [
+                            'data' => [
+                                '$ref' => sprintf(
+                                    '../../models/%s.yml',
+                                    $model_route
+                                ),
+                            ],
+                            'meta' => [
+                                'type' => 'object',
+
                             ],
                         ],
                     ],
                 ],
-                [
-                    'code' => 401,
-                    'description' => 'Unauthorized',
+            ];
+        }
+
+        if ($this->isResource) {
+            $responses_get[] = [
+                'code' => 200,
+                // Only the first description is used
+                // 'description' => $description_get,
+                'content' => [
+                    'type' => 'text/html',
+                    'schema' => [
+                        'type' => 'string',
+                        'example' => __('playground-make-swagger::response.edit.resource.content.example', [
+                            'name' => $model_label_lower,
+                            'route-module' => $module_route,
+                            'route-names' => $model_route_plural,
+                        ]),
+                    ],
                 ],
-                [
-                    'code' => 403,
-                    'description' => 'Forbidden',
-                ],
+            ];
+        }
+
+        $responses_get[] = [
+            'code' => 401,
+            'description' => 'Unauthorized',
+        ];
+        $responses_get[] = [
+            'code' => 403,
+            'description' => 'Forbidden',
+        ];
+
+        $getMethod = $pathEdit->getMethod([
+            'tags' => [
+                $model_title,
             ],
+            'summary' => __('playground-make-swagger::request.edit.description', [
+                'name' => $model_label_lower,
+            ]),
+            'operationId' => sprintf(
+                'edit_%1$s',
+                $model_snake
+            ),
+            'responses' => $responses_get,
         ]);
 
         $getMethod?->apply();

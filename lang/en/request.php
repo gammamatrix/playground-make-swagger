@@ -25,4 +25,6 @@ return [
     'filter.trash.description' => 'Filter trash options',
     'filter.type.description' => 'The :name type of this :name.',
 
+    'create.description' => 'Create a :name form.',
+    'edit.description' => 'Edit a :name form.',
 ];

@@ -32,12 +32,12 @@ trait BuildController
             return;
         }
         $type = $this->c->type();
-        dump([
-            '__METHOD__' => __METHOD__,
-            '$type' => $type,
-            '$this->c->type()' => $this->c->type(),
-            '$this->options()' => $this->options(),
-        ]);
+        // dump([
+        //     '__METHOD__' => __METHOD__,
+        //     '$type' => $type,
+        //     '$this->c->type()' => $this->c->type(),
+        //     '$this->options()' => $this->options(),
+        // ]);
 
         if (in_array($type, [
             'playground-api',
