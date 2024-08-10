@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <crap_result>
   <project/>
-  <timestamp>2024-08-10 19:18:41</timestamp>
+  <timestamp>2024-08-10 21:11:08</timestamp>
   <stats>
     <name>Method Crap Stats</name>
     <methodCount>152</methodCount>
     <crapMethodCount>23</crapMethodCount>
     <crapLoad>268</crapLoad>
-    <totalCrap>4730</totalCrap>
+    <totalCrap>4758</totalCrap>
     <crapMethodPercent>15.13</crapMethodPercent>
   </stats>
   <methods>
@@ -61,8 +61,8 @@
       <methodName>doc_controller_edit_config</methodName>
       <methodSignature>doc_controller_edit_config(string $name, Playground\Make\Swagger\Configuration\Swagger\Controller\PathEdit $pathEdit): void</methodSignature>
       <fullMethod>doc_controller_edit_config(string $name, Playground\Make\Swagger\Configuration\Swagger\Controller\PathEdit $pathEdit): void</fullMethod>
-      <crap>2</crap>
-      <complexity>1</complexity>
+      <crap>30</crap>
+      <complexity>5</complexity>
       <coverage>0</coverage>
       <crapLoad>0</crapLoad>
     </method>
