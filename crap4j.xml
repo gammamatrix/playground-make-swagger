@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <crap_result>
   <project/>
-  <timestamp>2024-08-08 20:03:17</timestamp>
+  <timestamp>2024-08-10 19:18:41</timestamp>
   <stats>
     <name>Method Crap Stats</name>
-    <methodCount>153</methodCount>
+    <methodCount>152</methodCount>
     <crapMethodCount>23</crapMethodCount>
-    <crapLoad>265</crapLoad>
-    <totalCrap>4638</totalCrap>
-    <crapMethodPercent>15.03</crapMethodPercent>
+    <crapLoad>268</crapLoad>
+    <totalCrap>4730</totalCrap>
+    <crapMethodPercent>15.13</crapMethodPercent>
   </stats>
   <methods>
     <method>
@@ -39,8 +39,8 @@
       <methodName>doc_controller_create_config</methodName>
       <methodSignature>doc_controller_create_config(string $name, Playground\Make\Swagger\Configuration\Swagger\Controller\PathCreate $pathCreate): void</methodSignature>
       <fullMethod>doc_controller_create_config(string $name, Playground\Make\Swagger\Configuration\Swagger\Controller\PathCreate $pathCreate): void</fullMethod>
-      <crap>2</crap>
-      <complexity>1</complexity>
+      <crap>30</crap>
+      <complexity>5</complexity>
       <coverage>0</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -136,8 +136,8 @@
       <package>Playground\Make\Swagger\Building</package>
       <className>Playground\Make\Swagger\Building\BuildControllerLock</className>
       <methodName>doc_controller_lock</methodName>
-      <methodSignature>doc_controller_lock(string $name, string $controller_type): void</methodSignature>
-      <fullMethod>doc_controller_lock(string $name, string $controller_type): void</fullMethod>
+      <methodSignature>doc_controller_lock(string $name): void</methodSignature>
+      <fullMethod>doc_controller_lock(string $name): void</fullMethod>
       <crap>2</crap>
       <complexity>1</complexity>
       <coverage>0</coverage>
@@ -158,8 +158,8 @@
       <package>Playground\Make\Swagger\Building</package>
       <className>Playground\Make\Swagger\Building\BuildControllerRestore</className>
       <methodName>doc_controller_restore</methodName>
-      <methodSignature>doc_controller_restore(string $name, string $controller_type): void</methodSignature>
-      <fullMethod>doc_controller_restore(string $name, string $controller_type): void</fullMethod>
+      <methodSignature>doc_controller_restore(string $name): void</methodSignature>
+      <fullMethod>doc_controller_restore(string $name): void</fullMethod>
       <crap>2</crap>
       <complexity>1</complexity>
       <coverage>0</coverage>
@@ -180,8 +180,8 @@
       <package>Playground\Make\Swagger\Building</package>
       <className>Playground\Make\Swagger\Building\BuildControllerRevision</className>
       <methodName>doc_controller_revision</methodName>
-      <methodSignature>doc_controller_revision(string $name, string $controller_type): void</methodSignature>
-      <fullMethod>doc_controller_revision(string $name, string $controller_type): void</fullMethod>
+      <methodSignature>doc_controller_revision(string $name): void</methodSignature>
+      <fullMethod>doc_controller_revision(string $name): void</fullMethod>
       <crap>2</crap>
       <complexity>1</complexity>
       <coverage>0</coverage>
@@ -237,10 +237,10 @@
       <methodName>doc_info</methodName>
       <methodSignature>doc_info(): void</methodSignature>
       <fullMethod>doc_info(): void</fullMethod>
-      <crap>20</crap>
-      <complexity>4</complexity>
+      <crap>110</crap>
+      <complexity>10</complexity>
       <coverage>0</coverage>
-      <crapLoad>0</crapLoad>
+      <crapLoad>10</crapLoad>
     </method>
     <method>
       <package>Playground\Make\Swagger\Building</package>
@@ -446,10 +446,10 @@
       <methodName>setOptions</methodName>
       <methodSignature>setOptions(array $options): self</methodSignature>
       <fullMethod>setOptions(array $options): self</fullMethod>
-      <crap>182</crap>
-      <complexity>13</complexity>
+      <crap>132</crap>
+      <complexity>11</complexity>
       <coverage>0</coverage>
-      <crapLoad>13</crapLoad>
+      <crapLoad>11</crapLoad>
     </method>
     <method>
       <package>Playground\Make\Swagger\Configuration</package>
@@ -468,17 +468,6 @@
       <methodName>model_fqdn</methodName>
       <methodSignature>model_fqdn(): string</methodSignature>
       <fullMethod>model_fqdn(): string</fullMethod>
-      <crap>2</crap>
-      <complexity>1</complexity>
-      <coverage>0</coverage>
-      <crapLoad>0</crapLoad>
-    </method>
-    <method>
-      <package>Playground\Make\Swagger\Configuration</package>
-      <className>Playground\Make\Swagger\Configuration\Swagger</className>
-      <methodName>controller_type</methodName>
-      <methodSignature>controller_type(): string</methodSignature>
-      <fullMethod>controller_type(): string</fullMethod>
       <crap>2</crap>
       <complexity>1</complexity>
       <coverage>0</coverage>
@@ -1315,10 +1304,10 @@
       <methodName>jsonSerialize</methodName>
       <methodSignature>jsonSerialize(): mixed</methodSignature>
       <fullMethod>jsonSerialize(): mixed</fullMethod>
-      <crap>56</crap>
-      <complexity>7</complexity>
+      <crap>90</crap>
+      <complexity>9</complexity>
       <coverage>0</coverage>
-      <crapLoad>7</crapLoad>
+      <crapLoad>9</crapLoad>
     </method>
     <method>
       <package>Playground\Make\Swagger\Configuration\Swagger\Methods</package>
@@ -1568,8 +1557,8 @@
       <methodName>prepareOptions</methodName>
       <methodSignature>prepareOptions(): void</methodSignature>
       <fullMethod>prepareOptions(): void</fullMethod>
-      <crap>12</crap>
-      <complexity>3</complexity>
+      <crap>30</crap>
+      <complexity>5</complexity>
       <coverage>0</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -1579,10 +1568,10 @@
       <methodName>handle</methodName>
       <methodSignature>handle()</methodSignature>
       <fullMethod>handle()</fullMethod>
-      <crap>56</crap>
-      <complexity>7</complexity>
+      <crap>30</crap>
+      <complexity>5</complexity>
       <coverage>0</coverage>
-      <crapLoad>7</crapLoad>
+      <crapLoad>0</crapLoad>
     </method>
     <method>
       <package>Playground\Make\Swagger\Console\Commands</package>
