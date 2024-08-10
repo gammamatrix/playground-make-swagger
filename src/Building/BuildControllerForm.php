@@ -45,12 +45,76 @@ trait BuildControllerForm
         Controller\PathCreate $pathCreate
     ): void {
 
+        $module_route = Str::of($this->c->module())->lower()->toString();
+        // $model_route_plural = Str::of($name)->plural()->kebab()->toString();
+
         $model_label_lower = Str::of($name)->kebab()->replace('-', ' ')->lower()->toString();
         $model_route = Str::of($name)->kebab()->toString();
         $model_route_plural = Str::of($name)->plural()->kebab()->toString();
         $model_snake = Str::of($name)->snake()->toString();
         $model_snake_plural = Str::of($name)->plural()->snake()->toString();
         $model_title = Str::of($name)->title()->toString();
+
+        $description_get = __(
+            $this->isResource ? 'playground-make-swagger::response.resource.get.description'
+            : 'playground-make-swagger::response.api.get.description', [
+                'name' => $model_label_lower,
+            ]);
+
+        $responses_get = [];
+
+        if ($this->isApi || $this->isResource) {
+            $responses_get[] = [
+                'code' => 200,
+                'description' => $description_get,
+                'content' => [
+                    'type' => 'application/json',
+                    'schema' => [
+                        'type' => 'object',
+                        'properties' => [
+                            'data' => [
+                                '$ref' => sprintf(
+                                    '../../models/%s.yml',
+                                    $model_route
+                                ),
+                            ],
+                            'meta' => [
+                                'type' => 'object',
+
+                            ],
+                        ],
+                    ],
+                ],
+            ];
+        }
+
+        if ($this->isResource) {
+            $responses_get[] = [
+                'code' => 200,
+                // Only the first description is used
+                // 'description' => $description_get,
+                'content' => [
+                    'type' => 'text/html',
+                    'schema' => [
+                        'type' => 'string',
+                        'example' => __('playground-make-swagger::response.resource.get.content.example', [
+                            'name' => $model_label_lower,
+                            'route-module' => $module_route,
+                            'route-names' => $model_route_plural,
+                        ]),
+                    ],
+                ],
+            ];
+        }
+
+        $responses_get[] = [
+            'code' => 401,
+            'description' => 'Unauthorized',
+        ];
+        $responses_get[] = [
+            'code' => 403,
+            'description' => 'Forbidden',
+        ];
 
         $getMethod = $pathCreate->getMethod([
             'tags' => [
@@ -64,41 +128,7 @@ trait BuildControllerForm
                 'create_%1$s',
                 $model_snake
             ),
-            'responses' => [
-                [
-                    'code' => 200,
-                    'description' => sprintf(
-                        'The create %1$s information.',
-                        $model_label_lower
-                    ),
-                    'content' => [
-                        'type' => 'application/json',
-                        'schema' => [
-                            'type' => 'object',
-                            'properties' => [
-                                'data' => [
-                                    '$ref' => sprintf(
-                                        '../../models/%s.yml',
-                                        $model_route
-                                    ),
-                                ],
-                                'meta' => [
-                                    'type' => 'object',
-
-                                ],
-                            ],
-                        ],
-                    ],
-                ],
-                [
-                    'code' => 401,
-                    'description' => 'Unauthorized',
-                ],
-                [
-                    'code' => 403,
-                    'description' => 'Forbidden',
-                ],
-            ],
+            'responses' => $responses_get,
         ]);
 
         $getMethod?->apply();

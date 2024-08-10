@@ -127,6 +127,20 @@ class SwaggerMakeCommand extends GeneratorCommand
 
         $type = $this->getConfigurationType();
 
+        if (in_array($type, [
+            'resource',
+            'playground-resource',
+        ])) {
+            $this->isApi = false;
+            $this->isResource = true;
+        } elseif (in_array($type, [
+            'resource',
+            'playground-resource',
+        ])) {
+            $this->isApi = true;
+            $this->isResource = false;
+        }
+
         $this->initModel($this->c->skeleton());
 
         if ($this->hasOption('model-revision-file')
@@ -199,12 +213,6 @@ class SwaggerMakeCommand extends GeneratorCommand
             'playground-api',
             'playground-resource',
         ])) {
-
-            if ($this->hasOption('controller-type') && is_string($this->option('controller-type')) ) {
-                $this->c->setOptions([
-                    'controller_type' => $this->option('controller-type'),
-                ]);
-            }
 
             $this->doc_info();
             $this->doc_external_docs();
@@ -380,7 +388,7 @@ class SwaggerMakeCommand extends GeneratorCommand
 
         $options[] = ['title', null, InputOption::VALUE_OPTIONAL, 'The title of the docs'];
         $options[] = ['prefix', null, InputOption::VALUE_OPTIONAL, 'The prefix slug for the docs.'];
-        $options[] = ['controller-type', null, InputOption::VALUE_OPTIONAL, 'The controller type for the docs.'];
+        // $options[] = ['controller-type', null, InputOption::VALUE_OPTIONAL, 'The controller type for the docs.'];
         $options[] = ['revision', null, InputOption::VALUE_NONE, 'The docs should document revision end points.'];
         $options[] = ['model-revision-file', null, InputOption::VALUE_OPTIONAL, 'The file for the revision model.'];
 

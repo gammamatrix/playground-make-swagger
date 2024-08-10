@@ -34,7 +34,7 @@ return [
 
     'addToUse.class.required' => 'Adding a use class [:class] requires a valid class: [INVALID: :use_class] and an optional key [:key].',
 
-    'info.title' => ':organization :module',
+    'info.title' => ':organization :module :type',
     'externalDocs.description' => 'Read the Docs: :organization :module Packages',
 
 ];

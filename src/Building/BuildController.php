@@ -31,8 +31,15 @@ trait BuildController
 
             return;
         }
-        $controller_type = $this->c->controller_type();
-        if (in_array($controller_type, [
+        $type = $this->c->type();
+        dump([
+            '__METHOD__' => __METHOD__,
+            '$type' => $type,
+            '$this->c->type()' => $this->c->type(),
+            '$this->options()' => $this->options(),
+        ]);
+
+        if (in_array($type, [
             'playground-api',
             'playground-resource',
             'resource',
@@ -52,7 +59,6 @@ trait BuildController
             $this->doc_controller_revisions($name);
             $this->doc_controller_create($name);
             $this->doc_controller_edit($name);
-
         }
     }
 }

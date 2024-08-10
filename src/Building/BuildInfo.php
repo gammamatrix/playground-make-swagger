@@ -15,15 +15,56 @@ trait BuildInfo
     {
         $options = [];
 
-        if ($this->c->skeleton()) {
-            $options['title'] = __('playground-make-swagger::api.info.title', [
-                'organization' => $this->c->organization(),
-                'module' => $this->c->module(),
-            ]);
+        $isResource = in_array($this->c->type(), [
+            'resource',
+            'playground-resource',
+            // 'playground-resource-index',
+        ]);
+        $isApi = in_array($this->c->type(), [
+            'api',
+            'playground-api',
+            // 'playground-api-index',
+        ]);
 
-            $options['description'] = __('playground-make-package::composer.model.description', [
-                'organization' => $this->c->organization(),
-                'module' => $this->c->module(),
+        $type = '';
+
+        if ($isResource) {
+            $type = 'Resource';
+        } elseif ($isApi) {
+            $type = 'API';
+        }
+
+        if ($this->c->skeleton()) {
+            $module = $this->c->module();
+            $organization = $this->c->organization();
+            $options['title'] = trim(__('playground-make-swagger::api.info.title', [
+                'organization' => $organization,
+                'module' => $module,
+                'type' => $type,
+            ]));
+
+            $system = 'System';
+
+            if ($module === 'CMS') {
+                $system = 'Content Management System';
+            } elseif ($module === 'CRM') {
+                $system = 'Client Relationship Management System';
+            } elseif ($module === 'DAM') {
+                $system = 'Digital Asset Management System';
+            }
+
+            if (in_array($this->c->type(), [
+                'playground-resource',
+                'playground-resource-index',
+            ])) {
+                $message = 'playground-make-package::composer.resource.description';
+            } else {
+                $message = 'playground-make-package::composer.api.description';
+            }
+            $options['description'] = __($message, [
+                'organization' => $organization,
+                'module' => $module,
+                'system' => $system,
             ]);
 
         }
@@ -42,14 +83,18 @@ trait BuildInfo
 
         $this->api->apply();
 
-        // dump([
+        // dd([
         //     '__METHOD__' => __METHOD__,
-        //     '$options' => $options,
-        //     '$this->options()' => $this->options(),
         //     '$this->c' => $this->c,
         //     '$this->api' => $this->api,
         //     // '$this->model' => $this->model?->toArray(),
         //     // '$this->modelRevision' => $this->modelRevision?->toArray(),
+        //     '$options' => $options,
+        //     '$isResource' => $isResource,
+        //     '$isApi' => $isApi,
+        //     '$type' => $type,
+        //     '$this->c->type()' => $this->c->type(),
+        //     '$this->options()' => $this->options(),
         //     '$this->searches' => $this->searches,
         // ]);
     }

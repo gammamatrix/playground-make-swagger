@@ -14,11 +14,8 @@ use Playground\Make\Swagger\Configuration\Swagger\Controller;
  */
 trait BuildControllerLock
 {
-    protected function doc_controller_lock(
-        string $name,
-        string $controller_type = ''
-    ): void {
-
+    protected function doc_controller_lock(string $name): void
+    {
         $module_route = Str::of($this->c->module())->lower()->toString();
         $model_route_plural = Str::of($name)->plural()->kebab()->toString();
 

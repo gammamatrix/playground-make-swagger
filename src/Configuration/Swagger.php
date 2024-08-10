@@ -13,8 +13,6 @@ use Playground\Make\Configuration\PrimaryConfiguration;
  */
 class Swagger extends PrimaryConfiguration
 {
-    protected string $controller_type = '';
-
     protected string $model_fqdn = '';
 
     protected string $model_column = '';
@@ -50,7 +48,6 @@ class Swagger extends PrimaryConfiguration
         'models' => [],
         'folder' => '',
         'type' => '',
-        'controller_type' => '',
     ];
 
     /**
@@ -59,12 +56,6 @@ class Swagger extends PrimaryConfiguration
     public function setOptions(array $options = []): self
     {
         parent::setOptions($options);
-
-        if (! empty($options['controller_type'])
-            && is_string($options['controller_type'])
-        ) {
-            $this->controller_type = $options['controller_type'];
-        }
 
         if (! empty($options['model_fqdn'])
             && is_string($options['model_fqdn'])
@@ -120,11 +111,6 @@ class Swagger extends PrimaryConfiguration
     public function model_fqdn(): string
     {
         return $this->model_fqdn;
-    }
-
-    public function controller_type(): string
-    {
-        return $this->controller_type;
     }
 
     /**

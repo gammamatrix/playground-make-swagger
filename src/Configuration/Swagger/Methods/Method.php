@@ -162,23 +162,62 @@ class Method extends Configuration\Configuration
         if ($responses) {
             $properties['responses'] = [];
             foreach ($responses as $i => $response) {
-                $properties['responses'][$response->code()] = [
-                    'description' => $response->description(),
-                ];
+
+                if (empty($properties['responses'][$response->code()])) {
+                    $properties['responses'][$response->code()] = [
+                        'description' => $response->description(),
+                    ];
+                }
 
                 $content = $response->content();
+                // dump([
+                //     '$response' => $response,
+                //     '$content' => $content,
+                // ]);
                 if ($content) {
-                    $properties['responses'][$response->code()]['content'] = $content->toArray();
+                    if (empty($properties['responses'][$response->code()]['content'])) {
+                        $properties['responses'][$response->code()]['content'] = [];
+                    }
+                    $properties['responses'][$response->code()]['content'][$content->type()] = $content->toArray();
                 }
             }
         }
 
-        // dump([
-        //     '$properties' => $properties,
-        //     '$responses' => $responses,
-        //     '$requestBody' => $requestBody,
-        // ]);
+        // if (in_array($this->operationId(), [
+        //     'create_page',
+        // ])) {
+        //     dd([
+        //         '$properties' => $properties,
+        //         '$responses' => $responses,
+        //         '$requestBody' => $requestBody,
+        //     ]);
+        // }
 
         return $properties;
     }
 }
+// get:
+//   tags:
+//     - Page
+//   summary: 'Create a page form.'
+//   operationId: create_page
+//   responses:
+//     200:
+//       description: 'The create information (JSON) or form (HTML).'
+//       content:
+//         application/json:
+//           schema:
+//             type: object
+//             properties:
+//               data:
+//                 $ref: ../../models/page.yml
+//               meta:
+//                 type: object
+//         text/html:
+//           schema:
+//             type: string
+//             example: '<html><body><form method="POST" action="/resource/cms/pages">Create a page</form></body></html>'
+//     401:
+//       description: Unauthorized
+//     403:
+//       description: Forbidden

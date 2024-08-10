@@ -74,12 +74,13 @@ class Content extends Configuration\Configuration
         $type = $this->type();
 
         if ($type) {
-            $properties[$type] = [
-                // 'schema' => [],
-            ];
+            // $properties[$type] = [
+            //     // 'schema' => [],
+            // ];
 
             if ($schema) {
-                $properties[$type]['schema'] = $schema;
+                // $properties[$type]['schema'] = $schema;
+                $properties['schema'] = $schema;
             }
         }
 

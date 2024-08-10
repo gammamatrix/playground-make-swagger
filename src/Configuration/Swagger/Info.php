@@ -27,7 +27,7 @@ class Info extends SwaggerConfiguration
         'title' => '',
         'description' => '',
         'termsOfService' => '',
-        'contact' => null,
+        // 'contact' => null,
         'version' => '',
     ];
 
