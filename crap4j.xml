@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <crap_result>
   <project/>
-  <timestamp>2024-08-10 21:11:08</timestamp>
+  <timestamp>2024-08-16 05:34:03</timestamp>
   <stats>
     <name>Method Crap Stats</name>
     <methodCount>152</methodCount>
-    <crapMethodCount>23</crapMethodCount>
-    <crapLoad>268</crapLoad>
-    <totalCrap>4758</totalCrap>
-    <crapMethodPercent>15.13</crapMethodPercent>
+    <crapMethodCount>24</crapMethodCount>
+    <crapLoad>275</crapLoad>
+    <totalCrap>4784</totalCrap>
+    <crapMethodPercent>15.79</crapMethodPercent>
   </stats>
   <methods>
     <method>
@@ -1557,10 +1557,10 @@
       <methodName>prepareOptions</methodName>
       <methodSignature>prepareOptions(): void</methodSignature>
       <fullMethod>prepareOptions(): void</fullMethod>
-      <crap>30</crap>
-      <complexity>5</complexity>
+      <crap>56</crap>
+      <complexity>7</complexity>
       <coverage>0</coverage>
-      <crapLoad>0</crapLoad>
+      <crapLoad>7</crapLoad>
     </method>
     <method>
       <package>Playground\Make\Swagger\Console\Commands</package>
