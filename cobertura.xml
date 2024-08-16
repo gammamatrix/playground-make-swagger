@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE coverage SYSTEM "http://cobertura.sourceforge.net/xml/coverage-04.dtd">
-<coverage line-rate="0.015070921985816" branch-rate="0" lines-covered="34" lines-valid="2256" branches-covered="0" branches-valid="0" complexity="520" version="0.4" timestamp="1723786443">
+<coverage line-rate="0.015064244572441" branch-rate="0" lines-covered="34" lines-valid="2257" branches-covered="0" branches-valid="0" complexity="522" version="0.4" timestamp="1723827663">
   <sources>
     <source>/app/src</source>
   </sources>
   <packages>
-    <package name="Building/BuildController.php" line-rate="0" branch-rate="0" complexity="3">
+    <package name="Building/BuildController.php" line-rate="0" branch-rate="0" complexity="5">
       <classes>
-        <class name="Playground\Make\Swagger\Building\BuildController" filename="Building/BuildController.php" line-rate="0" branch-rate="0" complexity="3">
+        <class name="Playground\Make\Swagger\Building\BuildController" filename="Building/BuildController.php" line-rate="0" branch-rate="0" complexity="5">
           <methods>
-            <method name="doc_controller" signature="" line-rate="0" branch-rate="0" complexity="3">
+            <method name="doc_controller" signature="" line-rate="0" branch-rate="0" complexity="5">
               <lines>
                 <line number="23" hits="0"/>
                 <line number="25" hits="0"/>
@@ -35,7 +35,8 @@
                 <line number="52" hits="0"/>
                 <line number="53" hits="0"/>
                 <line number="54" hits="0"/>
-                <line number="55" hits="0"/>
+                <line number="56" hits="0"/>
+                <line number="57" hits="0"/>
               </lines>
             </method>
           </methods>
@@ -64,7 +65,8 @@
             <line number="52" hits="0"/>
             <line number="53" hits="0"/>
             <line number="54" hits="0"/>
-            <line number="55" hits="0"/>
+            <line number="56" hits="0"/>
+            <line number="57" hits="0"/>
           </lines>
         </class>
       </classes>
