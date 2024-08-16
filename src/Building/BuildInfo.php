@@ -43,14 +43,14 @@ trait BuildInfo
                 'type' => $type,
             ]));
 
-            $system = 'System';
-
             if ($module === 'CMS') {
                 $system = 'Content Management System';
             } elseif ($module === 'CRM') {
                 $system = 'Client Relationship Management System';
             } elseif ($module === 'DAM') {
                 $system = 'Digital Asset Management System';
+            } else {
+                $system = trim($module.' System');
             }
 
             if (in_array($this->c->type(), [
@@ -72,7 +72,7 @@ trait BuildInfo
         $version = config('playground-make-swagger.version');
 
         if ($version && is_string($version)) {
-            $option['version'] = $version;
+            $options['version'] = $version;
         }
 
         $this->api->setOptions([
@@ -90,12 +90,14 @@ trait BuildInfo
         //     // '$this->model' => $this->model?->toArray(),
         //     // '$this->modelRevision' => $this->modelRevision?->toArray(),
         //     '$options' => $options,
+        //     '$version' => $version,
         //     '$isResource' => $isResource,
         //     '$isApi' => $isApi,
         //     '$type' => $type,
         //     '$this->c->type()' => $this->c->type(),
         //     '$this->options()' => $this->options(),
         //     '$this->searches' => $this->searches,
+        //     '$this->api' => $this->api->toArray(),
         // ]);
     }
 }

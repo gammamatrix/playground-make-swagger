@@ -21,7 +21,8 @@ trait BuildControllerForm
 
         $pathCreate = $this->api->controller($name)->pathCreate([
             'path' => sprintf(
-                '/api/%1$s/%2$s/create',
+                '%1$s/%2$s/%3$s/create',
+                $this->route_prefix,
                 $module_route,
                 $model_route_plural
             ),
@@ -140,7 +141,8 @@ trait BuildControllerForm
 
         $pathEdit = $this->api->controller($name)->pathEdit([
             'path' => sprintf(
-                '/api/%1$s/%2$s/edit/{id}',
+                '%1$s/%2$s/%3$s/edit/{id}',
+                $this->route_prefix,
                 $module_route,
                 $model_route_plural
             ),
@@ -188,7 +190,7 @@ trait BuildControllerForm
 
         $description_get = __(
             $this->isResource ? 'playground-make-swagger::response.edit.resource.description'
-            : 'playground-make-swagger::response.t.description', [
+            : 'playground-make-swagger::response.edit.description', [
                 'name' => $model_label_lower,
             ]);
 

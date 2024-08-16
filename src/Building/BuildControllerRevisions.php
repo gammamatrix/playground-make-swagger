@@ -21,7 +21,8 @@ trait BuildControllerRevisions
 
         $pathRevisions = $this->api->controller($name)->pathRevisions([
             'path' => sprintf(
-                '/api/%1$s/%2$s/{id}/revisions',
+                '%1$s/%2$s/%3$s/{id}/revisions',
+                $this->route_prefix,
                 $module_route,
                 $model_route_plural
             ),

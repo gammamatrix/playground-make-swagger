@@ -26,7 +26,7 @@ class Info extends SwaggerConfiguration
     protected $properties = [
         'title' => '',
         'description' => '',
-        'termsOfService' => '',
+        // 'termsOfService' => '',
         // 'contact' => null,
         'version' => '',
     ];
@@ -52,6 +52,7 @@ class Info extends SwaggerConfiguration
             && is_string($options['termsOfService'])
         ) {
             $this->termsOfService = $options['termsOfService'];
+            $this->properties['termsOfService'] = $this->termsOfService;
         }
 
         if (! empty($options['version'])
@@ -64,6 +65,7 @@ class Info extends SwaggerConfiguration
             && is_array($options['contact'])
         ) {
             $this->contact = new Contact($options['contact']);
+            $this->properties['contact'] = $this->contact;
         }
 
         return $this;

@@ -21,7 +21,8 @@ trait BuildControllerRestore
 
         $pathRestore = $this->api->controller($name)->pathRestore([
             'path' => sprintf(
-                '/api/%1$s/%2$s/restore/{id}',
+                '%1$s/%2$s/%3$s/restore/{id}',
+                $this->route_prefix,
                 $module_route,
                 $model_route_plural
             ),

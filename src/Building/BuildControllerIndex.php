@@ -23,7 +23,8 @@ trait BuildControllerIndex
 
         $pathIndex = $this->api->controller($name)->pathIndex([
             'path' => sprintf(
-                '/api/%1$s/%2$s',
+                '%1$s/%2$s/%3$s',
+                $this->route_prefix,
                 $module_route,
                 $model_route_plural
             ),
@@ -214,7 +215,8 @@ trait BuildControllerIndex
 
         $pathIndexForm = $this->api->controller($name)->pathIndexForm([
             'path' => sprintf(
-                '/api/%1$s/%2$s/index',
+                '%1$s/%2$s/%3$s/index',
+                $this->route_prefix,
                 $module_route,
                 $model_route_plural
             ),

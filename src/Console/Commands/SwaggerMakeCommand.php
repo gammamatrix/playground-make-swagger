@@ -113,6 +113,8 @@ class SwaggerMakeCommand extends GeneratorCommand
 
     protected ?Model $modelRevision = null;
 
+    protected string $route_prefix = '';
+
     public function prepareOptions(): void
     {
         $this->modelRevision = null;
@@ -134,12 +136,29 @@ class SwaggerMakeCommand extends GeneratorCommand
             $this->isApi = false;
             $this->isResource = true;
         } elseif (in_array($type, [
-            'resource',
-            'playground-resource',
+            'api',
+            'playground-api',
         ])) {
             $this->isApi = true;
             $this->isResource = false;
         }
+
+        $this->route_prefix = '';
+
+        if ($this->isApi) {
+            $this->route_prefix = '/api';
+        } elseif ($this->isResource) {
+            $this->route_prefix = '/resource';
+        }
+        // dd([
+        //     '__METHOD__' => __METHOD__,
+        //     '$type' => $type,
+        //     '$this->route_prefix' => $this->route_prefix,
+        //     '$this->isApi' => $this->isApi,
+        //     '$this->isResource' => $this->isResource,
+        //     '$this->c->type()' => $this->c->type(),
+        //     '$this->options()' => $this->options(),
+        // ]);
 
         $this->initModel($this->c->skeleton());
 

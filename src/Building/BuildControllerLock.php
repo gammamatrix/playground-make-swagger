@@ -21,7 +21,8 @@ trait BuildControllerLock
 
         $pathLock = $this->api->controller($name)->pathLock([
             'path' => sprintf(
-                '/api/%1$s/%2$s/lock/{id}',
+                '%1$s/%2$s/%3$s/lock/{id}',
+                $this->route_prefix,
                 $module_route,
                 $model_route_plural
             ),
