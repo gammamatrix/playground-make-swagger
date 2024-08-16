@@ -49,8 +49,10 @@ trait BuildController
             $this->doc_controller_index_form($name);
             $this->doc_controller_lock($name);
             $this->doc_controller_restore($name);
-            $this->doc_controller_revision($name);
-            $this->doc_controller_revisions($name);
+            if ($this->hasOption('revision') && $this->option('revision')) {
+                $this->doc_controller_revision($name);
+                $this->doc_controller_revisions($name);
+            }
             $this->doc_controller_create($name);
             $this->doc_controller_edit($name);
         }
