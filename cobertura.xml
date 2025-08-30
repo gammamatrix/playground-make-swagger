@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE coverage SYSTEM "http://cobertura.sourceforge.net/xml/coverage-04.dtd">
-<coverage line-rate="0.015064244572441" branch-rate="0" lines-covered="34" lines-valid="2257" branches-covered="0" branches-valid="0" complexity="522" version="0.4" timestamp="1756584253">
+<coverage line-rate="0.015064244572441" branch-rate="0" lines-covered="34" lines-valid="2257" branches-covered="0" branches-valid="0" complexity="522" version="0.4" timestamp="1756598163">
   <sources>
     <source>/app/src</source>
   </sources>
   <packages>
     <package name="Building/BuildController.php" line-rate="0" branch-rate="0" complexity="5">
       <classes>
-        <class name="Playground\Make\Swagger\Building\BuildController" filename="Building/BuildController.php" line-rate="0" branch-rate="0" complexity="5">
+        <class name="Playground\Make\OpenAPI\Building\BuildController" filename="Building/BuildController.php" line-rate="0" branch-rate="0" complexity="5">
           <methods>
             <method name="doc_controller" signature="" line-rate="0" branch-rate="0" complexity="5">
               <lines>
@@ -73,7 +73,7 @@
     </package>
     <package name="Building/BuildControllerForm.php" line-rate="0" branch-rate="0" complexity="12">
       <classes>
-        <class name="Playground\Make\Swagger\Building\BuildControllerForm" filename="Building/BuildControllerForm.php" line-rate="0" branch-rate="0" complexity="12">
+        <class name="Playground\Make\OpenAPI\Building\BuildControllerForm" filename="Building/BuildControllerForm.php" line-rate="0" branch-rate="0" complexity="12">
           <methods>
             <method name="doc_controller_create" signature="string $name" line-rate="0" branch-rate="0" complexity="1">
               <lines>
@@ -483,7 +483,7 @@
     </package>
     <package name="Building/BuildControllerId.php" line-rate="0" branch-rate="0" complexity="2">
       <classes>
-        <class name="Playground\Make\Swagger\Building\BuildControllerId" filename="Building/BuildControllerId.php" line-rate="0" branch-rate="0" complexity="2">
+        <class name="Playground\Make\OpenAPI\Building\BuildControllerId" filename="Building/BuildControllerId.php" line-rate="0" branch-rate="0" complexity="2">
           <methods>
             <method name="doc_controller_id" signature="string $name" line-rate="0" branch-rate="0" complexity="1">
               <lines>
@@ -923,7 +923,7 @@
     </package>
     <package name="Building/BuildControllerIndex.php" line-rate="0" branch-rate="0" complexity="4">
       <classes>
-        <class name="Playground\Make\Swagger\Building\BuildControllerIndex" filename="Building/BuildControllerIndex.php" line-rate="0" branch-rate="0" complexity="4">
+        <class name="Playground\Make\OpenAPI\Building\BuildControllerIndex" filename="Building/BuildControllerIndex.php" line-rate="0" branch-rate="0" complexity="4">
           <methods>
             <method name="doc_controller_index" signature="string $name" line-rate="0" branch-rate="0" complexity="1">
               <lines>
@@ -1457,7 +1457,7 @@
     </package>
     <package name="Building/BuildControllerLock.php" line-rate="0" branch-rate="0" complexity="2">
       <classes>
-        <class name="Playground\Make\Swagger\Building\BuildControllerLock" filename="Building/BuildControllerLock.php" line-rate="0" branch-rate="0" complexity="2">
+        <class name="Playground\Make\OpenAPI\Building\BuildControllerLock" filename="Building/BuildControllerLock.php" line-rate="0" branch-rate="0" complexity="2">
           <methods>
             <method name="doc_controller_lock" signature="string $name" line-rate="0" branch-rate="0" complexity="1">
               <lines>
@@ -1701,7 +1701,7 @@
     </package>
     <package name="Building/BuildControllerRestore.php" line-rate="0" branch-rate="0" complexity="2">
       <classes>
-        <class name="Playground\Make\Swagger\Building\BuildControllerRestore" filename="Building/BuildControllerRestore.php" line-rate="0" branch-rate="0" complexity="2">
+        <class name="Playground\Make\OpenAPI\Building\BuildControllerRestore" filename="Building/BuildControllerRestore.php" line-rate="0" branch-rate="0" complexity="2">
           <methods>
             <method name="doc_controller_restore" signature="string $name" line-rate="0" branch-rate="0" complexity="1">
               <lines>
@@ -1883,7 +1883,7 @@
     </package>
     <package name="Building/BuildControllerRevision.php" line-rate="0" branch-rate="0" complexity="2">
       <classes>
-        <class name="Playground\Make\Swagger\Building\BuildControllerRevision" filename="Building/BuildControllerRevision.php" line-rate="0" branch-rate="0" complexity="2">
+        <class name="Playground\Make\OpenAPI\Building\BuildControllerRevision" filename="Building/BuildControllerRevision.php" line-rate="0" branch-rate="0" complexity="2">
           <methods>
             <method name="doc_controller_revision" signature="string $name" line-rate="0" branch-rate="0" complexity="1">
               <lines>
@@ -2161,7 +2161,7 @@
     </package>
     <package name="Building/BuildControllerRevisions.php" line-rate="0" branch-rate="0" complexity="2">
       <classes>
-        <class name="Playground\Make\Swagger\Building\BuildControllerRevisions" filename="Building/BuildControllerRevisions.php" line-rate="0" branch-rate="0" complexity="2">
+        <class name="Playground\Make\OpenAPI\Building\BuildControllerRevisions" filename="Building/BuildControllerRevisions.php" line-rate="0" branch-rate="0" complexity="2">
           <methods>
             <method name="doc_controller_revisions" signature="string $name" line-rate="0" branch-rate="0" complexity="1">
               <lines>
@@ -2349,7 +2349,7 @@
     </package>
     <package name="Building/BuildExternalDocs.php" line-rate="0" branch-rate="0" complexity="7">
       <classes>
-        <class name="Playground\Make\Swagger\Building\BuildExternalDocs" filename="Building/BuildExternalDocs.php" line-rate="0" branch-rate="0" complexity="7">
+        <class name="Playground\Make\OpenAPI\Building\BuildExternalDocs" filename="Building/BuildExternalDocs.php" line-rate="0" branch-rate="0" complexity="7">
           <methods>
             <method name="doc_external_docs" signature="" line-rate="0" branch-rate="0" complexity="7">
               <lines>
@@ -2405,7 +2405,7 @@
     </package>
     <package name="Building/BuildInfo.php" line-rate="0" branch-rate="0" complexity="10">
       <classes>
-        <class name="Playground\Make\Swagger\Building\BuildInfo" filename="Building/BuildInfo.php" line-rate="0" branch-rate="0" complexity="10">
+        <class name="Playground\Make\OpenAPI\Building\BuildInfo" filename="Building/BuildInfo.php" line-rate="0" branch-rate="0" complexity="10">
           <methods>
             <method name="doc_info" signature="" line-rate="0" branch-rate="0" complexity="10">
               <lines>
@@ -2519,7 +2519,7 @@
     </package>
     <package name="Building/BuildModel.php" line-rate="0" branch-rate="0" complexity="8">
       <classes>
-        <class name="Playground\Make\Swagger\Building\BuildModel" filename="Building/BuildModel.php" line-rate="0" branch-rate="0" complexity="8">
+        <class name="Playground\Make\OpenAPI\Building\BuildModel" filename="Building/BuildModel.php" line-rate="0" branch-rate="0" complexity="8">
           <methods>
             <method name="doc_model" signature="" line-rate="0" branch-rate="0" complexity="4">
               <lines>
@@ -2629,7 +2629,7 @@
     </package>
     <package name="Building/BuildModelColumns.php" line-rate="0" branch-rate="0" complexity="60">
       <classes>
-        <class name="Playground\Make\Swagger\Building\BuildModelColumns" filename="Building/BuildModelColumns.php" line-rate="0" branch-rate="0" complexity="60">
+        <class name="Playground\Make\OpenAPI\Building\BuildModelColumns" filename="Building/BuildModelColumns.php" line-rate="0" branch-rate="0" complexity="60">
           <methods>
             <method name="doc_model_columns" signature="string $name, Model\Create $create" line-rate="0" branch-rate="0" complexity="18">
               <lines>
@@ -3143,9 +3143,141 @@
         </class>
       </classes>
     </package>
+    <package name="Building/BuildOpenAPI.php" line-rate="0" branch-rate="0" complexity="17">
+      <classes>
+        <class name="Playground\Make\OpenAPI\Building\BuildOpenAPI" filename="Building/BuildOpenAPI.php" line-rate="0" branch-rate="0" complexity="17">
+          <methods>
+            <method name="init_openapi_api" signature="" line-rate="0" branch-rate="0" complexity="3">
+              <lines>
+                <line number="29" hits="0"/>
+                <line number="30" hits="0"/>
+                <line number="31" hits="0"/>
+                <line number="32" hits="0"/>
+              </lines>
+            </method>
+            <method name="save_base_file" signature="" line-rate="0" branch-rate="0" complexity="1">
+              <lines>
+                <line number="52" hits="0"/>
+              </lines>
+            </method>
+            <method name="load_base_file" signature="" line-rate="0" branch-rate="0" complexity="7">
+              <lines>
+                <line number="57" hits="0"/>
+                <line number="59" hits="0"/>
+                <line number="61" hits="0"/>
+                <line number="62" hits="0"/>
+                <line number="63" hits="0"/>
+                <line number="64" hits="0"/>
+                <line number="65" hits="0"/>
+                <line number="66" hits="0"/>
+                <line number="67" hits="0"/>
+                <line number="69" hits="0"/>
+                <line number="70" hits="0"/>
+                <line number="73" hits="0"/>
+                <line number="91" hits="0"/>
+                <line number="92" hits="0"/>
+                <line number="108" hits="0"/>
+              </lines>
+            </method>
+            <method name="yaml_read" signature="string $file" line-rate="0" branch-rate="0" complexity="4">
+              <lines>
+                <line number="124" hits="0"/>
+                <line number="126" hits="0"/>
+                <line number="127" hits="0"/>
+                <line number="129" hits="0"/>
+                <line number="133" hits="0"/>
+                <line number="140" hits="0"/>
+                <line number="141" hits="0"/>
+                <line number="142" hits="0"/>
+                <line number="143" hits="0"/>
+                <line number="144" hits="0"/>
+                <line number="145" hits="0"/>
+                <line number="148" hits="0"/>
+              </lines>
+            </method>
+            <method name="yaml_write" signature="string $file, array $contents" line-rate="0" branch-rate="0" complexity="2">
+              <lines>
+                <line number="156" hits="0"/>
+                <line number="158" hits="0"/>
+                <line number="159" hits="0"/>
+                <line number="160" hits="0"/>
+                <line number="161" hits="0"/>
+                <line number="162" hits="0"/>
+                <line number="163" hits="0"/>
+                <line number="174" hits="0"/>
+                <line number="176" hits="0"/>
+                <line number="178" hits="0"/>
+                <line number="180" hits="0"/>
+                <line number="182" hits="0"/>
+                <line number="184" hits="0"/>
+                <line number="185" hits="0"/>
+                <line number="186" hits="0"/>
+                <line number="187" hits="0"/>
+                <line number="188" hits="0"/>
+                <line number="189" hits="0"/>
+                <line number="197" hits="0"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="29" hits="0"/>
+            <line number="30" hits="0"/>
+            <line number="31" hits="0"/>
+            <line number="32" hits="0"/>
+            <line number="52" hits="0"/>
+            <line number="57" hits="0"/>
+            <line number="59" hits="0"/>
+            <line number="61" hits="0"/>
+            <line number="62" hits="0"/>
+            <line number="63" hits="0"/>
+            <line number="64" hits="0"/>
+            <line number="65" hits="0"/>
+            <line number="66" hits="0"/>
+            <line number="67" hits="0"/>
+            <line number="69" hits="0"/>
+            <line number="70" hits="0"/>
+            <line number="73" hits="0"/>
+            <line number="91" hits="0"/>
+            <line number="92" hits="0"/>
+            <line number="108" hits="0"/>
+            <line number="124" hits="0"/>
+            <line number="126" hits="0"/>
+            <line number="127" hits="0"/>
+            <line number="129" hits="0"/>
+            <line number="133" hits="0"/>
+            <line number="140" hits="0"/>
+            <line number="141" hits="0"/>
+            <line number="142" hits="0"/>
+            <line number="143" hits="0"/>
+            <line number="144" hits="0"/>
+            <line number="145" hits="0"/>
+            <line number="148" hits="0"/>
+            <line number="156" hits="0"/>
+            <line number="158" hits="0"/>
+            <line number="159" hits="0"/>
+            <line number="160" hits="0"/>
+            <line number="161" hits="0"/>
+            <line number="162" hits="0"/>
+            <line number="163" hits="0"/>
+            <line number="174" hits="0"/>
+            <line number="176" hits="0"/>
+            <line number="178" hits="0"/>
+            <line number="180" hits="0"/>
+            <line number="182" hits="0"/>
+            <line number="184" hits="0"/>
+            <line number="185" hits="0"/>
+            <line number="186" hits="0"/>
+            <line number="187" hits="0"/>
+            <line number="188" hits="0"/>
+            <line number="189" hits="0"/>
+            <line number="197" hits="0"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
     <package name="Building/BuildRequest.php" line-rate="0" branch-rate="0" complexity="17">
       <classes>
-        <class name="Playground\Make\Swagger\Building\BuildRequest" filename="Building/BuildRequest.php" line-rate="0" branch-rate="0" complexity="17">
+        <class name="Playground\Make\OpenAPI\Building\BuildRequest" filename="Building/BuildRequest.php" line-rate="0" branch-rate="0" complexity="17">
           <methods>
             <method name="doc_request_id" signature="string $name" line-rate="0" branch-rate="0" complexity="7">
               <lines>
@@ -3395,7 +3527,7 @@
     </package>
     <package name="Building/BuildServers.php" line-rate="0" branch-rate="0" complexity="11">
       <classes>
-        <class name="Playground\Make\Swagger\Building\BuildServers" filename="Building/BuildServers.php" line-rate="0" branch-rate="0" complexity="11">
+        <class name="Playground\Make\OpenAPI\Building\BuildServers" filename="Building/BuildServers.php" line-rate="0" branch-rate="0" complexity="11">
           <methods>
             <method name="doc_servers" signature="" line-rate="0" branch-rate="0" complexity="11">
               <lines>
@@ -3451,141 +3583,9 @@
         </class>
       </classes>
     </package>
-    <package name="Building/BuildSwagger.php" line-rate="0" branch-rate="0" complexity="17">
+    <package name="Configuration/OpenAPI.php" line-rate="0" branch-rate="0" complexity="17">
       <classes>
-        <class name="Playground\Make\Swagger\Building\BuildSwagger" filename="Building/BuildSwagger.php" line-rate="0" branch-rate="0" complexity="17">
-          <methods>
-            <method name="init_swagger_api" signature="" line-rate="0" branch-rate="0" complexity="3">
-              <lines>
-                <line number="29" hits="0"/>
-                <line number="30" hits="0"/>
-                <line number="31" hits="0"/>
-                <line number="32" hits="0"/>
-              </lines>
-            </method>
-            <method name="save_base_file" signature="" line-rate="0" branch-rate="0" complexity="1">
-              <lines>
-                <line number="52" hits="0"/>
-              </lines>
-            </method>
-            <method name="load_base_file" signature="" line-rate="0" branch-rate="0" complexity="7">
-              <lines>
-                <line number="57" hits="0"/>
-                <line number="59" hits="0"/>
-                <line number="61" hits="0"/>
-                <line number="62" hits="0"/>
-                <line number="63" hits="0"/>
-                <line number="64" hits="0"/>
-                <line number="65" hits="0"/>
-                <line number="66" hits="0"/>
-                <line number="67" hits="0"/>
-                <line number="69" hits="0"/>
-                <line number="70" hits="0"/>
-                <line number="73" hits="0"/>
-                <line number="91" hits="0"/>
-                <line number="92" hits="0"/>
-                <line number="108" hits="0"/>
-              </lines>
-            </method>
-            <method name="yaml_read" signature="string $file" line-rate="0" branch-rate="0" complexity="4">
-              <lines>
-                <line number="124" hits="0"/>
-                <line number="126" hits="0"/>
-                <line number="127" hits="0"/>
-                <line number="129" hits="0"/>
-                <line number="133" hits="0"/>
-                <line number="140" hits="0"/>
-                <line number="141" hits="0"/>
-                <line number="142" hits="0"/>
-                <line number="143" hits="0"/>
-                <line number="144" hits="0"/>
-                <line number="145" hits="0"/>
-                <line number="148" hits="0"/>
-              </lines>
-            </method>
-            <method name="yaml_write" signature="string $file, array $contents" line-rate="0" branch-rate="0" complexity="2">
-              <lines>
-                <line number="156" hits="0"/>
-                <line number="158" hits="0"/>
-                <line number="159" hits="0"/>
-                <line number="160" hits="0"/>
-                <line number="161" hits="0"/>
-                <line number="162" hits="0"/>
-                <line number="163" hits="0"/>
-                <line number="174" hits="0"/>
-                <line number="176" hits="0"/>
-                <line number="178" hits="0"/>
-                <line number="180" hits="0"/>
-                <line number="182" hits="0"/>
-                <line number="184" hits="0"/>
-                <line number="185" hits="0"/>
-                <line number="186" hits="0"/>
-                <line number="187" hits="0"/>
-                <line number="188" hits="0"/>
-                <line number="189" hits="0"/>
-                <line number="197" hits="0"/>
-              </lines>
-            </method>
-          </methods>
-          <lines>
-            <line number="29" hits="0"/>
-            <line number="30" hits="0"/>
-            <line number="31" hits="0"/>
-            <line number="32" hits="0"/>
-            <line number="52" hits="0"/>
-            <line number="57" hits="0"/>
-            <line number="59" hits="0"/>
-            <line number="61" hits="0"/>
-            <line number="62" hits="0"/>
-            <line number="63" hits="0"/>
-            <line number="64" hits="0"/>
-            <line number="65" hits="0"/>
-            <line number="66" hits="0"/>
-            <line number="67" hits="0"/>
-            <line number="69" hits="0"/>
-            <line number="70" hits="0"/>
-            <line number="73" hits="0"/>
-            <line number="91" hits="0"/>
-            <line number="92" hits="0"/>
-            <line number="108" hits="0"/>
-            <line number="124" hits="0"/>
-            <line number="126" hits="0"/>
-            <line number="127" hits="0"/>
-            <line number="129" hits="0"/>
-            <line number="133" hits="0"/>
-            <line number="140" hits="0"/>
-            <line number="141" hits="0"/>
-            <line number="142" hits="0"/>
-            <line number="143" hits="0"/>
-            <line number="144" hits="0"/>
-            <line number="145" hits="0"/>
-            <line number="148" hits="0"/>
-            <line number="156" hits="0"/>
-            <line number="158" hits="0"/>
-            <line number="159" hits="0"/>
-            <line number="160" hits="0"/>
-            <line number="161" hits="0"/>
-            <line number="162" hits="0"/>
-            <line number="163" hits="0"/>
-            <line number="174" hits="0"/>
-            <line number="176" hits="0"/>
-            <line number="178" hits="0"/>
-            <line number="180" hits="0"/>
-            <line number="182" hits="0"/>
-            <line number="184" hits="0"/>
-            <line number="185" hits="0"/>
-            <line number="186" hits="0"/>
-            <line number="187" hits="0"/>
-            <line number="188" hits="0"/>
-            <line number="189" hits="0"/>
-            <line number="197" hits="0"/>
-          </lines>
-        </class>
-      </classes>
-    </package>
-    <package name="Configuration/Swagger.php" line-rate="0" branch-rate="0" complexity="17">
-      <classes>
-        <class name="Playground\Make\Swagger\Configuration\Swagger" filename="Configuration/Swagger.php" line-rate="0" branch-rate="0" complexity="17">
+        <class name="Playground\Make\OpenAPI\Configuration\OpenAPI" filename="Configuration/OpenAPI.php" line-rate="0" branch-rate="0" complexity="17">
           <methods>
             <method name="setOptions" signature="array $options" line-rate="0" branch-rate="0" complexity="11">
               <lines>
@@ -3659,9 +3659,9 @@
         </class>
       </classes>
     </package>
-    <package name="Configuration/Swagger/Api.php" line-rate="0" branch-rate="0" complexity="68">
+    <package name="Configuration/OpenAPI/Api.php" line-rate="0" branch-rate="0" complexity="68">
       <classes>
-        <class name="Playground\Make\Swagger\Configuration\Swagger\Api" filename="Configuration/Swagger/Api.php" line-rate="0" branch-rate="0" complexity="68">
+        <class name="Playground\Make\OpenAPI\Configuration\OpenAPI\Api" filename="Configuration/OpenAPI/Api.php" line-rate="0" branch-rate="0" complexity="68">
           <methods>
             <method name="setOptions" signature="array $options" line-rate="0" branch-rate="0" complexity="24">
               <lines>
@@ -3961,9 +3961,9 @@
         </class>
       </classes>
     </package>
-    <package name="Configuration/Swagger/Components.php" line-rate="0" branch-rate="0" complexity="15">
+    <package name="Configuration/OpenAPI/Components.php" line-rate="0" branch-rate="0" complexity="15">
       <classes>
-        <class name="Playground\Make\Swagger\Configuration\Swagger\Components" filename="Configuration/Swagger/Components.php" line-rate="0" branch-rate="0" complexity="15">
+        <class name="Playground\Make\OpenAPI\Configuration\OpenAPI\Components" filename="Configuration/OpenAPI/Components.php" line-rate="0" branch-rate="0" complexity="15">
           <methods>
             <method name="setOptions" signature="array $options" line-rate="0" branch-rate="0" complexity="3">
               <lines>
@@ -4047,9 +4047,9 @@
         </class>
       </classes>
     </package>
-    <package name="Configuration/Swagger/Contact.php" line-rate="0" branch-rate="0" complexity="4">
+    <package name="Configuration/OpenAPI/Contact.php" line-rate="0" branch-rate="0" complexity="4">
       <classes>
-        <class name="Playground\Make\Swagger\Configuration\Swagger\Contact" filename="Configuration/Swagger/Contact.php" line-rate="0" branch-rate="0" complexity="4">
+        <class name="Playground\Make\OpenAPI\Configuration\OpenAPI\Contact" filename="Configuration/OpenAPI/Contact.php" line-rate="0" branch-rate="0" complexity="4">
           <methods>
             <method name="setOptions" signature="array $options" line-rate="0" branch-rate="0" complexity="3">
               <lines>
@@ -4075,9 +4075,9 @@
         </class>
       </classes>
     </package>
-    <package name="Configuration/Swagger/Controller.php" line-rate="0" branch-rate="0" complexity="41">
+    <package name="Configuration/OpenAPI/Controller.php" line-rate="0" branch-rate="0" complexity="41">
       <classes>
-        <class name="Playground\Make\Swagger\Configuration\Swagger\Controller" filename="Configuration/Swagger/Controller.php" line-rate="0" branch-rate="0" complexity="41">
+        <class name="Playground\Make\OpenAPI\Configuration\OpenAPI\Controller" filename="Configuration/OpenAPI/Controller.php" line-rate="0" branch-rate="0" complexity="41">
           <methods>
             <method name="keys" signature="" line-rate="0" branch-rate="0" complexity="1">
               <lines>
@@ -4273,9 +4273,9 @@
         </class>
       </classes>
     </package>
-    <package name="Configuration/Swagger/Controller/Parameter.php" line-rate="0" branch-rate="0" complexity="19">
+    <package name="Configuration/OpenAPI/Controller/Parameter.php" line-rate="0" branch-rate="0" complexity="19">
       <classes>
-        <class name="Playground\Make\Swagger\Configuration\Swagger\Controller\Parameter" filename="Configuration/Swagger/Controller/Parameter.php" line-rate="0" branch-rate="0" complexity="19">
+        <class name="Playground\Make\OpenAPI\Configuration\OpenAPI\Controller\Parameter" filename="Configuration/OpenAPI/Controller/Parameter.php" line-rate="0" branch-rate="0" complexity="19">
           <methods>
             <method name="setOptions" signature="array $options" line-rate="0" branch-rate="0" complexity="14">
               <lines>
@@ -4353,9 +4353,9 @@
         </class>
       </classes>
     </package>
-    <package name="Configuration/Swagger/Controller/Path.php" line-rate="0" branch-rate="0" complexity="38">
+    <package name="Configuration/OpenAPI/Controller/Path.php" line-rate="0" branch-rate="0" complexity="38">
       <classes>
-        <class name="Playground\Make\Swagger\Configuration\Swagger\Controller\Path" filename="Configuration/Swagger/Controller/Path.php" line-rate="0" branch-rate="0" complexity="38">
+        <class name="Playground\Make\OpenAPI\Configuration\OpenAPI\Controller\Path" filename="Configuration/OpenAPI/Controller/Path.php" line-rate="0" branch-rate="0" complexity="38">
           <methods>
             <method name="setOptions" signature="array $options" line-rate="0" branch-rate="0" complexity="9">
               <lines>
@@ -4521,81 +4521,81 @@
         </class>
       </classes>
     </package>
-    <package name="Configuration/Swagger/Controller/PathCreate.php" line-rate="0" branch-rate="0" complexity="0">
+    <package name="Configuration/OpenAPI/Controller/PathCreate.php" line-rate="0" branch-rate="0" complexity="0">
       <classes>
-        <class name="Playground\Make\Swagger\Configuration\Swagger\Controller\PathCreate" filename="Configuration/Swagger/Controller/PathCreate.php" line-rate="0" branch-rate="0" complexity="0">
+        <class name="Playground\Make\OpenAPI\Configuration\OpenAPI\Controller\PathCreate" filename="Configuration/OpenAPI/Controller/PathCreate.php" line-rate="0" branch-rate="0" complexity="0">
           <methods/>
           <lines/>
         </class>
       </classes>
     </package>
-    <package name="Configuration/Swagger/Controller/PathEdit.php" line-rate="0" branch-rate="0" complexity="0">
+    <package name="Configuration/OpenAPI/Controller/PathEdit.php" line-rate="0" branch-rate="0" complexity="0">
       <classes>
-        <class name="Playground\Make\Swagger\Configuration\Swagger\Controller\PathEdit" filename="Configuration/Swagger/Controller/PathEdit.php" line-rate="0" branch-rate="0" complexity="0">
+        <class name="Playground\Make\OpenAPI\Configuration\OpenAPI\Controller\PathEdit" filename="Configuration/OpenAPI/Controller/PathEdit.php" line-rate="0" branch-rate="0" complexity="0">
           <methods/>
           <lines/>
         </class>
       </classes>
     </package>
-    <package name="Configuration/Swagger/Controller/PathId.php" line-rate="0" branch-rate="0" complexity="0">
+    <package name="Configuration/OpenAPI/Controller/PathId.php" line-rate="0" branch-rate="0" complexity="0">
       <classes>
-        <class name="Playground\Make\Swagger\Configuration\Swagger\Controller\PathId" filename="Configuration/Swagger/Controller/PathId.php" line-rate="0" branch-rate="0" complexity="0">
+        <class name="Playground\Make\OpenAPI\Configuration\OpenAPI\Controller\PathId" filename="Configuration/OpenAPI/Controller/PathId.php" line-rate="0" branch-rate="0" complexity="0">
           <methods/>
           <lines/>
         </class>
       </classes>
     </package>
-    <package name="Configuration/Swagger/Controller/PathIndex.php" line-rate="0" branch-rate="0" complexity="0">
+    <package name="Configuration/OpenAPI/Controller/PathIndex.php" line-rate="0" branch-rate="0" complexity="0">
       <classes>
-        <class name="Playground\Make\Swagger\Configuration\Swagger\Controller\PathIndex" filename="Configuration/Swagger/Controller/PathIndex.php" line-rate="0" branch-rate="0" complexity="0">
+        <class name="Playground\Make\OpenAPI\Configuration\OpenAPI\Controller\PathIndex" filename="Configuration/OpenAPI/Controller/PathIndex.php" line-rate="0" branch-rate="0" complexity="0">
           <methods/>
           <lines/>
         </class>
       </classes>
     </package>
-    <package name="Configuration/Swagger/Controller/PathIndexForm.php" line-rate="0" branch-rate="0" complexity="0">
+    <package name="Configuration/OpenAPI/Controller/PathIndexForm.php" line-rate="0" branch-rate="0" complexity="0">
       <classes>
-        <class name="Playground\Make\Swagger\Configuration\Swagger\Controller\PathIndexForm" filename="Configuration/Swagger/Controller/PathIndexForm.php" line-rate="0" branch-rate="0" complexity="0">
+        <class name="Playground\Make\OpenAPI\Configuration\OpenAPI\Controller\PathIndexForm" filename="Configuration/OpenAPI/Controller/PathIndexForm.php" line-rate="0" branch-rate="0" complexity="0">
           <methods/>
           <lines/>
         </class>
       </classes>
     </package>
-    <package name="Configuration/Swagger/Controller/PathLock.php" line-rate="0" branch-rate="0" complexity="0">
+    <package name="Configuration/OpenAPI/Controller/PathLock.php" line-rate="0" branch-rate="0" complexity="0">
       <classes>
-        <class name="Playground\Make\Swagger\Configuration\Swagger\Controller\PathLock" filename="Configuration/Swagger/Controller/PathLock.php" line-rate="0" branch-rate="0" complexity="0">
+        <class name="Playground\Make\OpenAPI\Configuration\OpenAPI\Controller\PathLock" filename="Configuration/OpenAPI/Controller/PathLock.php" line-rate="0" branch-rate="0" complexity="0">
           <methods/>
           <lines/>
         </class>
       </classes>
     </package>
-    <package name="Configuration/Swagger/Controller/PathRestore.php" line-rate="0" branch-rate="0" complexity="0">
+    <package name="Configuration/OpenAPI/Controller/PathRestore.php" line-rate="0" branch-rate="0" complexity="0">
       <classes>
-        <class name="Playground\Make\Swagger\Configuration\Swagger\Controller\PathRestore" filename="Configuration/Swagger/Controller/PathRestore.php" line-rate="0" branch-rate="0" complexity="0">
+        <class name="Playground\Make\OpenAPI\Configuration\OpenAPI\Controller\PathRestore" filename="Configuration/OpenAPI/Controller/PathRestore.php" line-rate="0" branch-rate="0" complexity="0">
           <methods/>
           <lines/>
         </class>
       </classes>
     </package>
-    <package name="Configuration/Swagger/Controller/PathRevision.php" line-rate="0" branch-rate="0" complexity="0">
+    <package name="Configuration/OpenAPI/Controller/PathRevision.php" line-rate="0" branch-rate="0" complexity="0">
       <classes>
-        <class name="Playground\Make\Swagger\Configuration\Swagger\Controller\PathRevision" filename="Configuration/Swagger/Controller/PathRevision.php" line-rate="0" branch-rate="0" complexity="0">
+        <class name="Playground\Make\OpenAPI\Configuration\OpenAPI\Controller\PathRevision" filename="Configuration/OpenAPI/Controller/PathRevision.php" line-rate="0" branch-rate="0" complexity="0">
           <methods/>
           <lines/>
         </class>
       </classes>
     </package>
-    <package name="Configuration/Swagger/Controller/PathRevisions.php" line-rate="0" branch-rate="0" complexity="0">
+    <package name="Configuration/OpenAPI/Controller/PathRevisions.php" line-rate="0" branch-rate="0" complexity="0">
       <classes>
-        <class name="Playground\Make\Swagger\Configuration\Swagger\Controller\PathRevisions" filename="Configuration/Swagger/Controller/PathRevisions.php" line-rate="0" branch-rate="0" complexity="0">
+        <class name="Playground\Make\OpenAPI\Configuration\OpenAPI\Controller\PathRevisions" filename="Configuration/OpenAPI/Controller/PathRevisions.php" line-rate="0" branch-rate="0" complexity="0">
           <methods/>
           <lines/>
         </class>
       </classes>
     </package>
-    <package name="Configuration/Swagger/ExternalDocs.php" line-rate="0" branch-rate="0" complexity="7">
+    <package name="Configuration/OpenAPI/ExternalDocs.php" line-rate="0" branch-rate="0" complexity="7">
       <classes>
-        <class name="Playground\Make\Swagger\Configuration\Swagger\ExternalDocs" filename="Configuration/Swagger/ExternalDocs.php" line-rate="0" branch-rate="0" complexity="7">
+        <class name="Playground\Make\OpenAPI\Configuration\OpenAPI\ExternalDocs" filename="Configuration/OpenAPI/ExternalDocs.php" line-rate="0" branch-rate="0" complexity="7">
           <methods>
             <method name="setOptions" signature="array $options" line-rate="0" branch-rate="0" complexity="5">
               <lines>
@@ -4633,9 +4633,9 @@
         </class>
       </classes>
     </package>
-    <package name="Configuration/Swagger/Info.php" line-rate="0" branch-rate="0" complexity="16">
+    <package name="Configuration/OpenAPI/Info.php" line-rate="0" branch-rate="0" complexity="16">
       <classes>
-        <class name="Playground\Make\Swagger\Configuration\Swagger\Info" filename="Configuration/Swagger/Info.php" line-rate="0" branch-rate="0" complexity="16">
+        <class name="Playground\Make\OpenAPI\Configuration\OpenAPI\Info" filename="Configuration/OpenAPI/Info.php" line-rate="0" branch-rate="0" complexity="16">
           <methods>
             <method name="setOptions" signature="array $options" line-rate="0" branch-rate="0" complexity="11">
               <lines>
@@ -4713,9 +4713,9 @@
         </class>
       </classes>
     </package>
-    <package name="Configuration/Swagger/Methods/Content.php" line-rate="0" branch-rate="0" complexity="10">
+    <package name="Configuration/OpenAPI/Methods/Content.php" line-rate="0" branch-rate="0" complexity="10">
       <classes>
-        <class name="Playground\Make\Swagger\Configuration\Swagger\Methods\Content" filename="Configuration/Swagger/Methods/Content.php" line-rate="0" branch-rate="0" complexity="10">
+        <class name="Playground\Make\OpenAPI\Configuration\OpenAPI\Methods\Content" filename="Configuration/OpenAPI/Methods/Content.php" line-rate="0" branch-rate="0" complexity="10">
           <methods>
             <method name="setOptions" signature="array $options" line-rate="0" branch-rate="0" complexity="5">
               <lines>
@@ -4777,25 +4777,25 @@
         </class>
       </classes>
     </package>
-    <package name="Configuration/Swagger/Methods/DeleteMethod.php" line-rate="0" branch-rate="0" complexity="0">
+    <package name="Configuration/OpenAPI/Methods/DeleteMethod.php" line-rate="0" branch-rate="0" complexity="0">
       <classes>
-        <class name="Playground\Make\Swagger\Configuration\Swagger\Methods\DeleteMethod" filename="Configuration/Swagger/Methods/DeleteMethod.php" line-rate="0" branch-rate="0" complexity="0">
+        <class name="Playground\Make\OpenAPI\Configuration\OpenAPI\Methods\DeleteMethod" filename="Configuration/OpenAPI/Methods/DeleteMethod.php" line-rate="0" branch-rate="0" complexity="0">
           <methods/>
           <lines/>
         </class>
       </classes>
     </package>
-    <package name="Configuration/Swagger/Methods/GetMethod.php" line-rate="0" branch-rate="0" complexity="0">
+    <package name="Configuration/OpenAPI/Methods/GetMethod.php" line-rate="0" branch-rate="0" complexity="0">
       <classes>
-        <class name="Playground\Make\Swagger\Configuration\Swagger\Methods\GetMethod" filename="Configuration/Swagger/Methods/GetMethod.php" line-rate="0" branch-rate="0" complexity="0">
+        <class name="Playground\Make\OpenAPI\Configuration\OpenAPI\Methods\GetMethod" filename="Configuration/OpenAPI/Methods/GetMethod.php" line-rate="0" branch-rate="0" complexity="0">
           <methods/>
           <lines/>
         </class>
       </classes>
     </package>
-    <package name="Configuration/Swagger/Methods/Method.php" line-rate="0" branch-rate="0" complexity="32">
+    <package name="Configuration/OpenAPI/Methods/Method.php" line-rate="0" branch-rate="0" complexity="32">
       <classes>
-        <class name="Playground\Make\Swagger\Configuration\Swagger\Methods\Method" filename="Configuration/Swagger/Methods/Method.php" line-rate="0" branch-rate="0" complexity="32">
+        <class name="Playground\Make\OpenAPI\Configuration\OpenAPI\Methods\Method" filename="Configuration/OpenAPI/Methods/Method.php" line-rate="0" branch-rate="0" complexity="32">
           <methods>
             <method name="setOptions" signature="array $options" line-rate="0" branch-rate="0" complexity="17">
               <lines>
@@ -4949,33 +4949,33 @@
         </class>
       </classes>
     </package>
-    <package name="Configuration/Swagger/Methods/PatchMethod.php" line-rate="0" branch-rate="0" complexity="0">
+    <package name="Configuration/OpenAPI/Methods/PatchMethod.php" line-rate="0" branch-rate="0" complexity="0">
       <classes>
-        <class name="Playground\Make\Swagger\Configuration\Swagger\Methods\PatchMethod" filename="Configuration/Swagger/Methods/PatchMethod.php" line-rate="0" branch-rate="0" complexity="0">
+        <class name="Playground\Make\OpenAPI\Configuration\OpenAPI\Methods\PatchMethod" filename="Configuration/OpenAPI/Methods/PatchMethod.php" line-rate="0" branch-rate="0" complexity="0">
           <methods/>
           <lines/>
         </class>
       </classes>
     </package>
-    <package name="Configuration/Swagger/Methods/PostMethod.php" line-rate="0" branch-rate="0" complexity="0">
+    <package name="Configuration/OpenAPI/Methods/PostMethod.php" line-rate="0" branch-rate="0" complexity="0">
       <classes>
-        <class name="Playground\Make\Swagger\Configuration\Swagger\Methods\PostMethod" filename="Configuration/Swagger/Methods/PostMethod.php" line-rate="0" branch-rate="0" complexity="0">
+        <class name="Playground\Make\OpenAPI\Configuration\OpenAPI\Methods\PostMethod" filename="Configuration/OpenAPI/Methods/PostMethod.php" line-rate="0" branch-rate="0" complexity="0">
           <methods/>
           <lines/>
         </class>
       </classes>
     </package>
-    <package name="Configuration/Swagger/Methods/PutMethod.php" line-rate="0" branch-rate="0" complexity="0">
+    <package name="Configuration/OpenAPI/Methods/PutMethod.php" line-rate="0" branch-rate="0" complexity="0">
       <classes>
-        <class name="Playground\Make\Swagger\Configuration\Swagger\Methods\PutMethod" filename="Configuration/Swagger/Methods/PutMethod.php" line-rate="0" branch-rate="0" complexity="0">
+        <class name="Playground\Make\OpenAPI\Configuration\OpenAPI\Methods\PutMethod" filename="Configuration/OpenAPI/Methods/PutMethod.php" line-rate="0" branch-rate="0" complexity="0">
           <methods/>
           <lines/>
         </class>
       </classes>
     </package>
-    <package name="Configuration/Swagger/Methods/RequestBody.php" line-rate="0" branch-rate="0" complexity="4">
+    <package name="Configuration/OpenAPI/Methods/RequestBody.php" line-rate="0" branch-rate="0" complexity="4">
       <classes>
-        <class name="Playground\Make\Swagger\Configuration\Swagger\Methods\RequestBody" filename="Configuration/Swagger/Methods/RequestBody.php" line-rate="0" branch-rate="0" complexity="4">
+        <class name="Playground\Make\OpenAPI\Configuration\OpenAPI\Methods\RequestBody" filename="Configuration/OpenAPI/Methods/RequestBody.php" line-rate="0" branch-rate="0" complexity="4">
           <methods>
             <method name="setOptions" signature="array $options" line-rate="0" branch-rate="0" complexity="3">
               <lines>
@@ -5003,9 +5003,33 @@
         </class>
       </classes>
     </package>
-    <package name="Configuration/Swagger/Responses/Content.php" line-rate="0" branch-rate="0" complexity="10">
+    <package name="Configuration/OpenAPI/OpenAPIConfiguration.php" line-rate="0" branch-rate="0" complexity="2">
       <classes>
-        <class name="Playground\Make\Swagger\Configuration\Swagger\Responses\Content" filename="Configuration/Swagger/Responses/Content.php" line-rate="0" branch-rate="0" complexity="10">
+        <class name="Playground\Make\OpenAPI\Configuration\OpenAPI\OpenAPIConfiguration" filename="Configuration/OpenAPI/OpenAPIConfiguration.php" line-rate="0" branch-rate="0" complexity="2">
+          <methods>
+            <method name="getParent" signature="" line-rate="0" branch-rate="0" complexity="1">
+              <lines>
+                <line number="23" hits="0"/>
+              </lines>
+            </method>
+            <method name="setParent" signature="?Api $parent" line-rate="0" branch-rate="0" complexity="1">
+              <lines>
+                <line number="28" hits="0"/>
+                <line number="30" hits="0"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="23" hits="0"/>
+            <line number="28" hits="0"/>
+            <line number="30" hits="0"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="Configuration/OpenAPI/Responses/Content.php" line-rate="0" branch-rate="0" complexity="10">
+      <classes>
+        <class name="Playground\Make\OpenAPI\Configuration\OpenAPI\Responses\Content" filename="Configuration/OpenAPI/Responses/Content.php" line-rate="0" branch-rate="0" complexity="10">
           <methods>
             <method name="setOptions" signature="array $options" line-rate="0" branch-rate="0" complexity="5">
               <lines>
@@ -5061,9 +5085,9 @@
         </class>
       </classes>
     </package>
-    <package name="Configuration/Swagger/Responses/Response.php" line-rate="0" branch-rate="0" complexity="13">
+    <package name="Configuration/OpenAPI/Responses/Response.php" line-rate="0" branch-rate="0" complexity="13">
       <classes>
-        <class name="Playground\Make\Swagger\Configuration\Swagger\Responses\Response" filename="Configuration/Swagger/Responses/Response.php" line-rate="0" branch-rate="0" complexity="13">
+        <class name="Playground\Make\OpenAPI\Configuration\OpenAPI\Responses\Response" filename="Configuration/OpenAPI/Responses/Response.php" line-rate="0" branch-rate="0" complexity="13">
           <methods>
             <method name="setOptions" signature="array $options" line-rate="0" branch-rate="0" complexity="10">
               <lines>
@@ -5121,41 +5145,41 @@
         </class>
       </classes>
     </package>
-    <package name="Configuration/Swagger/Responses/ResponseForbidden.php" line-rate="0" branch-rate="0" complexity="0">
+    <package name="Configuration/OpenAPI/Responses/ResponseForbidden.php" line-rate="0" branch-rate="0" complexity="0">
       <classes>
-        <class name="Playground\Make\Swagger\Configuration\Swagger\Responses\ResponseForbidden" filename="Configuration/Swagger/Responses/ResponseForbidden.php" line-rate="0" branch-rate="0" complexity="0">
+        <class name="Playground\Make\OpenAPI\Configuration\OpenAPI\Responses\ResponseForbidden" filename="Configuration/OpenAPI/Responses/ResponseForbidden.php" line-rate="0" branch-rate="0" complexity="0">
           <methods/>
           <lines/>
         </class>
       </classes>
     </package>
-    <package name="Configuration/Swagger/Responses/ResponseLocked.php" line-rate="0" branch-rate="0" complexity="0">
+    <package name="Configuration/OpenAPI/Responses/ResponseLocked.php" line-rate="0" branch-rate="0" complexity="0">
       <classes>
-        <class name="Playground\Make\Swagger\Configuration\Swagger\Responses\ResponseLocked" filename="Configuration/Swagger/Responses/ResponseLocked.php" line-rate="0" branch-rate="0" complexity="0">
+        <class name="Playground\Make\OpenAPI\Configuration\OpenAPI\Responses\ResponseLocked" filename="Configuration/OpenAPI/Responses/ResponseLocked.php" line-rate="0" branch-rate="0" complexity="0">
           <methods/>
           <lines/>
         </class>
       </classes>
     </package>
-    <package name="Configuration/Swagger/Responses/ResponseNoContent.php" line-rate="0" branch-rate="0" complexity="0">
+    <package name="Configuration/OpenAPI/Responses/ResponseNoContent.php" line-rate="0" branch-rate="0" complexity="0">
       <classes>
-        <class name="Playground\Make\Swagger\Configuration\Swagger\Responses\ResponseNoContent" filename="Configuration/Swagger/Responses/ResponseNoContent.php" line-rate="0" branch-rate="0" complexity="0">
+        <class name="Playground\Make\OpenAPI\Configuration\OpenAPI\Responses\ResponseNoContent" filename="Configuration/OpenAPI/Responses/ResponseNoContent.php" line-rate="0" branch-rate="0" complexity="0">
           <methods/>
           <lines/>
         </class>
       </classes>
     </package>
-    <package name="Configuration/Swagger/Responses/Unauthorized.php" line-rate="0" branch-rate="0" complexity="0">
+    <package name="Configuration/OpenAPI/Responses/Unauthorized.php" line-rate="0" branch-rate="0" complexity="0">
       <classes>
-        <class name="Playground\Make\Swagger\Configuration\Swagger\Responses\Unauthorized" filename="Configuration/Swagger/Responses/Unauthorized.php" line-rate="0" branch-rate="0" complexity="0">
+        <class name="Playground\Make\OpenAPI\Configuration\OpenAPI\Responses\Unauthorized" filename="Configuration/OpenAPI/Responses/Unauthorized.php" line-rate="0" branch-rate="0" complexity="0">
           <methods/>
           <lines/>
         </class>
       </classes>
     </package>
-    <package name="Configuration/Swagger/Schema.php" line-rate="0" branch-rate="0" complexity="7">
+    <package name="Configuration/OpenAPI/Schema.php" line-rate="0" branch-rate="0" complexity="7">
       <classes>
-        <class name="Playground\Make\Swagger\Configuration\Swagger\Schema" filename="Configuration/Swagger/Schema.php" line-rate="0" branch-rate="0" complexity="7">
+        <class name="Playground\Make\OpenAPI\Configuration\OpenAPI\Schema" filename="Configuration/OpenAPI/Schema.php" line-rate="0" branch-rate="0" complexity="7">
           <methods>
             <method name="setOptions" signature="array $options" line-rate="0" branch-rate="0" complexity="5">
               <lines>
@@ -5193,9 +5217,9 @@
         </class>
       </classes>
     </package>
-    <package name="Configuration/Swagger/Server.php" line-rate="0" branch-rate="0" complexity="7">
+    <package name="Configuration/OpenAPI/Server.php" line-rate="0" branch-rate="0" complexity="7">
       <classes>
-        <class name="Playground\Make\Swagger\Configuration\Swagger\Server" filename="Configuration/Swagger/Server.php" line-rate="0" branch-rate="0" complexity="7">
+        <class name="Playground\Make\OpenAPI\Configuration\OpenAPI\Server" filename="Configuration/OpenAPI/Server.php" line-rate="0" branch-rate="0" complexity="7">
           <methods>
             <method name="setOptions" signature="array $options" line-rate="0" branch-rate="0" complexity="5">
               <lines>
@@ -5233,33 +5257,9 @@
         </class>
       </classes>
     </package>
-    <package name="Configuration/Swagger/SwaggerConfiguration.php" line-rate="0" branch-rate="0" complexity="2">
+    <package name="Configuration/OpenAPI/Tag.php" line-rate="0" branch-rate="0" complexity="14">
       <classes>
-        <class name="Playground\Make\Swagger\Configuration\Swagger\SwaggerConfiguration" filename="Configuration/Swagger/SwaggerConfiguration.php" line-rate="0" branch-rate="0" complexity="2">
-          <methods>
-            <method name="getParent" signature="" line-rate="0" branch-rate="0" complexity="1">
-              <lines>
-                <line number="23" hits="0"/>
-              </lines>
-            </method>
-            <method name="setParent" signature="?Api $parent" line-rate="0" branch-rate="0" complexity="1">
-              <lines>
-                <line number="28" hits="0"/>
-                <line number="30" hits="0"/>
-              </lines>
-            </method>
-          </methods>
-          <lines>
-            <line number="23" hits="0"/>
-            <line number="28" hits="0"/>
-            <line number="30" hits="0"/>
-          </lines>
-        </class>
-      </classes>
-    </package>
-    <package name="Configuration/Swagger/Tag.php" line-rate="0" branch-rate="0" complexity="14">
-      <classes>
-        <class name="Playground\Make\Swagger\Configuration\Swagger\Tag" filename="Configuration/Swagger/Tag.php" line-rate="0" branch-rate="0" complexity="14">
+        <class name="Playground\Make\OpenAPI\Configuration\OpenAPI\Tag" filename="Configuration/OpenAPI/Tag.php" line-rate="0" branch-rate="0" complexity="14">
           <methods>
             <method name="setOptions" signature="array $options" line-rate="0" branch-rate="0" complexity="11">
               <lines>
@@ -5323,9 +5323,9 @@
         </class>
       </classes>
     </package>
-    <package name="Console/Commands/SwaggerMakeCommand.php" line-rate="0" branch-rate="0" complexity="21">
+    <package name="Console/Commands/OpenAPIMakeCommand.php" line-rate="0" branch-rate="0" complexity="21">
       <classes>
-        <class name="Playground\Make\Swagger\Console\Commands\SwaggerMakeCommand" filename="Console/Commands/SwaggerMakeCommand.php" line-rate="0" branch-rate="0" complexity="21">
+        <class name="Playground\Make\OpenAPI\Console\Commands\OpenAPIMakeCommand" filename="Console/Commands/OpenAPIMakeCommand.php" line-rate="0" branch-rate="0" complexity="21">
           <methods>
             <method name="prepareOptions" signature="" line-rate="0" branch-rate="0" complexity="7">
               <lines>
@@ -5525,7 +5525,7 @@
     </package>
     <package name="ServiceProvider.php" line-rate="1" branch-rate="0" complexity="16">
       <classes>
-        <class name="Playground\Make\Swagger\ServiceProvider" filename="ServiceProvider.php" line-rate="1" branch-rate="0" complexity="16">
+        <class name="Playground\Make\OpenAPI\ServiceProvider" filename="ServiceProvider.php" line-rate="1" branch-rate="0" complexity="16">
           <methods>
             <method name="boot" signature="" line-rate="1" branch-rate="0" complexity="7">
               <lines>
