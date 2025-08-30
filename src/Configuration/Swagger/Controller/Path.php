@@ -1,8 +1,10 @@
 <?php
+
 /**
  * Playground
  */
 declare(strict_types=1);
+
 namespace Playground\Make\Swagger\Configuration\Swagger\Controller;
 
 use Playground\Make\Configuration;
@@ -42,7 +44,7 @@ abstract class Path extends Configuration\Configuration
     ];
 
     /**
-     * @param array<string, mixed> $options
+     * @param  array<string, mixed>  $options
      */
     public function setOptions(array $options = []): self
     {
@@ -71,7 +73,7 @@ abstract class Path extends Configuration\Configuration
     }
 
     /**
-     * @param array<string, mixed> $meta
+     * @param  array<string, mixed>  $meta
      */
     public function addParameter(array $meta = []): self
     {
@@ -148,9 +150,9 @@ abstract class Path extends Configuration\Configuration
     }
 
     /**
-     * @param ?array<string, mixed> $options
+     * @param  ?array<string, mixed>  $options
      */
-    public function getMethod(array $options = null): ?Methods\GetMethod
+    public function getMethod(?array $options = null): ?Methods\GetMethod
     {
         if (is_array($options) && empty($this->getMethod)) {
             $this->getMethod = new Methods\GetMethod($options);
@@ -160,9 +162,9 @@ abstract class Path extends Configuration\Configuration
     }
 
     /**
-     * @param ?array<string, mixed> $options
+     * @param  ?array<string, mixed>  $options
      */
-    public function deleteMethod(array $options = null): ?Methods\DeleteMethod
+    public function deleteMethod(?array $options = null): ?Methods\DeleteMethod
     {
         if (is_array($options) && empty($this->deleteMethod)) {
             $this->deleteMethod = new Methods\DeleteMethod($options);
@@ -172,9 +174,9 @@ abstract class Path extends Configuration\Configuration
     }
 
     /**
-     * @param ?array<string, mixed> $options
+     * @param  ?array<string, mixed>  $options
      */
-    public function patchMethod(array $options = null): ?Methods\PatchMethod
+    public function patchMethod(?array $options = null): ?Methods\PatchMethod
     {
         if (is_array($options) && empty($this->patchMethod)) {
             $this->patchMethod = new Methods\PatchMethod($options);
@@ -184,9 +186,9 @@ abstract class Path extends Configuration\Configuration
     }
 
     /**
-     * @param ?array<string, mixed> $options
+     * @param  ?array<string, mixed>  $options
      */
-    public function postMethod(array $options = null): ?Methods\PostMethod
+    public function postMethod(?array $options = null): ?Methods\PostMethod
     {
         if (is_array($options) && empty($this->postMethod)) {
             $this->postMethod = new Methods\PostMethod($options);
@@ -196,9 +198,9 @@ abstract class Path extends Configuration\Configuration
     }
 
     /**
-     * @param ?array<string, mixed> $options
+     * @param  ?array<string, mixed>  $options
      */
-    public function putMethod(array $options = null): ?Methods\PutMethod
+    public function putMethod(?array $options = null): ?Methods\PutMethod
     {
         if (is_array($options) && empty($this->putMethod)) {
             $this->putMethod = new Methods\PutMethod($options);

@@ -1,9 +1,11 @@
 <?php
+
 /**
  * Playground
  */
 
 declare(strict_types=1);
+
 namespace Playground\Make\Swagger;
 
 use Illuminate\Console\GeneratorCommand;
@@ -15,7 +17,7 @@ use Illuminate\Foundation\Support\Providers\AuthServiceProvider;
  */
 class ServiceProvider extends AuthServiceProvider
 {
-    public const VERSION = '73.0.0';
+    public const string VERSION = '74.0.0';
 
     public string $package = 'playground-make-swagger';
 

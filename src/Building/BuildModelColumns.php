@@ -1,9 +1,11 @@
 <?php
+
 /**
  * Playground
  */
 
 declare(strict_types=1);
+
 namespace Playground\Make\Swagger\Building;
 
 use Illuminate\Support\Str;
@@ -92,7 +94,7 @@ trait BuildModelColumns
     }
 
     /**
-     * @param array<string, mixed> $meta
+     * @param  array<string, mixed>  $meta
      */
     public function doc_model_column(string $name, string $column, array $meta, string $section): void
     {
@@ -252,7 +254,7 @@ trait BuildModelColumns
     }
 
     /**
-     * @param array<string, Model\CreateId> $ids
+     * @param  array<string, Model\CreateId>  $ids
      */
     public function doc_model_ids(string $name, array $ids): void
     {
@@ -362,7 +364,7 @@ trait BuildModelColumns
     }
 
     /**
-     * @param array<string, Model\CreateDate> $dates
+     * @param  array<string, Model\CreateDate>  $dates
      */
     public function doc_model_dates(string $name, array $dates): void
     {

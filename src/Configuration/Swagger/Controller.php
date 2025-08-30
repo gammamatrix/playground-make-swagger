@@ -1,8 +1,10 @@
 <?php
+
 /**
  * Playground
  */
 declare(strict_types=1);
+
 namespace Playground\Make\Swagger\Configuration\Swagger;
 
 /**
@@ -50,7 +52,7 @@ class Controller extends SwaggerConfiguration
     }
 
     /**
-     * @param array<string, mixed> $options
+     * @param  array<string, mixed>  $options
      */
     public function setOptions(array $options = []): self
     {
@@ -112,7 +114,7 @@ class Controller extends SwaggerConfiguration
     }
 
     /**
-     * @param array<string, mixed> $options
+     * @param  array<string, mixed>  $options
      */
     public function pathCreate(array $options = []): Controller\PathCreate
     {
@@ -125,7 +127,7 @@ class Controller extends SwaggerConfiguration
     }
 
     /**
-     * @param array<string, mixed> $options
+     * @param  array<string, mixed>  $options
      */
     public function pathEdit(array $options = []): Controller\PathEdit
     {
@@ -138,7 +140,7 @@ class Controller extends SwaggerConfiguration
     }
 
     /**
-     * @param array<string, mixed> $options
+     * @param  array<string, mixed>  $options
      */
     public function pathId(array $options = []): Controller\PathId
     {
@@ -151,7 +153,7 @@ class Controller extends SwaggerConfiguration
     }
 
     /**
-     * @param array<string, mixed> $options
+     * @param  array<string, mixed>  $options
      */
     public function pathIndex(array $options = []): Controller\PathIndex
     {
@@ -164,7 +166,7 @@ class Controller extends SwaggerConfiguration
     }
 
     /**
-     * @param array<string, mixed> $options
+     * @param  array<string, mixed>  $options
      */
     public function pathIndexForm(array $options = []): Controller\PathIndexForm
     {
@@ -177,7 +179,7 @@ class Controller extends SwaggerConfiguration
     }
 
     /**
-     * @param array<string, mixed> $options
+     * @param  array<string, mixed>  $options
      */
     public function pathLock(array $options = []): Controller\PathLock
     {
@@ -190,7 +192,7 @@ class Controller extends SwaggerConfiguration
     }
 
     /**
-     * @param array<string, mixed> $options
+     * @param  array<string, mixed>  $options
      */
     public function pathRestore(array $options = []): Controller\PathRestore
     {
@@ -203,7 +205,7 @@ class Controller extends SwaggerConfiguration
     }
 
     /**
-     * @param array<string, mixed> $options
+     * @param  array<string, mixed>  $options
      */
     public function pathRevision(array $options = []): Controller\PathRevision
     {
@@ -216,7 +218,7 @@ class Controller extends SwaggerConfiguration
     }
 
     /**
-     * @param array<string, mixed> $options
+     * @param  array<string, mixed>  $options
      */
     public function pathRevisions(array $options = []): Controller\PathRevisions
     {

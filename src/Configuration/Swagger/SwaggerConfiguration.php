@@ -1,8 +1,10 @@
 <?php
+
 /**
  * Playground
  */
 declare(strict_types=1);
+
 namespace Playground\Make\Swagger\Configuration\Swagger;
 
 use Playground\Make\Configuration;
@@ -21,7 +23,7 @@ class SwaggerConfiguration extends Configuration\Configuration implements Config
         return $this->_parent;
     }
 
-    public function setParent(Api $parent = null): self
+    public function setParent(?Api $parent = null): self
     {
         $this->_parent = $parent;
 

@@ -1,8 +1,10 @@
 <?php
+
 /**
  * Playground
  */
 declare(strict_types=1);
+
 namespace Playground\Make\Swagger\Configuration\Swagger\Methods;
 
 use Playground\Make\Configuration;
@@ -41,7 +43,7 @@ class Method extends Configuration\Configuration
     ];
 
     /**
-     * @param array<string, mixed> $options
+     * @param  array<string, mixed>  $options
      */
     public function setOptions(array $options = []): self
     {
@@ -93,7 +95,7 @@ class Method extends Configuration\Configuration
     }
 
     /**
-     * @param array<string, string> $meta
+     * @param  array<string, string>  $meta
      */
     public function addResponse(array $meta): self
     {

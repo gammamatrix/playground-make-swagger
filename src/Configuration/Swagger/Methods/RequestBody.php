@@ -1,8 +1,10 @@
 <?php
+
 /**
  * Playground
  */
 declare(strict_types=1);
+
 namespace Playground\Make\Swagger\Configuration\Swagger\Methods;
 
 use Playground\Make\Configuration;
@@ -22,7 +24,7 @@ class RequestBody extends Configuration\Configuration
     ];
 
     /**
-     * @param array<string, mixed> $options
+     * @param  array<string, mixed>  $options
      */
     public function setOptions(array $options = []): self
     {

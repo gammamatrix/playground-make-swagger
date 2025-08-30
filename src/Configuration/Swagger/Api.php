@@ -1,8 +1,10 @@
 <?php
+
 /**
  * Playground
  */
 declare(strict_types=1);
+
 namespace Playground\Make\Swagger\Configuration\Swagger;
 
 use Playground\Make\Configuration;
@@ -59,7 +61,7 @@ class Api extends Configuration\Configuration implements Configuration\Contracts
     ];
 
     /**
-     * @param array<string, mixed> $options
+     * @param  array<string, mixed>  $options
      */
     public function setOptions(array $options = []): self
     {
@@ -128,7 +130,7 @@ class Api extends Configuration\Configuration implements Configuration\Contracts
     }
 
     /**
-     * @param array<string, string> $meta
+     * @param  array<string, string>  $meta
      */
     public function addComponents(array $meta): self
     {
@@ -154,7 +156,7 @@ class Api extends Configuration\Configuration implements Configuration\Contracts
     }
 
     /**
-     * @param array<string, string> $meta
+     * @param  array<string, string>  $meta
      */
     public function addControllers(array $meta): self
     {
@@ -171,7 +173,7 @@ class Api extends Configuration\Configuration implements Configuration\Contracts
     }
 
     /**
-     * @param array<string, string> $meta
+     * @param  array<string, string>  $meta
      */
     public function addController(string $controller, array $meta): self
     {
@@ -186,7 +188,7 @@ class Api extends Configuration\Configuration implements Configuration\Contracts
     }
 
     /**
-     * @param array<string, string> $meta
+     * @param  array<string, string>  $meta
      */
     public function addServer(array $meta): self
     {
@@ -223,7 +225,7 @@ class Api extends Configuration\Configuration implements Configuration\Contracts
     }
 
     /**
-     * @param array<string, mixed> $options
+     * @param  array<string, mixed>  $options
      */
     public function addTags(array $options): self
     {

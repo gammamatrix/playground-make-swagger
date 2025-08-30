@@ -1,9 +1,11 @@
 <?php
+
 /**
  * Playground
  */
 
 declare(strict_types=1);
+
 namespace Playground\Make\Swagger\Configuration;
 
 use Playground\Make\Configuration\PrimaryConfiguration;
@@ -51,7 +53,7 @@ class Swagger extends PrimaryConfiguration
     ];
 
     /**
-     * @param array<string, mixed> $options
+     * @param  array<string, mixed>  $options
      */
     public function setOptions(array $options = []): self
     {
@@ -93,7 +95,7 @@ class Swagger extends PrimaryConfiguration
     }
 
     /**
-     * @param array<string, mixed> $options
+     * @param  array<string, mixed>  $options
      */
     public function addModels(array $options): self
     {

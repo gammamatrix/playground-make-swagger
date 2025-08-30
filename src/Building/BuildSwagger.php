@@ -1,9 +1,11 @@
 <?php
+
 /**
  * Playground
  */
 
 declare(strict_types=1);
+
 namespace Playground\Make\Swagger\Building;
 
 use Playground\Make\Swagger\Configuration\Swagger\Api;
@@ -147,7 +149,7 @@ trait BuildSwagger
     }
 
     /**
-     * @param array<mixed> $contents
+     * @param  array<mixed>  $contents
      */
     public function yaml_write(string $file, array $contents = []): ?string
     {

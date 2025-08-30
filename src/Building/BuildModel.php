@@ -1,13 +1,14 @@
 <?php
+
 /**
  * Playground
  */
 
 declare(strict_types=1);
+
 namespace Playground\Make\Swagger\Building;
 
 use Illuminate\Support\Str;
-use Playground\Make\Configuration\Model;
 
 // use Playground\Make\Configuration\Model\Create;
 // use Playground\Make\Configuration\Model\CreateDate;
