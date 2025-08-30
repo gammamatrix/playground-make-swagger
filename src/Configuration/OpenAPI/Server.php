@@ -1,0 +1,56 @@
+<?php
+
+/**
+ * Playground
+ */
+declare(strict_types=1);
+
+namespace Playground\Make\OpenAPI\Configuration\OpenAPI;
+
+/**
+ * \Playground\Make\OpenAPI\Configuration\OpenAPI\Server
+ */
+class Server extends OpenAPIConfiguration
+{
+    protected string $url = '';
+
+    protected string $description = '';
+
+    /**
+     * @var array<string, mixed>
+     */
+    protected $properties = [
+        'url' => '',
+        'description' => '',
+    ];
+
+    /**
+     * @param  array<string, mixed>  $options
+     */
+    public function setOptions(array $options = []): self
+    {
+        if (! empty($options['url'])
+            && is_string($options['url'])
+        ) {
+            $this->url = $options['url'];
+        }
+
+        if (! empty($options['description'])
+            && is_string($options['description'])
+        ) {
+            $this->description = $options['description'];
+        }
+
+        return $this;
+    }
+
+    public function url(): string
+    {
+        return $this->url;
+    }
+
+    public function description(): string
+    {
+        return $this->description;
+    }
+}

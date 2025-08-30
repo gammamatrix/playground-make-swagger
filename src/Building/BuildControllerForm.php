@@ -6,13 +6,13 @@
 
 declare(strict_types=1);
 
-namespace Playground\Make\Swagger\Building;
+namespace Playground\Make\OpenAPI\Building;
 
 use Illuminate\Support\Str;
-use Playground\Make\Swagger\Configuration\Swagger\Controller;
+use Playground\Make\OpenAPI\Configuration\OpenAPI\Controller;
 
 /**
- * \Playground\Make\Swagger\Building\BuildControllerForm
+ * \Playground\Make\OpenAPI\Building\BuildControllerForm
  */
 trait BuildControllerForm
 {
@@ -59,8 +59,8 @@ trait BuildControllerForm
         $model_title = Str::of($name)->title()->toString();
 
         $description_get = __(
-            $this->isResource ? 'playground-make-swagger::response.create.resource.description'
-            : 'playground-make-swagger::response.create.description', [
+            $this->isResource ? 'playground-make-openapi::response.create.resource.description'
+            : 'playground-make-openapi::response.create.description', [
                 'name' => $model_label_lower,
             ]);
 
@@ -100,7 +100,7 @@ trait BuildControllerForm
                     'type' => 'text/html',
                     'schema' => [
                         'type' => 'string',
-                        'example' => __('playground-make-swagger::response.create.resource.content.example', [
+                        'example' => __('playground-make-openapi::response.create.resource.content.example', [
                             'name' => $model_label_lower,
                             'route-module' => $module_route,
                             'route-names' => $model_route_plural,
@@ -123,7 +123,7 @@ trait BuildControllerForm
             'tags' => [
                 $model_title,
             ],
-            'summary' => __('playground-make-swagger::request.create.description', [
+            'summary' => __('playground-make-openapi::request.create.description', [
                 'name' => $model_label_lower,
             ]),
             'operationId' => sprintf(
@@ -181,7 +181,7 @@ trait BuildControllerForm
             'in' => 'path',
             'name' => 'id',
             'required' => true,
-            'description' => __('playground-make-swagger::params.id.description', [
+            'description' => __('playground-make-openapi::params.id.description', [
                 'name' => $model_label_lower,
             ]),
             'schema' => [
@@ -191,8 +191,8 @@ trait BuildControllerForm
         ]);
 
         $description_get = __(
-            $this->isResource ? 'playground-make-swagger::response.edit.resource.description'
-            : 'playground-make-swagger::response.edit.description', [
+            $this->isResource ? 'playground-make-openapi::response.edit.resource.description'
+            : 'playground-make-openapi::response.edit.description', [
                 'name' => $model_label_lower,
             ]);
 
@@ -232,7 +232,7 @@ trait BuildControllerForm
                     'type' => 'text/html',
                     'schema' => [
                         'type' => 'string',
-                        'example' => __('playground-make-swagger::response.edit.resource.content.example', [
+                        'example' => __('playground-make-openapi::response.edit.resource.content.example', [
                             'name' => $model_label_lower,
                             'route-module' => $module_route,
                             'route-names' => $model_route_plural,
@@ -255,7 +255,7 @@ trait BuildControllerForm
             'tags' => [
                 $model_title,
             ],
-            'summary' => __('playground-make-swagger::request.edit.description', [
+            'summary' => __('playground-make-openapi::request.edit.description', [
                 'name' => $model_label_lower,
             ]),
             'operationId' => sprintf(

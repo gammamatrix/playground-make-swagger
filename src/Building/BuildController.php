@@ -6,12 +6,12 @@
 
 declare(strict_types=1);
 
-namespace Playground\Make\Swagger\Building;
+namespace Playground\Make\OpenAPI\Building;
 
 use Illuminate\Support\Str;
 
 /**
- * \Playground\Make\Swagger\Building\BuildController
+ * \Playground\Make\OpenAPI\Building\BuildController
  */
 trait BuildController
 {
@@ -42,7 +42,7 @@ trait BuildController
             'api',
         ])) {
             // Add the tag for the model.
-            $this->api->addTag($name, __('playground-make-swagger::tag.description', [
+            $this->api->addTag($name, __('playground-make-openapi::tag.description', [
                 'names' => $model_label_lower_plural,
             ]));
 

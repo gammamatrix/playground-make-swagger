@@ -6,10 +6,10 @@
 
 declare(strict_types=1);
 
-namespace Playground\Make\Swagger\Building;
+namespace Playground\Make\OpenAPI\Building;
 
 /**
- * \Playground\Make\Swagger\Building\BuildServers
+ * \Playground\Make\OpenAPI\Building\BuildServers
  */
 trait BuildServers
 {
@@ -18,7 +18,7 @@ trait BuildServers
         /**
          * @var array<string, array<string, mixed>> $config
          */
-        $config = config('playground-make-swagger.servers');
+        $config = config('playground-make-openapi.servers');
 
         $servers = [];
 

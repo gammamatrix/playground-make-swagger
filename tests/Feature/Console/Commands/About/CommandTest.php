@@ -6,15 +6,15 @@
 
 declare(strict_types=1);
 
-namespace Tests\Feature\Playground\Make\Swagger\Console\Commands\About;
+namespace Tests\Feature\Playground\Make\OpenAPI\Console\Commands\About;
 
 use PHPUnit\Framework\Attributes\CoversClass;
 use Playground\Test\OrchestraTestCase;
 
 /**
- * \Tests\Feature\Playground\Make\Swagger\Console\Commands\About
+ * \Tests\Feature\Playground\Make\OpenAPI\Console\Commands\About
  */
-#[CoversClass(\Playground\Make\Swagger\ServiceProvider::class)]
+#[CoversClass(\Playground\Make\OpenAPI\ServiceProvider::class)]
 class CommandTest extends OrchestraTestCase
 {
     protected function getPackageProviders($app)
@@ -22,7 +22,7 @@ class CommandTest extends OrchestraTestCase
         return [
             \Playground\ServiceProvider::class,
             \Playground\Make\ServiceProvider::class,
-            \Playground\Make\Swagger\ServiceProvider::class,
+            \Playground\Make\OpenAPI\ServiceProvider::class,
         ];
     }
 
@@ -33,6 +33,6 @@ class CommandTest extends OrchestraTestCase
          */
         $result = $this->artisan('about');
         $result->assertExitCode(0);
-        $result->expectsOutputToContain('Playground: Make Swagger');
+        $result->expectsOutputToContain('Playground: Make OpenAPI');
     }
 }

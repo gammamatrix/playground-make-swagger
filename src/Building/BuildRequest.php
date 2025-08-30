@@ -6,12 +6,12 @@
 
 declare(strict_types=1);
 
-namespace Playground\Make\Swagger\Building;
+namespace Playground\Make\OpenAPI\Building;
 
 use Illuminate\Support\Str;
 
 /**
- * \Playground\Make\Swagger\Building\BuildRequest
+ * \Playground\Make\OpenAPI\Building\BuildRequest
  */
 trait BuildRequest
 {
@@ -64,7 +64,7 @@ trait BuildRequest
         );
 
         $this->yaml_write($file, [
-            'description' => __('playground-make-swagger::request.fillable.description', [
+            'description' => __('playground-make-openapi::request.fillable.description', [
                 'module' => $module,
                 'name' => $name,
             ]),
@@ -122,7 +122,7 @@ trait BuildRequest
         );
 
         $this->yaml_write($file, [
-            'description' => __('playground-make-swagger::request.fillable.description', [
+            'description' => __('playground-make-openapi::request.fillable.description', [
                 'module' => $module,
                 'name' => $name,
             ]),
@@ -162,32 +162,32 @@ trait BuildRequest
          */
         $properties = [
             'perPage' => [
-                'description' => __('playground-make-swagger::request.perPage.description'),
+                'description' => __('playground-make-openapi::request.perPage.description'),
                 'type' => 'integer',
                 'example' => 10,
             ],
             'page' => [
-                'description' => __('playground-make-swagger::request.page.description'),
+                'description' => __('playground-make-openapi::request.page.description'),
                 'type' => 'integer',
                 'example' => 1,
             ],
             'offset' => [
-                'description' => __('playground-make-swagger::request.offset.description'),
+                'description' => __('playground-make-openapi::request.offset.description'),
                 'type' => 'integer',
                 'example' => 0,
             ],
             'filter' => [
-                'description' => __('playground-make-swagger::request.filter.description', ['name' => $name]),
+                'description' => __('playground-make-openapi::request.filter.description', ['name' => $name]),
                 'type' => 'object',
                 'properties' => [
                     'trash' => [
-                        'description' => __('playground-make-swagger::request.filter.trash.description'),
+                        'description' => __('playground-make-openapi::request.filter.trash.description'),
                         'type' => 'integer',
                         'example' => 1,
                         'enum' => ['with', 'only', ''],
                     ],
                     'page_type' => [
-                        'description' => __('playground-make-swagger::request.filter.type.description', ['name' => $name]),
+                        'description' => __('playground-make-openapi::request.filter.type.description', ['name' => $name]),
                         'type' => 'integer',
                         'example' => 1,
                     ],
@@ -201,7 +201,7 @@ trait BuildRequest
         );
 
         $this->yaml_write($file, [
-            'description' => __('playground-make-swagger::request.index.form.description', [
+            'description' => __('playground-make-openapi::request.index.form.description', [
                 'module' => $module,
                 'name' => $name,
             ]),

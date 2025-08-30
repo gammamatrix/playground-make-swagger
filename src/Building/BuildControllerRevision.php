@@ -6,13 +6,13 @@
 
 declare(strict_types=1);
 
-namespace Playground\Make\Swagger\Building;
+namespace Playground\Make\OpenAPI\Building;
 
 use Illuminate\Support\Str;
-use Playground\Make\Swagger\Configuration\Swagger\Controller;
+use Playground\Make\OpenAPI\Configuration\OpenAPI\Controller;
 
 /**
- * \Playground\Make\Swagger\Building\BuildControllerRevision
+ * \Playground\Make\OpenAPI\Building\BuildControllerRevision
  */
 trait BuildControllerRevision
 {

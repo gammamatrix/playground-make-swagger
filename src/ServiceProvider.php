@@ -6,20 +6,20 @@
 
 declare(strict_types=1);
 
-namespace Playground\Make\Swagger;
+namespace Playground\Make\OpenAPI;
 
 use Illuminate\Console\GeneratorCommand;
 use Illuminate\Foundation\Console\AboutCommand;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider;
 
 /**
- * \Playground\Make\Swagger\ServiceProvider
+ * \Playground\Make\OpenAPI\ServiceProvider
  */
 class ServiceProvider extends AuthServiceProvider
 {
     public const string VERSION = '74.0.0';
 
-    public string $package = 'playground-make-swagger';
+    public string $package = 'playground-make-openapi';
 
     /**
      * Bootstrap any package services.
@@ -67,7 +67,7 @@ class ServiceProvider extends AuthServiceProvider
     {
         $commands = [];
 
-        $commands[] = Console\Commands\SwaggerMakeCommand::class;
+        $commands[] = Console\Commands\OpenAPIMakeCommand::class;
 
         $this->commands($commands);
 
@@ -80,8 +80,8 @@ class ServiceProvider extends AuthServiceProvider
     public function register(): void
     {
         $this->mergeConfigFrom(
-            dirname(__DIR__).'/config/playground-make-swagger.php',
-            'playground-make-swagger'
+            dirname(__DIR__).'/config/playground-make-openapi.php',
+            'playground-make-openapi'
         );
     }
 
@@ -94,7 +94,7 @@ class ServiceProvider extends AuthServiceProvider
 
         $version = $this->version();
 
-        AboutCommand::add('Playground: Make Swagger', fn () => [
+        AboutCommand::add('Playground: Make OpenAPI', fn () => [
             '<fg=yellow;options=bold>Load</> Commands' => ! empty($load['commands']) ? '<fg=green;options=bold>ENABLED</>' : '<fg=yellow;options=bold>DISABLED</>',
             '<fg=yellow;options=bold>Load</> Translations' => ! empty($load['translations']) ? '<fg=green;options=bold>ENABLED</>' : '<fg=yellow;options=bold>DISABLED</>',
             'Package' => $this->package,

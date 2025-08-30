@@ -35,13 +35,13 @@ jobs:
         channel-id: 'C068A06PV43'
         payload: |
           {
-            "text": "CI Build Status for playground-make-swagger: IN PROGRESS\n${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}",
+            "text": "CI Build Status for playground-make-openapi: IN PROGRESS\n${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}",
             "blocks": [
               {
                 "type": "header",
                 "text": {
                   "type": "plain_text",
-                  "text": ":runner: CI Build Status for playground-make-swagger"
+                  "text": ":runner: CI Build Status for playground-make-openapi"
                 }
               },
               {
@@ -127,7 +127,7 @@ jobs:
         user_email: 'github-actions[bot]@users.noreply.github.com'
 #    - uses: php-actions/phpstan@v3
 #      with:
-#        level: 9
+#        level: 10
 #        php_version: "8.4"
 #        path: config/ lang/ src/ tests/Feature/
 #        args: --verbose --debug
@@ -147,13 +147,13 @@ jobs:
         update-ts: ${{ steps.slack.outputs.ts }}
         payload: |
           {
-            "text": "CI Build Status for playground-make-swagger: DONE\n${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}",
+            "text": "CI Build Status for playground-make-openapi: DONE\n${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}",
             "blocks": [
               {
                 "type": "header",
                 "text": {
                   "type": "plain_text",
-                  "text": ":white_check_mark: CI Build Status for playground-make-swagger"
+                  "text": ":white_check_mark: CI Build Status for playground-make-openapi"
                 }
               },
               {
@@ -216,13 +216,13 @@ jobs:
         update-ts: ${{ steps.slack.outputs.ts }}
         payload: |
           {
-            "text": "CI Build Status for playground-make-swagger: FAILED\n${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}",
+            "text": "CI Build Status for playground-make-openapi: FAILED\n${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}",
             "blocks": [
               {
                 "type": "header",
                 "text": {
                   "type": "plain_text",
-                  "text": ":warning: CI Build Status for playground-make-swagger"
+                  "text": ":warning: CI Build Status for playground-make-openapi"
                 }
               },
               {

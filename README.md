@@ -1,10 +1,10 @@
-# Playground: Make Swagger
+# Playground: Make OpenAPI
 
-[![Playground CI Workflow](https://github.com/gammamatrix/playground-make-swagger/actions/workflows/ci.yml/badge.svg?branch=develop)](https://raw.githubusercontent.com/gammamatrix/playground-make-swagger/testing/develop/testdox.txt)
-[![Test Coverage](https://raw.githubusercontent.com/gammamatrix/playground-make-swagger/testing/develop/coverage.svg)](tests)
+[![Playground CI Workflow](https://github.com/gammamatrix/playground-make-openapi/actions/workflows/ci.yml/badge.svg?branch=develop)](https://raw.githubusercontent.com/gammamatrix/playground-make-openapi/testing/develop/testdox.txt)
+[![Test Coverage](https://raw.githubusercontent.com/gammamatrix/playground-make-openapi/testing/develop/coverage.svg)](tests)
 [![PHPStan Level 9](https://img.shields.io/badge/PHPStan-level%209-brightgreen)](.github/workflows/ci.yml#L120)
 
-The Playground Make Swagger Tool for building out [Laravel](https://laravel.com/docs/11.x) applications.
+The Playground Make OpenAPI Tool for building out [Laravel](https://laravel.com/docs/11.x) applications.
 
 ## Installation
 
@@ -14,16 +14,16 @@ The Playground Make Swagger Tool for building out [Laravel](https://laravel.com/
 
 Playground Make provides information in the `artisan about` command.
 
-<!-- <img src="resources/docs/artisan-about-playground-make-swagger.png" alt="screenshot of artisan about command with Playground Make."> -->
+<!-- <img src="resources/docs/artisan-about-playground-make-openapi.png" alt="screenshot of artisan about command with Playground Make."> -->
 
 ## Configuration
 
 You can publish the config file with:
 ```bash
-php artisan vendor:publish --provider="Playground\Make\Swagger\ServiceProvider" --tag="playground-config"
+php artisan vendor:publish --provider="Playground\Make\OpenAPI\ServiceProvider" --tag="playground-config"
 ```
 
-See the contents of the published config file: [config/playground-make-swagger.php](config/playground-make-swagger.php)
+See the contents of the published config file: [config/playground-make-openapi.php](config/playground-make-openapi.php)
 
 ## Commands
 

@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace Playground\Make\Swagger\Building;
+namespace Playground\Make\OpenAPI\Building;
 
 use Illuminate\Support\Str;
 
@@ -15,7 +15,7 @@ use Illuminate\Support\Str;
 // use Playground\Make\Configuration\Model\CreateId;
 
 /**
- * \Playground\Make\Swagger\Building\BuildModel
+ * \Playground\Make\OpenAPI\Building\BuildModel
  */
 trait BuildModel
 {
@@ -44,7 +44,7 @@ trait BuildModel
         $this->api->components()->addSchema($name, $file);
 
         $this->yaml_write($file, [
-            'description' => __('playground-make-swagger::model.module.description', [
+            'description' => __('playground-make-openapi::model.module.description', [
                 'module' => $this->model->module(),
                 'name' => $model_label_lower,
             ]),
@@ -84,7 +84,7 @@ trait BuildModel
         $this->api->components()->addSchema($name, $file);
 
         $this->yaml_write($file, [
-            'description' => __('playground-make-swagger::model.module.description', [
+            'description' => __('playground-make-openapi::model.module.description', [
                 'module' => $this->modelRevision->module(),
                 'name' => $model_label_lower,
             ]),

@@ -1,13 +1,13 @@
 {
-    "name": "gammamatrix/playground-make-swagger",
-    "description": "Playground: This package provides the playground:make:swagger command.",
+    "name": "gammamatrix/playground-make-openapi",
+    "description": "Playground: This package provides the playground:make:openapi command.",
     "keywords": [
         "gammamatrix",
         "laravel",
         "playground",
         "playground:make"
     ],
-    "homepage": "https://github.com/gammamatrix/playground-make-swagger",
+    "homepage": "https://github.com/gammamatrix/playground-make-openapi",
     "license": "MIT",
     "authors": [
         {
@@ -37,13 +37,13 @@
     "prefer-stable": true,
     "autoload": {
         "psr-4": {
-            "Playground\\Make\\Swagger\\": "src/"
+            "Playground\\Make\\OpenAPI\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Tests\\Feature\\Playground\\Make\\Swagger\\": "tests/Feature/",
-            "Tests\\Unit\\Playground\\Make\\Swagger\\": "tests/Unit/"
+            "Tests\\Feature\\Playground\\Make\\OpenAPI\\": "tests/Feature/",
+            "Tests\\Unit\\Playground\\Make\\OpenAPI\\": "tests/Unit/"
         }
     },
     "config": {
@@ -59,7 +59,7 @@
         },
         "laravel": {
             "providers": [
-                "Playground\\Make\\Swagger\\ServiceProvider"
+                "Playground\\Make\\OpenAPI\\ServiceProvider"
             ]
         }
     },

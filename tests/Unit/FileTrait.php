@@ -6,10 +6,10 @@
 
 declare(strict_types=1);
 
-namespace Tests\Unit\Playground\Make\Swagger;
+namespace Tests\Unit\Playground\Make\OpenAPI;
 
 /**
- * \Tests\Unit\Playground\Make\Swagger\FileTrait
+ * \Tests\Unit\Playground\Make\OpenAPI\FileTrait
  */
 trait FileTrait
 {

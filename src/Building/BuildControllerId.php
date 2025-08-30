@@ -6,13 +6,13 @@
 
 declare(strict_types=1);
 
-namespace Playground\Make\Swagger\Building;
+namespace Playground\Make\OpenAPI\Building;
 
 use Illuminate\Support\Str;
-use Playground\Make\Swagger\Configuration\Swagger\Controller;
+use Playground\Make\OpenAPI\Configuration\OpenAPI\Controller;
 
 /**
- * \Playground\Make\Swagger\Building\BuildControllerId
+ * \Playground\Make\OpenAPI\Building\BuildControllerId
  */
 trait BuildControllerId
 {
@@ -62,7 +62,7 @@ trait BuildControllerId
             'in' => 'path',
             'name' => 'id',
             'required' => true,
-            'description' => __('playground-make-swagger::params.id.description', [
+            'description' => __('playground-make-openapi::params.id.description', [
                 'name' => $model_label_lower,
             ]),
             'schema' => [
@@ -86,7 +86,7 @@ trait BuildControllerId
             'responses' => [
                 [
                     'code' => 200,
-                    'description' => __('playground-make-swagger::response.data.description', [
+                    'description' => __('playground-make-openapi::response.data.description', [
                         'name' => $model_label_lower,
                     ]),
                     'content' => [
@@ -151,7 +151,7 @@ trait BuildControllerId
                 ],
                 [
                     'code' => 423,
-                    'description' => __('playground-make-swagger::model.locked.delete.description', [
+                    'description' => __('playground-make-openapi::model.locked.delete.description', [
                         'name' => $model_label_lower,
                     ]),
                 ],
@@ -239,7 +239,7 @@ trait BuildControllerId
                                             'type' => 'array',
                                             'items' => [
                                                 'type' => 'string',
-                                                'example' => __('playground-make-swagger::model.title.example'),
+                                                'example' => __('playground-make-openapi::model.title.example'),
                                             ],
                                         ],
                                     ],
@@ -250,7 +250,7 @@ trait BuildControllerId
                 ],
                 [
                     'code' => 423,
-                    'description' => __('playground-make-swagger::model.locked.patch.description', [
+                    'description' => __('playground-make-openapi::model.locked.patch.description', [
                         'name' => $model_label_lower,
                     ]),
                 ],

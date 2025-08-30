@@ -6,12 +6,12 @@
 
 declare(strict_types=1);
 
-namespace Tests\Unit\Playground\Make\Swagger;
+namespace Tests\Unit\Playground\Make\OpenAPI;
 
 use Playground\Test\OrchestraTestCase;
 
 /**
- * \Tests\Unit\Playground\Make\Swagger\TestCase
+ * \Tests\Unit\Playground\Make\OpenAPI\TestCase
  */
 class TestCase extends OrchestraTestCase
 {
@@ -22,7 +22,7 @@ class TestCase extends OrchestraTestCase
         return [
             \Playground\ServiceProvider::class,
             \Playground\Make\ServiceProvider::class,
-            \Playground\Make\Swagger\ServiceProvider::class,
+            \Playground\Make\OpenAPI\ServiceProvider::class,
         ];
     }
 }

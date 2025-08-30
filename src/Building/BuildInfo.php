@@ -6,10 +6,10 @@
 
 declare(strict_types=1);
 
-namespace Playground\Make\Swagger\Building;
+namespace Playground\Make\OpenAPI\Building;
 
 /**
- * \Playground\Make\Swagger\Building\BuildInfo
+ * \Playground\Make\OpenAPI\Building\BuildInfo
  */
 trait BuildInfo
 {
@@ -39,7 +39,7 @@ trait BuildInfo
         if ($this->c->skeleton()) {
             $module = $this->c->module();
             $organization = $this->c->organization();
-            $options['title'] = trim(__('playground-make-swagger::api.info.title', [
+            $options['title'] = trim(__('playground-make-openapi::api.info.title', [
                 'organization' => $organization,
                 'module' => $module,
                 'type' => $type,
@@ -71,7 +71,7 @@ trait BuildInfo
 
         }
 
-        $version = config('playground-make-swagger.version');
+        $version = config('playground-make-openapi.version');
 
         if ($version && is_string($version)) {
             $options['version'] = $version;

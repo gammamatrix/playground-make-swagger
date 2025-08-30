@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace Playground\Make\Swagger\Building;
+namespace Playground\Make\OpenAPI\Building;
 
 use Illuminate\Support\Str;
 use Playground\Make\Configuration\Model;
@@ -16,7 +16,7 @@ use Playground\Make\Configuration\Model;
 // use Playground\Make\Configuration\Model\CreateId;
 
 /**
- * \Playground\Make\Swagger\Building\BuildModelColumns
+ * \Playground\Make\OpenAPI\Building\BuildModelColumns
  */
 trait BuildModelColumns
 {

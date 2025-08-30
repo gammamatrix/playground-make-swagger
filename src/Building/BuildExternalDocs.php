@@ -6,12 +6,12 @@
 
 declare(strict_types=1);
 
-namespace Playground\Make\Swagger\Building;
+namespace Playground\Make\OpenAPI\Building;
 
 use Illuminate\Support\Str;
 
 /**
- * \Playground\Make\Swagger\Building\BuildExternalDocs
+ * \Playground\Make\OpenAPI\Building\BuildExternalDocs
  */
 trait BuildExternalDocs
 {
@@ -20,7 +20,7 @@ trait BuildExternalDocs
         /**
          * @var array<string, array<string, mixed>> $config
          */
-        $config = config('playground-make-swagger.externalDocs');
+        $config = config('playground-make-openapi.externalDocs');
 
         $externalDocs = [];
         $module_route = Str::of($this->c->module())->lower()->kebab()->toString();
