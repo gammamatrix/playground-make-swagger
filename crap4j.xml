@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <crap_result>
   <project/>
-  <timestamp>2025-08-30 23:56:03</timestamp>
+  <timestamp>2025-09-01 21:28:46</timestamp>
   <stats>
     <name>Method Crap Stats</name>
     <methodCount>152</methodCount>
-    <crapMethodCount>24</crapMethodCount>
-    <crapLoad>275</crapLoad>
-    <totalCrap>4802</totalCrap>
-    <crapMethodPercent>15.79</crapMethodPercent>
+    <crapMethodCount>25</crapMethodCount>
+    <crapLoad>284</crapLoad>
+    <totalCrap>4844</totalCrap>
+    <crapMethodPercent>16.45</crapMethodPercent>
   </stats>
   <methods>
     <method>
@@ -17,10 +17,10 @@
       <methodName>doc_controller</methodName>
       <methodSignature>doc_controller(): void</methodSignature>
       <fullMethod>doc_controller(): void</fullMethod>
-      <crap>30</crap>
-      <complexity>5</complexity>
+      <crap>72</crap>
+      <complexity>8</complexity>
       <coverage>0</coverage>
-      <crapLoad>0</crapLoad>
+      <crapLoad>8</crapLoad>
     </method>
     <method>
       <package>Playground\Make\OpenAPI\Building</package>
