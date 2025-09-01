@@ -37,6 +37,14 @@ trait BuildControllerRevisions
         $this->doc_controller_revisions_config($name, $pathRevisions);
 
         $pathRevisions->apply();
+        //         dd([
+        //             '__METHOD__' => __METHOD__,
+        //             '$pathRevisions' => $pathRevisions,
+        //             '$this->isApi' => $this->isApi,
+        //             '$this->isResource' => $this->isResource,
+        //             '$this->c->type()' => $this->c->type(),
+        //             '$this->options()' => $this->options(),
+        //         ]);
 
         $this->api->addPath($pathRevisions->path(), $pathRevisions->ref())->apply();
 

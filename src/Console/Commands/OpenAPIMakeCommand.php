@@ -122,6 +122,15 @@ class OpenAPIMakeCommand extends GeneratorCommand
         $this->modelRevision = null;
 
         $options = $this->options();
+        //        dump([
+        //            '__METHOD__' => __METHOD__,
+        //            '$this->options()' => $this->options(),
+        //            '$this->c' => $this->c,
+        //            // '$this->model' => $this->model?->toArray(),
+        //            // '$this->modelRevision' => $this->modelRevision?->toArray(),
+        //            // '$this->c' => $this->c->toArray(),
+        //            '$this->searches' => $this->searches,
+        //        ]);
 
         // if ($this->hasOption('playground') && $this->option('playground')) {
         //     $this->c->setOptions([
@@ -129,7 +138,7 @@ class OpenAPIMakeCommand extends GeneratorCommand
         //     ]);
         // }
 
-        $type = $this->getConfigurationType();
+        $type = $this->c->type();
 
         if (in_array($type, [
             'resource',
@@ -186,15 +195,15 @@ class OpenAPIMakeCommand extends GeneratorCommand
 
         // $this->saveConfiguration();
 
-        // dd([
-        //     '__METHOD__' => __METHOD__,
-        //     '$this->options()' => $this->options(),
-        //     '$this->c' => $this->c,
-        //     // '$this->model' => $this->model?->toArray(),
-        //     // '$this->modelRevision' => $this->modelRevision?->toArray(),
-        //     // '$this->c' => $this->c->toArray(),
-        //     '$this->searches' => $this->searches,
-        // ]);
+        //        dump([
+        //            '__METHOD__' => __METHOD__,
+        //            '$this->options()' => $this->options(),
+        //            '$this->c' => $this->c,
+        //            // '$this->model' => $this->model?->toArray(),
+        //            // '$this->modelRevision' => $this->modelRevision?->toArray(),
+        //            // '$this->c' => $this->c->toArray(),
+        //            '$this->searches' => $this->searches,
+        //        ]);
     }
 
     /**
@@ -265,92 +274,6 @@ class OpenAPIMakeCommand extends GeneratorCommand
         return $this->return_status;
     }
 
-    // public function finish(): ?bool
-    // {
-    //     $this->saveConfiguration();
-
-    //     // if ($this->c->test()) {
-    //     //     $this->createTest();
-    //     // }
-
-    //     // if ($this->c->transformers()) {
-    //     //     $this->createTransformers();
-    //     // }
-
-    //     // $this->saveConfiguration();
-    //     dd([
-    //         '__METHOD__' => __METHOD__,
-    //         '$this->c' => $this->c,
-    //         // '$this->c' => $this->c->toArray(),
-    //         '$this->searches' => $this->searches,
-    //         // '$this->analyze' => $this->analyze,
-    //     ]);
-
-    //     return $this->return_status;
-    // }
-
-    // /**
-    //  * Build the class with the given name.
-    //  *
-    //  * @param  string  $name
-    //  *
-    //  * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
-    //  */
-    // protected function buildClass($name): string
-    // {
-    //     // if (in_array($this->c->type(), [
-    //     //     'abstract',
-    //     //     'model',
-    //     //     'morph-pivot',
-    //     //     'pivot',
-    //     //     'playground-abstract',
-    //     //     'playground',
-    //     // ])) {
-    //     $this->searches['use'] = '';
-    //     $this->searches['use_class'] = '';
-
-    //     $this->buildClass_model_table();
-
-    //     if ($this->c->skeleton()) {
-    //         $this->buildClass_skeleton();
-    //     }
-
-    //     $this->buildClass_docblock();
-    //     // dd([
-    //     //     '__METHOD__' => __METHOD__,
-    //     //     // '$this->c' => $this->c,
-    //     //     '$this->c' => $this->c->toArray(),
-    //     //     '$this->searches' => $this->searches,
-    //     //     '$this->analyze' => $this->analyze,
-    //     // ]);
-    //     $this->buildClass_implements();
-    //     $this->buildClass_table_property();
-    //     $this->buildClass_perPage();
-    //     $this->c->apply();
-
-    //     $this->buildClass_attributes();
-    //     $this->buildClass_fillable();
-    //     $this->buildClass_casts();
-
-    //     // // Relationships
-    //     $this->buildClass_HasOne();
-    //     $this->buildClass_HasMany();
-
-    //     $this->buildClass_uses($name);
-
-    //     // $this->c->apply();
-    //     $this->applyConfigurationToSearch(true);
-
-    //     // dd([
-    //     //     '__METHOD__' => __METHOD__,
-    //     //     // '$this->c' => $this->c,
-    //     //     '$this->searches' => $this->searches,
-    //     //     '$this->c->skeleton()' => $this->c->skeleton(),
-    //     // ]);
-
-    //     return parent::buildClass($name);
-    // }
-
     protected function getStub()
     {
         return sprintf(
@@ -359,19 +282,6 @@ class OpenAPIMakeCommand extends GeneratorCommand
             // $this->getResourcePackageFolder()
         );
     }
-
-    // /**
-    //  * Resolve the fully-qualified path to the stub.
-    //  *
-    //  * @param  string  $stub
-    //  * @return string
-    //  */
-    // protected function resolveStubPath($stub)
-    // {
-    //     return file_exists($customPath = $this->laravel->basePath(trim($stub, '/')))
-    //                     ? $customPath
-    //                     : __DIR__.$stub;
-    // }
 
     /**
      * Get the default namespace for the class.
@@ -460,17 +370,22 @@ class OpenAPIMakeCommand extends GeneratorCommand
 
     protected function getConfigurationFilename(): string
     {
-        $type = $this->getConfigurationType();
+        $type = $this->c->type();
 
         if ($type === 'api') {
             return 'api.json';
         }
 
-        return sprintf(
-            '%1$s/%2$s.%3$s.json',
+        $file = sprintf(
+            '%1$s/%2$s.json',
             Str::of($this->c->name())->kebab(),
-            Str::of($this->getType())->kebab(),
-            Str::of($this->getConfigurationType())->kebab()
+            'openapi',
         );
+
+        //         dd([
+        //             '__METHOD__' => __METHOD__,
+        //             '$file' => $file,
+        //         ]);
+        return $file;
     }
 }

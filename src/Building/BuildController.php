@@ -28,6 +28,8 @@ trait BuildController
 
         $model_label_lower_plural = Str::of($name)->kebab()->replace('-', ' ')->lower()->plural()->toString();
 
+        $hasRevision = $this->hasOption('revision') && $this->option('revision');
+
         if (empty($name)) {
             $this->components->error('Docs: The name must be set in the [controller] configuration');
 
@@ -41,6 +43,13 @@ trait BuildController
             'resource',
             'api',
         ])) {
+
+            if (! $hasRevision) {
+                $hasRevision = $this->c->name() === $this->model?->name()
+                    && $this->model?->revision() === false
+                    && $this->modelRevision?->revision() === true;
+            }
+
             // Add the tag for the model.
             $this->api->addTag($name, __('playground-make-openapi::tag.description', [
                 'names' => $model_label_lower_plural,
@@ -51,12 +60,28 @@ trait BuildController
             $this->doc_controller_index_form($name);
             $this->doc_controller_lock($name);
             $this->doc_controller_restore($name);
-            if ($this->hasOption('revision') && $this->option('revision')) {
+            if ($hasRevision) {
                 $this->doc_controller_revision($name);
                 $this->doc_controller_revisions($name);
             }
             $this->doc_controller_create($name);
             $this->doc_controller_edit($name);
         }
+        //         dd([
+        //             '__METHOD__' => __METHOD__,
+        //             '$type' => $type,
+        //             '$hasRevision' => $hasRevision,
+        //             '$this->route_prefix' => $this->route_prefix,
+        //             '$this->isApi' => $this->isApi,
+        //             '$this->isResource' => $this->isResource,
+        //             '$this->c->type()' => $this->c->type(),
+        //             '$this->options()' => $this->options(),
+        // //             '$this->model' => $this->model?->toArray(),
+        //             '$this->c->name()' => $this->c->name(),
+        //             '$this->model->name()' => $this->model?->name(),
+        //             '$this->model->revision()' => $this->model?->revision(),
+        //             '$this->model->revision()' => $this->model?->revision(),
+        //             '$this->modelRevision' => $this->modelRevision?->revision(),
+        //         ]);
     }
 }

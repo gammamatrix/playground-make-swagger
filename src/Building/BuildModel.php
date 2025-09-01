@@ -10,10 +10,6 @@ namespace Playground\Make\OpenAPI\Building;
 
 use Illuminate\Support\Str;
 
-// use Playground\Make\Configuration\Model\Create;
-// use Playground\Make\Configuration\Model\CreateDate;
-// use Playground\Make\Configuration\Model\CreateId;
-
 /**
  * \Playground\Make\OpenAPI\Building\BuildModel
  */
@@ -91,16 +87,13 @@ trait BuildModel
             'type' => 'object',
             'properties' => $this->doc_model_columns($name, $create),
         ]);
-        // dd([
-        //     '__METHOD__' => __METHOD__,
-        //     // '$this->build_model_properties' => $this->build_model_properties,
-        //     '$columns' => $columns,
-        // ]);
-        // dump([
-        //     '__METHOD__' => __METHOD__,
-        //     '$model_label_lower' => $model_label_lower,
-        //     '$model_route' => $model_route,
-        //     '$name' => $name,
-        // ]);
+        //         dump([
+        //             '__METHOD__' => __METHOD__,
+        //             '$model_label_lower' => $model_label_lower,
+        //             '$model_route' => $model_route,
+        //             '$name' => $name,
+        //             '$this->c' => $this->c,
+        //             '$this->options()' => $this->options(),
+        //         ]);
     }
 }
