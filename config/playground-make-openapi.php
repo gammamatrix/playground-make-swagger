@@ -38,7 +38,7 @@ return [
         'translations' => (bool) env('PLAYGROUND_MAKE_OPENAPI_LOAD_TRANSLATIONS', true),
     ],
 
-    'version' => env('PLAYGROUND_MAKE_OPENAPI_VERSION', '74.0.0'),
+    'version' => env('PLAYGROUND_MAKE_OPENAPI_VERSION', '75.0.0'),
 
     'externalDocs' => [
         'url' => env('PLAYGROUND_MAKE_OPENAPI_EXTERNAL_DOCS_URL', 'https://gammamatrix-playground.readthedocs.io/en/develop/components/%1$s.html'),
